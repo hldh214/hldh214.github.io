@@ -83,3 +83,9 @@ deploy:
   branch: master
 
 disqus_shortname: "hldh214s-blog"
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+

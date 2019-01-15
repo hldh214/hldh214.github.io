@@ -44,4 +44,5 @@ while 1:
 猜测网易后台有通过类似 phalcon 的 isAjax() 方法判断请求类型
 
 截图纪念, 人生中第二个十年
-![happy birthday](http://img.blog.csdn.net/20170214212738308)
+
+{% asset_img happy_birthday.jpg happy_birthday %}

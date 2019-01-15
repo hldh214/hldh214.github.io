@@ -7,13 +7,16 @@ date: 2018-11-21 15:51:00
 2018/04/16 晴
 我参加了腾讯校招面试, 期望方向是后端开发
 面试地点在湖北省武汉市某酒店内, 粗略估计了一下我那一场的面试大概有 100~200 来人参加
-![so_many_girls](https://img-blog.csdn.net/20180417132757729)
+
+{% asset_img so_many_girls.jpg so_many_girls %}
+
 其中 60% 左右的都是女生, 可见华中地区对于研发岗位的竞争还是相对平缓很多
 
 # 整体感受
 
 因为腾讯在武汉并没有研发中心, 行政部门又没牌面, 所以专门设置了一家酒店来进行面试
-![hardworking_guys](https://img-blog.csdn.net/20180417133125909)
+
+{% asset_img hardworking_guys.jpg hardworking_guys %}
 
 # 面试
 ## 流程

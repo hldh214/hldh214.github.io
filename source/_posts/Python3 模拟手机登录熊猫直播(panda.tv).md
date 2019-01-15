@@ -11,7 +11,8 @@ date: 2018-11-21 15:44:00
 # 目标 #
 
 模拟手机 app 登录熊猫直播
-![succ](http://img.blog.csdn.net/20170718202138450)
+
+{% asset_img succ.jpg succ %}
 
 # 实现 #
 
@@ -29,11 +30,14 @@ date: 2018-11-21 15:44:00
 	### 证书下载 ###
 
 	当你的手机成功连接上电脑端 fiddler 代理时, 手机访问 http://ipv4.fiddler:8888/ 如图, 选择下载 fiddler 证书
-![echo_service](http://img.blog.csdn.net/20170718193108001)
+
+    {% asset_img echo_service.jpg echo_service %}
 
 	### 证书类型选择(Android7) ###
 
-	我的机器系统版本是 Android7, 有一个小坑在证书类型选择, 一定要选第一个 `VPN和应用`, 如图![cert_type_select](http://img.blog.csdn.net/20170718193258667)
+	我的机器系统版本是 Android7, 有一个小坑在证书类型选择, 一定要选第一个 `VPN和应用`, 如图
+
+    {% asset_img cert_type_select.jpg cert_type_select %}
 
 2. 
 	通过抓包发现关键请求有两个

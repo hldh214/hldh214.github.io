@@ -91,7 +91,8 @@ https://stackoverflow.com/questions/5663229/php-file-write-threading-issues
 这道题当时没答上, 随便写了个 collections.deque 其实也不对, 双向队列 !== 双向链表
 http://php.net/manual/zh/class.spldoublylinkedlist.php
 
- - ![idiot_interview](https://img-blog.csdn.net/20180829203243732)
+ - {% asset_img idiot_interview.jpg idiot_interview %}
+
 这道题才算符合我的胃口, 我回答了 5 点
 1. for -> foreach (可读性) 面试官问了性能方面, 没答上
 https://stackoverflow.com/questions/3430194/performance-of-for-vs-foreach-in-php

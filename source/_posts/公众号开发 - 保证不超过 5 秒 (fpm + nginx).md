@@ -6,14 +6,16 @@ date: 2018-11-21 15:48:00
 做微信公众号开发的时候会遇到超时问题
 例如被动消息回复, 微信有限制必须在 5 秒内得到相应
 否则就会提示 `该公众号暂时无法提供服务, 请稍后再试`
-![00](http://img.blog.csdn.net/20170831101215858)
+
+{% asset_img 00.jpg img_00 %}
 
 # 解决方案 #
 
 ## fpm + nginx ##
 
 使用 nginx 的配置保证 5 秒内必须响应
-![01](http://img.blog.csdn.net/20170831101420970)
+
+{% asset_img 01.jpg img_01 %}
 
 ```
 error_page 504 =200 /custom_504.html;
@@ -33,7 +35,7 @@ location ~ \.php$ {
 
 从 `2017-08-28` 开始明显看到变化
 
-![02](http://img.blog.csdn.net/20170831101733444)
+{% asset_img 02.jpg img_02 %}
 
 # refs #
 

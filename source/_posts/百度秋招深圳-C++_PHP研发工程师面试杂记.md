@@ -8,7 +8,8 @@ date: 2018-11-21 15:57:00
 我参加了百度秋招面试, 期望方向是 PHP 研发
 面试地点在广东省深圳市百度国际大厦, 粗略估计了一下我那一场的面试大概有 15~20 来人参加
 https://youtu.be/nXT_wz5Gcq4
-![No photography](https://img-blog.csdn.net/20180920105503425)
+
+{% asset_img no_photography.jpg no_photography %}
 
 # 面试
 

@@ -86,8 +86,10 @@ date: 2018-11-21 15:53:00
 
 2018/04/19 晴
 我参加了腾讯校招面试 - hr 面试, 关于初试/复试相关请看我以前的文章
-![waterloo](https://img-blog.csdn.net/20180421135207865)
-![waterloo](https://img-blog.csdn.net/20180421135318367)
+
+{% asset_img waterloo_1.jpg waterloo_1 %}
+{% asset_img waterloo_2.jpg waterloo_2 %}
+
 因为是人事面, 过程大概用时 15 分钟
 事先在网上查的人事面攻略也几乎没用上, 基本上都是家常话题, 老实点就好了
 

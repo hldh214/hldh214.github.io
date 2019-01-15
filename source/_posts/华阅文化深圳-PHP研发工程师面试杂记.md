@@ -18,7 +18,8 @@ date: 2018-11-21 15:58:00
 
 说实话这家的笔试题是我见过的为数不多的良心题, 一道送分题一道算法题一道应用题
 区分度很高, 废话不多说, 直接开始书法展览 :P
-![Calligraphy](https://img-blog.csdnimg.cn/20181101151827157.JPG)
+
+{% asset_img calligraphy.jpg calligraphy %}
 
 ## 一面
 

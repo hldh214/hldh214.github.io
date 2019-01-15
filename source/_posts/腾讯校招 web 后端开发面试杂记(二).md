@@ -6,13 +6,15 @@ date: 2018-11-21 15:52:00
 
 2018/04/17 晴 
 我参加了腾讯校招面试 - 复试, 关于初试相关请看我的上一篇文章
-![sb_csdn](https://img-blog.csdn.net/20180419102908381)
+
+{% asset_img sb_csdn.jpg sb_csdn %}
 
 # 整体感受
 
 整体人数变少了, 整个场子诡异的安静
 值得庆幸的是妹纸仍然占多数, 而且质量也提高了不少, 晃得我有点晕车 XD
-![saonima_csdn](https://img-blog.csdn.net/20180419103006757)
+
+{% asset_img saonima_csdn.jpg saonima_csdn %}
 
 # 面试
 ## 流程

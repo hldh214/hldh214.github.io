@@ -1,6 +1,6 @@
 ---
 title: laravel-from-scratch-2017 笔记
-date: 2018-11-21 15:46:00
+date: 2017-08-12 16:45:09
 ---
 ref: https://laracasts.com/series/laravel-from-scratch-2017/
 

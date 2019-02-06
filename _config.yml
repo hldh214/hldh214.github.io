@@ -10,6 +10,7 @@ keywords: Internet
 author: Jim
 language: zh-cn
 timezone: Asia/Shanghai
+theme_color: "#4D0000"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

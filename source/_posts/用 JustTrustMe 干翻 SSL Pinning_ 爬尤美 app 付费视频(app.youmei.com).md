@@ -1,6 +1,6 @@
 ---
 title: 用 JustTrustMe 干翻 SSL Pinning_ 爬尤美 app 付费视频(app.youmei.com)
-date: 2018-11-21 15:59:00
+date: 2018-11-20 22:54:44
 ---
 # 引子
 基友推荐一款在线看片 app, 寻思给爬一下视频链接爽一哈, 本文记录了采集全过程

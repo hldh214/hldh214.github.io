@@ -1,6 +1,6 @@
 ---
 title: Ubuntu 16.04 从 nginx 迁移到 openresty 遇到的坑
-date: 2018-11-21 15:55:00
+date: 2018-06-07 12:41:28
 ---
 # 引子
 

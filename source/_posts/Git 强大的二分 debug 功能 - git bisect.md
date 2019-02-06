@@ -1,6 +1,6 @@
 ---
 title: Git 强大的二分 debug 功能 - git bisect
-date: 2018-11-21 15:36:00
+date: 2016-11-20 10:31:52
 ---
 ref : http://www.qlcoder.com/task/76a4
 

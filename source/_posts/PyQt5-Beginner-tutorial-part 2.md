@@ -1,6 +1,6 @@
 ---
 title: PyQt5-Beginner-tutorial-part 2
-date: 2018-11-21 15:11:00
+date: 2016-04-18 21:09:34
 ---
 [原文链接](http://www.thehackeruniversity.com/2014/01/26/pyqt5-beginner-tutorial-part-2/)
 

@@ -1,6 +1,6 @@
 ---
 title: URI和URL的区别
-date: 2018-11-21 15:5:00
+date: 2015-12-07 10:52:56
 ---
 > 转自cnblogs:[URI和URL的区别](http://www.cnblogs.com/gaojing/archive/2012/02/04/2413626.html)
 

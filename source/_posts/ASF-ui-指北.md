@@ -8,7 +8,7 @@ date: 2019-02-14 13:38:00
 ---
 # 引子
 
-{% img https://raw.githubusercontent.com/JustArchiNET/ASF-ui/master/.github/preview.png ASF-ui %}
+{% img https://raw.githubusercontent.com/JustArchiNET/ASF-ui/master/.github/previews/bots.png ASF-ui %}
 
 steam 社区大名鼎鼎的开源自动化工具 [ASF](https://github.com/JustArchiNET/ArchiSteamFarm) 团队在去年启动了一个新项目 [ASF-ui](https://github.com/JustArchiNET/ASF-ui)
 这个项目为 ASF 提供了用户友好的 web 端界面, 用于监控各个 bot 的运行状态

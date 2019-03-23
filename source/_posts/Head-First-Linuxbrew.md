@@ -6,7 +6,7 @@ tags: Linux
 
 # 引子
 
-{% img https://linuxbrew.sh/images/linuxbrew-256x256.png linuxbrew %}
+{% img https://brew.sh/assets/img/linuxbrew.png linuxbrew %}
 
 用腻了传统包管理(apt, yum, ...), 受够了他们的远古版本, 各种参差不齐的第三方源, 逼死强迫症的卸载残留......
 在[基友](https://fyibmsd.github.io)的推荐下尝试了 linuxbrew, 本文记录了 linuxbrew 从入门到~~放弃~~

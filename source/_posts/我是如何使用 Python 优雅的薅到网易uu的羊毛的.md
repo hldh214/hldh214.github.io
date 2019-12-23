@@ -40,7 +40,7 @@ while 1:
 
 小插曲: 正常情况带上 cookie 就行的, 这里需要多加一个来自 XHR 的头
 `'X-Requested-With': 'XMLHttpRequest'`
-也是进过多次实验得出的结论
+也是经过多次实验得出的结论
 猜测网易后台有通过类似 phalcon 的 isAjax() 方法判断请求类型
 
 截图纪念, 人生中第二个十年

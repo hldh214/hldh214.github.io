@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Student">
+<meta name="keywords" content="Internet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hldh214&#39;s blog">
+<meta property="og:url" content="https://hldh214.github.io/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="Student">
+<meta property="og:locale" content="zh-cn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hldh214&#39;s blog">
+<meta name="twitter:description" content="Student">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">戎码一生</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-mutual-tls-authentication" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/mutual-tls-authentication/" class="article-date">
+  <time datetime="2019-03-23T02:10:00.000Z" itemprop="datePublished">2019-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+上篇文章谈到了跟安卓 app 抓包有关的 SSL Pinning 的破解方法
+后来就有小朋友来信问我如何破解与之相似的双向认证, 也就是客户端证书认证, 便有此文
+其实这个所谓双向认证的相关概念还挺有意思的, 容我在开始之前先跟大家吹吹牛 xD
+
+开始之前
+在解释一种技术之前我们往往要先清楚的了解这种技术有什么用, 解决了什么问题
+追根溯源的讲, 移动互联网的经久不衰, 或多或少是因为移动端相对 web 端更封闭
+封闭则意味着知识产权能得到更好的保护, 同时也让安全防护(这里特指中间人攻击)变的更容易实现
+毫不夸张的说, 在 WebAssembly 还没普及之前, web 项目对于中间人
+        
+          <p class="article-more-link">
+            <a href="/mutual-tls-authentication/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/mutual-tls-authentication/" data-id="ck4i70iyy001erstzijuu0rnu" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/mutual-tls-authentication/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Crawler/">Crawler</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-toutiao-interview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/toutiao-interview/" class="article-date">
+  <time datetime="2019-03-11T07:58:51.000Z" itemprop="datePublished">2019-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/toutiao-interview/">头条研发-SRE运维研发实习生视频面试(一, 二面)杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+「你叫咩名」
+
+一面 (~30min)
+江湖规矩自我介绍, 很罕见的没有用算法题起手, 直接就问很具体的问题, 点个赞 <3
+
+ 1.  问: 统计日志某一列每行内容出现次数 答: 用 Python 简单写了一下
+ 2.  问: 如果用 shell 怎么写 答: shell 我不是很熟, 只会用一些命令, 诸如 cat, grep, wc…
+ 3.  问: Linux 有用过故障查看, 负载查看相关命令吗 答: 查看负载用 top 比较多…
+ 4.  问: 那 top 这块, 你知道 top 命令第一行显示的是什么吗 答: 我知道 top 大概是看 CPU 占用跟内存占用, 还可以排序
+
+        
+          <p class="article-more-link">
+            <a href="/toutiao-interview/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/toutiao-interview/" data-id="ck4i70iz1001jrstzo1a4jov3" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/toutiao-interview/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interview/">Interview</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-bfg-repo-cleaner" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bfg-repo-cleaner/" class="article-date">
+  <time datetime="2019-03-02T10:37:47.000Z" itemprop="datePublished">2019-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bfg-repo-cleaner/">谁来拯救误提交的敏感信息</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意
+夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……
+
+等等
+
+你猛地一惊, 仔细的回想着, 发觉自己好像硬编码了账号密码, 并且跟刚才的提交一起推送了
+坏了, 你心里想, 但是这有什么呢, 没人无聊到一个个翻 commit 出来看吧
+于是你删掉了代码中硬编码的账号密码, 再次提交并推送, 你呷了一口茶, 很快便忘了这事
+但是事情真的就这样结束了吗?
+
+谁不怕无聊?
+电脑这种机器被发明是为了代替人类做一些枯燥重复的事情, 例如加减乘除, 这是众所周知
+        
+          <p class="article-more-link">
+            <a href="/bfg-repo-cleaner/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/bfg-repo-cleaner/" data-id="ck4i70iyv0019rstzwc6j86an" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/bfg-repo-cleaner/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ASF-ui-指北" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/ASF-ui-指北/" class="article-date">
+  <time datetime="2019-02-14T05:38:00.000Z" itemprop="datePublished">2019-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ASF-ui-指北/">ASF-ui 指北 (feat. Caddy)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+steam 社区大名鼎鼎的开源自动化工具 ASF 团队在去年启动了一个新项目 ASF-ui
+这个项目为 ASF 提供了用户友好的 web 端界面, 用于监控各个 bot 的运行状态
+ASF-ui 是纯前端项目, 用于配合 ASF 已有的 IPC server, 因为项目是基于 Vue 写的, 顺路学习了 vue 相关的知识
+不得不说 vue-router 是真滴方便, 合理的 rewrite 规则让妈妈再也不用担心路由啦, 不愧是 前端界的 ThinkPHP :D
+
+安装
+可能是因为还处于开发初期, 项目 README 并没有写的很详细, 只能摸着石头过河
+前面也说了, 项目是纯前端项目
+        
+          <p class="article-more-link">
+            <a href="/ASF-ui-指北/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/ASF-ui-指北/" data-id="ck4i70ixd0000rstzocfsk47i" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/ASF-ui-指北/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Steam/">Steam</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Head-First-Linuxbrew" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Head-First-Linuxbrew/" class="article-date">
+  <time datetime="2019-01-20T05:15:24.000Z" itemprop="datePublished">2019-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+用腻了传统包管理(apt, yum, …), 受够了他们的远古版本, 各种参差不齐的第三方源, 逼死强迫症的卸载残留……
+在基友的推荐下尝试了 linuxbrew, 本文记录了 linuxbrew 从入门到放弃
+
+安装 && 使用
+其实按照官网安装就可以了, 这里主要讲一下遇到的问题和解决方案
+
+ * passwd
+   像 aws, gce 这样的 IDC 给你创建的 vps 都是强制要求使用 ssh 公钥登录
+   在 sudo 的时候总是会有各种问题, 比如装 Oh My Zsh 的时候, 脚本会帮你执行 chsh 去替换默认 shell
+   但是这个命令是需要 root 权限的
+        
+          <p class="article-more-link">
+            <a href="/Head-First-Linuxbrew/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Head-First-Linuxbrew/" data-id="ck4i70ixy000drstzgf7fkas1" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Head-First-Linuxbrew/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-laravel-timestamp-fields-on-migration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/laravel-timestamp-fields-on-migration/" class="article-date">
+  <time datetime="2018-12-11T05:13:19.000Z" itemprop="datePublished">2018-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/laravel-timestamp-fields-on-migration/">探秘 laravel migration 之 timestamp 奇怪的默认值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+大家都知道 laravel 框架有一个 migration 功能, 也就是数据库迁移
+允许开发者使用 php 语言描述 DDL, 框架自动帮你处理了各种 SQL 规范之间的兼容问题
+使用 php artisan migrate 即可一键迁移你定义好的所有表结构
+配合另一神器 seed 可以实现超快速环境搭建 + 测试数据导入
+今天我要讲一讲 migration 功能中的 timestamp 字段的一个小细节
+注意这里指的是支持自定义字段名的 timestamp 方法, 而不是自动生成的 timestamps 方法, 请读者留意
+
+坑
+其实不能算是坑, 只是困扰了我相当久的时间
+在某个 m
+        
+          <p class="article-more-link">
+            <a href="/laravel-timestamp-fields-on-migration/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/laravel-timestamp-fields-on-migration/" data-id="ck4i70iyx001crstzvit975ft" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/laravel-timestamp-fields-on-migration/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-migrate-to-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/migrate-to-hexo/" class="article-date">
+  <time datetime="2018-11-21T09:35:39.000Z" itemprop="datePublished">2018-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/migrate-to-hexo/">migrate-to-hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+各种原因, 历经千辛万苦, 本博客从 CSDN 迁移到了 GitHub pages
+在 node 和 hexo 的加持下获得重生 (以前的博文时间暂时对不上就是了:P) 19/02/06: 对上了
+本文记录了迁移过程遇到的一些问题和解决方案
+
+坑
+首先去各种搜索前辈们的搭建教学, 一顿操作后顺利输出 hello world
+然后想着怎么去迁移 CSDN 的博客
+在网上也找了很多方案, 基本上都是从前端采集 + 解析 这种方案
+其实 CSDN 后台是有提供直接导出 md 格式的功能的, 只是要一篇一篇文章的点
+好在我的文章并不多, 十分的惊险
+一顿操作导出了所有 57 篇博文, 接下来就只
+        
+          <p class="article-more-link">
+            <a href="/migrate-to-hexo/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/migrate-to-hexo/" data-id="ck4i70iyy001drstzmrijglxt" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/migrate-to-hexo/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JustTrustMe-SSL-Pinning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/JustTrustMe-SSL-Pinning/" class="article-date">
+  <time datetime="2018-11-20T14:54:44.000Z" itemprop="datePublished">2018-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/JustTrustMe-SSL-Pinning/">用 JustTrustMe 干翻 SSL Pinning_ 爬尤美 app 付费视频(app.youmei.com)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+基友推荐一款在线看片 app, 寻思给爬一下视频链接爽一哈, 本文记录了采集全过程
+
+踩点
+直接打开 app, 挂上 fiddler 代理, 设置好 SSL 证书开搞
+结果发现啥都抓不到, fiddler 显示 HTTPS 请求鉴权失败
+当时就陷入沉思, 用浏览器打开 HTTPS 网页是正常, 为啥进 APP 了就不行呢
+经过一番搜索之后猜测是高版本安卓 SDK 默认取消信任用户导入的证书
+https://stackoverflow.com/questions/40363553/list-certificate-stored-in-user-credentials
+马上着手进行验证, 一
+        
+          <p class="article-more-link">
+            <a href="/JustTrustMe-SSL-Pinning/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/JustTrustMe-SSL-Pinning/" data-id="ck4i70iy0000grstzxj9sta6y" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/JustTrustMe-SSL-Pinning/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-头条研发秋招补招-后端开发工程师视频面试杂记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/头条研发秋招补招-后端开发工程师视频面试杂记/" class="article-date">
+  <time datetime="2018-11-05T09:07:00.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/头条研发秋招补招-后端开发工程师视频面试杂记/">头条研发秋招补招-后端开发工程师视频面试杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+秋意浓
+
+面试 (~60min)
+一开始就被俩算法题骑脸, 大概占了整个面试一半的时间
+
+ 1. 查找第一个缺失的正整数。 时间复杂度O(n) ，空间复杂度 O(1)
+    Example 1: Input: [1,2,0] Output: 3 Example 2: Input: [3,4,-1,1] Output: 2 Example 3: Input: [7,8,9,11,12] Output: 1Example 1: Input: [1,2,0] Output: 3 Example 2: Input: [3,4,-1,1] Output: 2 Example 3: Input: 
+        
+          <p class="article-more-link">
+            <a href="/头条研发秋招补招-后端开发工程师视频面试杂记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/头条研发秋招补招-后端开发工程师视频面试杂记/" data-id="ck4i70iz3001nrstzp2909i01" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/头条研发秋招补招-后端开发工程师视频面试杂记/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-华阅文化深圳-PHP研发工程师面试杂记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/华阅文化深圳-PHP研发工程师面试杂记/" class="article-date">
+  <time datetime="2018-11-01T07:22:37.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/华阅文化深圳-PHP研发工程师面试杂记/">华阅文化深圳-PHP研发工程师面试杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+2018/11/01 晴转多云
+我参加了华阅文化深圳面试, 期望方向是PHP研发工程师
+面试地点在广东省深圳市科兴科学园 C3-502
+
+面试
+流程
+面试通知是上午十点整, 我提前了约半小时到场, 看到很多骚年在稻香过早
+首先是笔试, 然后连着面了两把, 全程约两小时, 完事了被告知回家等通知~
+
+笔试
+说实话这家的笔试题是我见过的为数不多的良心题, 一道送分题一道算法题一道应用题
+区分度很高, 废话不多说, 直接开始书法展览 :P
+
+一面
+首先问了爬虫相关的问题, 可能跟公司业务相关所以比较关心
+问了怎么解析 HTML, 如何提取想要的内容 (regex, xpath), readab
+        
+          <p class="article-more-link">
+            <a href="/华阅文化深圳-PHP研发工程师面试杂记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/华阅文化深圳-PHP研发工程师面试杂记/" data-id="ck4i70iz3001mrstzt9kte32p" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/华阅文化深圳-PHP研发工程师面试杂记/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+          </li>
+        
+          <li>
+            <a href="/toutiao-interview/">头条研发-SRE运维研发实习生视频面试(一, 二面)杂记</a>
+          </li>
+        
+          <li>
+            <a href="/bfg-repo-cleaner/">谁来拯救误提交的敏感信息</a>
+          </li>
+        
+          <li>
+            <a href="/ASF-ui-指北/">ASF-ui 指北 (feat. Caddy)</a>
+          </li>
+        
+          <li>
+            <a href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

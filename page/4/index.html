@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Student">
+<meta name="keywords" content="Internet">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hldh214&#39;s blog">
+<meta property="og:url" content="https://hldh214.github.io/page/4/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="Student">
+<meta property="og:locale" content="zh-cn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hldh214&#39;s blog">
+<meta name="twitter:description" content="Student">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">戎码一生</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Nginx 中 502 和 504 错误详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Nginx 中 502 和 504 错误详解/" class="article-date">
+  <time datetime="2016-11-23T07:04:09.000Z" itemprop="datePublished">2016-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Nginx 中 502 和 504 错误详解/">Nginx 中 502 和 504 错误详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        ref: https://segmentfault.com/a/1190000002686153
+        
+          <p class="article-more-link">
+            <a href="/Nginx 中 502 和 504 错误详解/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Nginx 中 502 和 504 错误详解/" data-id="ck4i70iy5000krstzk02buzoa" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Nginx 中 502 和 504 错误详解/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git 强大的二分 debug 功能 - git bisect" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Git 强大的二分 debug 功能 - git bisect/" class="article-date">
+  <time datetime="2016-11-20T02:31:52.000Z" itemprop="datePublished">2016-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Git 强大的二分 debug 功能 - git bisect/">Git 强大的二分 debug 功能 - git bisect</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        ref : http://www.qlcoder.com/task/76a4
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+        
+          <p class="article-more-link">
+            <a href="/Git 强大的二分 debug 功能 - git bisect/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Git 强大的二分 debug 功能 - git bisect/" data-id="ck4i70ixt0008rstzx7tyet4p" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Git 强大的二分 debug 功能 - git bisect/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python 强大的模式匹配" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Python 强大的模式匹配/" class="article-date">
+  <time datetime="2016-11-09T08:11:40.000Z" itemprop="datePublished">2016-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python 强大的模式匹配/">Python 强大的模式匹配</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        一些很 sb 的正则需求, 对子模式要求苛刻
+不同情况的子模式顺序不同
+这就要用到命名的子模式了
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+import re
+
+regex = re.match(r'(?P<first>\d+)qwe(?P<last>\d+)', '123qwe321')
+
+print(regex.group(1))
+print(regex.group('first'))
+print(regex.group(2))
+print(regex.group('last'))
+
+
+
+
+1
+2
+3
+4
+5
+6
+7
+
+
+C:\Python34\python.exe E:/python/tmp.
+        
+          <p class="article-more-link">
+            <a href="/Python 强大的模式匹配/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Python 强大的模式匹配/" data-id="ck4i70iyf000urstzhzx4t7j1" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Python 强大的模式匹配/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PHPUnit 学习乱记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/PHPUnit 学习乱记/" class="article-date">
+  <time datetime="2016-08-28T13:00:12.000Z" itemprop="datePublished">2016-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/PHPUnit 学习乱记/">PHPUnit 学习乱记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+本篇记录 PHPUnit 学习点滴
+
+正文
+安装
+wget https://phar.phpunit.de/phpunit.phar
+
+
+直接下载 phar 包就能直接用了
+
+第一个例子
+直接照搬官网的例子
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+
+
+<?php
+// test.php
+class StackTest extends PHPUnit_Framework_TestCase
+{
+    public function testPushAndPop()
+    {
+        $stack = [];
+        $this
+        
+          <p class="article-more-link">
+            <a href="/PHPUnit 学习乱记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/PHPUnit 学习乱记/" data-id="ck4i70iy7000nrstzuuakelm9" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/PHPUnit 学习乱记/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Golang 实践之 Discuz 论坛模拟签到" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Golang 实践之 Discuz 论坛模拟签到/" class="article-date">
+  <time datetime="2016-08-21T03:16:34.000Z" itemprop="datePublished">2016-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Golang 实践之 Discuz 论坛模拟签到/">Golang 实践之 Discuz 论坛模拟签到</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引言
+初学 Go 语言, 做做小玩意挽尊.
+用到了 code.google.com/archive/p/mahonia/ 包
+贴代码:
+
+代码
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+
+
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"mahonia"
+	"net/http
+        
+          <p class="article-more-link">
+            <a href="/Golang 实践之 Discuz 论坛模拟签到/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Golang 实践之 Discuz 论坛模拟签到/" data-id="ck4i70ixu0009rstz9dxw89vn" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Golang 实践之 Discuz 论坛模拟签到/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Phalcon 学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Phalcon 学习笔记/" class="article-date">
+  <time datetime="2016-08-19T10:47:36.000Z" itemprop="datePublished">2016-08-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Phalcon 学习笔记/">Phalcon 学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+Phalcon 的文档非常的优雅
+
+安装
+Windows 直接下载 dll 文件, 配置 php.ini 即可
+
+这里说一下小内存的 Linux 环境, 存在编译时内存写满的问题
+
+1
+2
+3
+4
+5
+6
+
+
+cd cphalcon/ext
+export CFLAGS="-O2 -finline-functions -fvisibility=hidden"
+phpize 
+./configure --enable-phalcon
+make
+sudo make install
+
+
+配置
+IDE 代码提示 (PHPStorm)
+
+https://docs.phalconphp.com/en/
+        
+          <p class="article-more-link">
+            <a href="/Phalcon 学习笔记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Phalcon 学习笔记/" data-id="ck4i70iy8000orstz0q8exd4e" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Phalcon 学习笔记/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-12306 API 之 PHP 实践" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/12306 API 之 PHP 实践/" class="article-date">
+  <time datetime="2016-08-10T08:07:34.000Z" itemprop="datePublished">2016-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/12306 API 之 PHP 实践/">12306 API 之 PHP 实践</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+http://www.jisuapi.com/api/train/
+https://www.juhe.cn/docs/api/id/22/aid/157
+
+
+
+
+URL:
+http://pw.pwpwpwpwpwpwpwpwpwpw.pw/api/train/ticket
+http://pw.pwpwpwpwpwpwpwpwpwpw.pw/api/train/price
+
+Method:
+GET || POST
+
+Arguments:
+from => 出发站
+to => 到达站
+date => 出发日期, 默认今日(可选)
+
+
+
+
+先贴代码
+
+代码
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+        
+          <p class="article-more-link">
+            <a href="/12306 API 之 PHP 实践/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/12306 API 之 PHP 实践/" data-id="ck4i70ixm0003rstzdhsylb5k" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/12306 API 之 PHP 实践/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-12306 API 研究" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/12306 API 研究/" class="article-date">
+  <time datetime="2016-08-02T07:26:49.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/12306 API 研究/">12306 API 研究</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+本篇记录 12306 对外暴露的 API 信息, 具有时效性, 仅供学习.
+
+APIs
+1.
+https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&queryDate=2016-08-20&from_station=WHN&to_station=SNH
+
+余票查询
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+        
+          <p class="article-more-link">
+            <a href="/12306 API 研究/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/12306 API 研究/" data-id="ck4i70ixi0001rstzaoq96dpl" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/12306 API 研究/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Nginx 配置笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Nginx 配置笔记/" class="article-date">
+  <time datetime="2016-07-08T06:30:26.000Z" itemprop="datePublished">2016-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Nginx 配置笔记/">Nginx 配置笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+本篇记录学习 nginx 的点滴
+
+主要配置
+整合 ThinkPHP
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+
+
+vim nginx.conf
+
+location / {
+    root   /var/www/html;
+    index  index.html index.php;
+    # ThinkPHP hide index.php
+    try_files $uri $uri/ /index.php?s=$uri&$args;
+}
+
+location ~ \.php {
+    root /var/www/html;
+    
+        
+          <p class="article-more-link">
+            <a href="/Nginx 配置笔记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Nginx 配置笔记/" data-id="ck4i70iy6000lrstzookci9kq" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Nginx 配置笔记/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu14.04 导入第三方源安装 LNMP 堆栈" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Ubuntu14.04 导入第三方源安装 LNMP 堆栈/" class="article-date">
+  <time datetime="2016-07-08T03:02:00.000Z" itemprop="datePublished">2016-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Ubuntu14.04 导入第三方源安装 LNMP 堆栈/">Ubuntu14.04 导入第三方源安装 LNMP 堆栈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+编译安装的缺点是, 操作麻烦, 针对不同衍生版本有不同的操作.
+本篇记录在 Ubuntu 下通过导入第三方源来安装 LAMP 堆栈.
+
+源
+MariaDB
+https://downloads.mariadb.org/mariadb/repositories/#mirror=tuna&distro=Ubuntu&distro_release=trusty--ubuntu_trusty&version=10.1
+
+1
+2
+3
+4
+5
+6
+
+
+apt-get install software-properties-common
+apt-key adv --recv-keys --keyserv
+        
+          <p class="article-more-link">
+            <a href="/Ubuntu14.04 导入第三方源安装 LNMP 堆栈/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Ubuntu14.04 导入第三方源安装 LNMP 堆栈/" data-id="ck4i70iyq0014rstz4vmtd76l" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Ubuntu14.04 导入第三方源安装 LNMP 堆栈/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+          </li>
+        
+          <li>
+            <a href="/toutiao-interview/">头条研发-SRE运维研发实习生视频面试(一, 二面)杂记</a>
+          </li>
+        
+          <li>
+            <a href="/bfg-repo-cleaner/">谁来拯救误提交的敏感信息</a>
+          </li>
+        
+          <li>
+            <a href="/ASF-ui-指北/">ASF-ui 指北 (feat. Caddy)</a>
+          </li>
+        
+          <li>
+            <a href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

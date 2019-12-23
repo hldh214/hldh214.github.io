@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>Python3 模拟手机登录熊猫直播(panda.tv) | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="时效性 本文内容具有极强的时效性, 仅供娱乐     目标 模拟手机 app 登录熊猫直播  实现 分析 大致思路: 抓包, 分析请求(headers, datas…….), 模拟请求  实战  1.  fiddler 抓 HTTPS 比较费劲, 我的安卓机需要手动安装 fiddler 提供的证书才能避免 ssl 错误, 这里只说两个需要注意的地方:           证书下载      当你的">
+<meta name="keywords" content="Internet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3 模拟手机登录熊猫直播(panda.tv)">
+<meta property="og:url" content="https://hldh214.github.io/Python3 模拟手机登录熊猫直播(panda.tv)/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="时效性 本文内容具有极强的时效性, 仅供娱乐     目标 模拟手机 app 登录熊猫直播  实现 分析 大致思路: 抓包, 分析请求(headers, datas…….), 模拟请求  实战  1.  fiddler 抓 HTTPS 比较费劲, 我的安卓机需要手动安装 fiddler 提供的证书才能避免 ssl 错误, 这里只说两个需要注意的地方:           证书下载      当你的">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://hldh214.github.io/Python3%20模拟手机登录熊猫直播(panda.tv)/succ.jpg">
+<meta property="og:image" content="https://hldh214.github.io/Python3%20模拟手机登录熊猫直播(panda.tv)/echo_service.jpg">
+<meta property="og:image" content="https://hldh214.github.io/Python3%20模拟手机登录熊猫直播(panda.tv)/cert_type_select.jpg">
+<meta property="og:updated_time" content="2019-12-23T08:34:54.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python3 模拟手机登录熊猫直播(panda.tv)">
+<meta name="twitter:description" content="时效性 本文内容具有极强的时效性, 仅供娱乐     目标 模拟手机 app 登录熊猫直播  实现 分析 大致思路: 抓包, 分析请求(headers, datas…….), 模拟请求  实战  1.  fiddler 抓 HTTPS 比较费劲, 我的安卓机需要手动安装 fiddler 提供的证书才能避免 ssl 错误, 这里只说两个需要注意的地方:           证书下载      当你的">
+<meta name="twitter:image" content="https://hldh214.github.io/Python3%20模拟手机登录熊猫直播(panda.tv)/succ.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">戎码一生</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python3 模拟手机登录熊猫直播(panda.tv)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Python3 模拟手机登录熊猫直播(panda.tv)/" class="article-date">
+  <time datetime="2017-07-18T12:10:48.000Z" itemprop="datePublished">2017-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python3 模拟手机登录熊猫直播(panda.tv)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="时效性"><a href="#时效性" class="headerlink" title="时效性"></a>时效性</h1><p>本文内容具有极强的时效性, 仅供娱乐</p>
+<hr>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>模拟手机 app 登录熊猫直播</p>
+<img src="/Python3%20模拟手机登录熊猫直播(panda.tv)/succ.jpg" title="succ">
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>大致思路: 抓包, 分析请求(headers, datas…….), 模拟请求</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ol>
+<li><p> fiddler 抓 HTTPS 比较费劲, 我的安卓机需要手动安装 fiddler 提供的证书才能避免 ssl 错误, 这里只说两个需要注意的地方: </p>
+<h3 id="证书下载"><a href="#证书下载" class="headerlink" title="证书下载"></a>证书下载</h3><p> 当你的手机成功连接上电脑端 fiddler 代理时, 手机访问 <a href="http://ipv4.fiddler:8888/" target="_blank" rel="noopener">http://ipv4.fiddler:8888/</a> 如图, 选择下载 fiddler 证书</p>
+ <img src="/Python3%20模拟手机登录熊猫直播(panda.tv)/echo_service.jpg" title="echo_service">
+<h3 id="证书类型选择-Android7"><a href="#证书类型选择-Android7" class="headerlink" title="证书类型选择(Android7)"></a>证书类型选择(Android7)</h3><p> 我的机器系统版本是 Android7, 有一个小坑在证书类型选择, 一定要选第一个 <code>VPN和应用</code>, 如图</p>
+ <img src="/Python3%20模拟手机登录熊猫直播(panda.tv)/cert_type_select.jpg" title="cert_type_select">
+</li>
+<li><p> 通过抓包发现关键请求有两个</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /ajax_aeskey</span><br><span class="line">GET /ajax_login</span><br></pre></td></tr></table></figure>
+<p> 猜测登录经过了 aes 加密, 搜索 js 代码发现关键方法</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = $.Deferred();</span><br><span class="line">    <span class="keyword">return</span> o(<span class="string">"ajax_aeskey"</span>, &#123;</span><br><span class="line">        <span class="string">"__guid"</span>: t.__guid</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">r</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> i = r.data || <span class="string">""</span>;</span><br><span class="line">        i = c.enc.Utf8.parse(i);</span><br><span class="line">        <span class="keyword">var</span> o = c.enc.Utf8.parse(<span class="string">"995d1b5ebbac3761"</span>)</span><br><span class="line">          , a = c.AES.encrypt(t.password, i, &#123;</span><br><span class="line">            <span class="string">"iv"</span>: o,</span><br><span class="line">            <span class="string">"mode"</span>: c.mode.CBC,</span><br><span class="line">            <span class="string">"padding"</span>: c.pad.ZeroPadding</span><br><span class="line">        &#125;).toString();</span><br><span class="line">        n.resolve(a)</span><br><span class="line">    &#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">        t.errmsg = s.commonError,</span><br><span class="line">        n.reject(t)</span><br><span class="line">    &#125;),</span><br><span class="line">    n.promise()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 发现关键字 <code>enc.Utf8.parse</code>, 搜索后得知是 <code>crypto-js</code> 库, 简单查看其各个参数含义<br> 通过 <code>c.pad.ZeroPadding</code> 得知是 <code>b&#39;\0&#39;</code> 填充<br> 通过 <code>c.mode.CBC</code> 得知 <code>mode=AES.MODE_CBC</code><br> 通过 <code>&quot;iv&quot;: o</code> 得知 <code>IV=&#39;995d1b5ebbac3761&#39;</code><br> 快速写出 python 实现</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(text, key, iv=<span class="string">'995d1b5ebbac3761'</span>)</span>:</span></span><br><span class="line">    cryptor = AES.new(key, mode=AES.MODE_CBC, IV=iv)</span><br><span class="line">    text = text.encode(<span class="string">"utf-8"</span>)</span><br><span class="line">    add = <span class="number">16</span> - (len(text) % <span class="number">16</span>)</span><br><span class="line">    text = text + (<span class="string">b'\0'</span> * add)</span><br><span class="line">    ciphertext = cryptor.encrypt(text)</span><br><span class="line">    <span class="keyword">return</span> b64encode(ciphertext).decode()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p> 解决了加密部分, 接下来的就是小把戏了<br> 在最终登录的时候经过尝试, 需要加上 <code>pdft</code> 和 <code>__plat</code> 这两个参数<br> 猜测是唯一设备标示, 用来验证是否在常用设备登录</p>
+</li>
+</ol>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64encode</span><br><span class="line"></span><br><span class="line">account = <span class="string">''</span></span><br><span class="line">password = <span class="string">''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(text, key, iv=<span class="string">'995d1b5ebbac3761'</span>)</span>:</span></span><br><span class="line">    cryptor = AES.new(key, mode=AES.MODE_CBC, IV=iv)</span><br><span class="line">    text = text.encode(<span class="string">"utf-8"</span>)</span><br><span class="line">    add = <span class="number">16</span> - (len(text) % <span class="number">16</span>)</span><br><span class="line">    text = text + (<span class="string">b'\0'</span> * add)</span><br><span class="line">    ciphertext = cryptor.encrypt(text)</span><br><span class="line">    <span class="keyword">return</span> b64encode(ciphertext).decode()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># login</span></span><br><span class="line">opener = requests.session()</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">'https://u.panda.tv/ajax_aeskey'</span>).json()</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">'https://u.panda.tv/ajax_login'</span>, params=&#123;</span><br><span class="line">    <span class="string">'regionId'</span>: <span class="string">'86'</span>,</span><br><span class="line">    <span class="string">'account'</span>: account,</span><br><span class="line">    <span class="string">'password'</span>: encrypt(password, res[<span class="string">'data'</span>]),</span><br><span class="line">    <span class="string">'pdft'</span>: <span class="string">''</span>,</span><br><span class="line">    <span class="string">'__plat'</span>: <span class="string">'android'</span></span><br><span class="line">&#125;).json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> res[<span class="string">'errno'</span>] != <span class="number">0</span>:</span><br><span class="line">    print(res)</span><br><span class="line"></span><br><span class="line"><span class="comment"># sign</span></span><br><span class="line">res = opener.get(<span class="string">'https://m.panda.tv/sign/index'</span>).text</span><br><span class="line"></span><br><span class="line">token = re.search(<span class="string">r'name="token"\s+value="(\w+)"'</span>, res)</span><br><span class="line"></span><br><span class="line">lottery_param = re.search(<span class="string">r'"key":\s*"(?P&lt;app&gt;[\w-]+)",\s*"date":\s*"(?P&lt;validate&gt;[\d-]+)"'</span>, res)</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">'https://m.panda.tv/api/sign/apply_sign'</span>, params=&#123;</span><br><span class="line">    <span class="string">'token'</span>: token.group(<span class="number">1</span>)</span><br><span class="line">&#125;).json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> res[<span class="string">'errno'</span>] != <span class="number">0</span>:</span><br><span class="line">    print(res)</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">'https://roll.panda.tv/ajax_roll_draw'</span>, params=&#123;</span><br><span class="line">    <span class="string">'app'</span>: lottery_param.group(<span class="string">'app'</span>),</span><br><span class="line">    <span class="string">'validate'</span>: lottery_param.group(<span class="string">'validate'</span>)</span><br><span class="line">&#125;).json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> res[<span class="string">'errno'</span>] != <span class="number">0</span>:</span><br><span class="line">    print(res)</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>善用搜索引擎</li>
+<li>再好的前端加密不如一个 HTTPS</li>
+</ul>
+<h1 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h1><p><a href="http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureForAndroid" target="_blank" rel="noopener">http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureForAndroid</a><br><a href="https://blog.zhengxianjun.com/2015/05/javascript-crypto-js/" target="_blank" rel="noopener">https://blog.zhengxianjun.com/2015/05/javascript-crypto-js/</a><br><a href="http://blog.csdn.net/leak235/article/details/50466213" target="_blank" rel="noopener">http://blog.csdn.net/leak235/article/details/50466213</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Python3 模拟手机登录熊猫直播(panda.tv)/" data-id="ck4i70iyi000wrstz9drhagu4" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Python3 模拟手机登录熊猫直播(panda.tv)/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Selenium + Headless Chrome with Python3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Selenium + Headless Chrome with Python3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/python3 json_requests 相关备忘/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python3 json_requests 相关备忘</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+          </li>
+        
+          <li>
+            <a href="/toutiao-interview/">头条研发-SRE运维研发实习生视频面试(一, 二面)杂记</a>
+          </li>
+        
+          <li>
+            <a href="/bfg-repo-cleaner/">谁来拯救误提交的敏感信息</a>
+          </li>
+        
+          <li>
+            <a href="/ASF-ui-指北/">ASF-ui 指北 (feat. Caddy)</a>
+          </li>
+        
+          <li>
+            <a href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/Python3 模拟手机登录熊猫直播(panda.tv)/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -8,12 +8,12 @@
   
   <title>Web性能优化之Apache篇 | hldh214&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引言 本篇为Apache服务器的性能优化笔记, 记录了优化的点滴.  HSTS策略 引言 一直以来, 实现强制https的方法是使用Apache的rewrite模块来进行重定向, 这样存在几个问题, 第一是性能问题, 第二是可能遇到不支持https的客户端…..等等  核心思想 避免这种跳转, 我们可以用HSTS策略, 就是告诉浏览器, 以后访问我这个站点, 必须用HTTPS协议来访问, 让浏览器">
+  <meta name="description" content="引言本篇为Apache服务器的性能优化笔记, 记录了优化的点滴. HSTS策略引言一直以来, 实现强制https的方法是使用Apache的rewrite模块来进行重定向, 这样存在几个问题, 第一是性能问题, 第二是可能遇到不支持https的客户端…..等等 核心思想避免这种跳转, 我们可以用HSTS策略, 就是告诉浏览器, 以后访问我这个站点, 必须用HTTPS协议来访问, 让浏览器帮忙做转换,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web性能优化之Apache篇">
 <meta property="og:url" content="https://hldh214.github.io/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BApache%E7%AF%87/index.html">
 <meta property="og:site_name" content="hldh214&#39;s blog">
-<meta property="og:description" content="引言 本篇为Apache服务器的性能优化笔记, 记录了优化的点滴.  HSTS策略 引言 一直以来, 实现强制https的方法是使用Apache的rewrite模块来进行重定向, 这样存在几个问题, 第一是性能问题, 第二是可能遇到不支持https的客户端…..等等  核心思想 避免这种跳转, 我们可以用HSTS策略, 就是告诉浏览器, 以后访问我这个站点, 必须用HTTPS协议来访问, 让浏览器">
+<meta property="og:description" content="引言本篇为Apache服务器的性能优化笔记, 记录了优化的点滴. HSTS策略引言一直以来, 实现强制https的方法是使用Apache的rewrite模块来进行重定向, 这样存在几个问题, 第一是性能问题, 第二是可能遇到不支持https的客户端…..等等 核心思想避免这种跳转, 我们可以用HSTS策略, 就是告诉浏览器, 以后访问我这个站点, 必须用HTTPS协议来访问, 让浏览器帮忙做转换,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-06-02T04:41:00.000Z">
 <meta property="article:modified_time" content="2019-12-23T08:34:54.416Z">
@@ -104,7 +104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BApache%E7%AF%87/" data-id="ckenmbhe10016vstzfihn1a9t" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BApache%E7%AF%87/" data-id="ckennrrkv00164wtzgdgp010a" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BApache%E7%AF%87/#disqus_thread" class="article-comment-link">Comments</a>
       

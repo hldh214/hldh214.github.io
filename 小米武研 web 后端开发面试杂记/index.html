@@ -8,18 +8,18 @@
   
   <title>小米武研 web 后端开发面试杂记 | hldh214&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引子 2018&#x2F;03&#x2F;20 多云  我参加了小米武汉研发中心的面试, 岗位是 web 后端开发 当中还有一个小插曲, 在当天的上午接到人事电话, 约好当天下午 3 点现场面试 电话结束前说好了以电邮的形式告知详细信息, 然后一直到当天下午 2 点都没收到电邮 可能是被拒了我也没在意, 直到当天下午 3 点一刻的时候, 人事打来电话询问到哪了 我回复没有收到电邮, 没有准备动身… 最后还是定好当天下">
+  <meta name="description" content="引子2018&#x2F;03&#x2F;20 多云   我参加了小米武汉研发中心的面试, 岗位是 web 后端开发当中还有一个小插曲, 在当天的上午接到人事电话, 约好当天下午 3 点现场面试电话结束前说好了以电邮的形式告知详细信息, 然后一直到当天下午 2 点都没收到电邮可能是被拒了我也没在意, 直到当天下午 3 点一刻的时候, 人事打来电话询问到哪了我回复没有收到电邮, 没有准备动身… 最后还是定好当天下午 6~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小米武研 web 后端开发面试杂记">
 <meta property="og:url" content="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/index.html">
 <meta property="og:site_name" content="hldh214&#39;s blog">
-<meta property="og:description" content="引子 2018&#x2F;03&#x2F;20 多云  我参加了小米武汉研发中心的面试, 岗位是 web 后端开发 当中还有一个小插曲, 在当天的上午接到人事电话, 约好当天下午 3 点现场面试 电话结束前说好了以电邮的形式告知详细信息, 然后一直到当天下午 2 点都没收到电邮 可能是被拒了我也没在意, 直到当天下午 3 点一刻的时候, 人事打来电话询问到哪了 我回复没有收到电邮, 没有准备动身… 最后还是定好当天下">
+<meta property="og:description" content="引子2018&#x2F;03&#x2F;20 多云   我参加了小米武汉研发中心的面试, 岗位是 web 后端开发当中还有一个小插曲, 在当天的上午接到人事电话, 约好当天下午 3 点现场面试电话结束前说好了以电邮的形式告知详细信息, 然后一直到当天下午 2 点都没收到电邮可能是被拒了我也没在意, 直到当天下午 3 点一刻的时候, 人事打来电话询问到哪了我回复没有收到电邮, 没有准备动身… 最后还是定好当天下午 6~">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/cloudy_day.jpg">
 <meta property="og:image" content="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/inner_side.jpg">
 <meta property="og:image" content="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/ugly.jpg">
 <meta property="article:published_time" content="2018-03-31T07:15:49.000Z">
-<meta property="article:modified_time" content="2019-12-23T08:34:54.451Z">
+<meta property="article:modified_time" content="2020-09-04T03:05:13.092Z">
 <meta property="article:author" content="Jim">
 <meta property="article:tag" content="Internet">
 <meta name="twitter:card" content="summary">
@@ -98,6 +98,8 @@
 <img src="/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/cloudy_day.jpg" class="" title="cloudy_day">
 
 <p>我参加了小米武汉研发中心的面试, 岗位是 web 后端开发<br>当中还有一个小插曲, 在当天的上午接到人事电话, 约好当天下午 3 点现场面试<br>电话结束前说好了以电邮的形式告知详细信息, 然后一直到当天下午 2 点都没收到电邮<br>可能是被拒了我也没在意, 直到当天下午 3 点一刻的时候, 人事打来电话询问到哪了<br>我回复没有收到电邮, 没有准备动身… 最后还是定好当天下午 6~7 点进行现场面试</p>
+<a id="more"></a>
+
 <h1 id="整体感受"><a href="#整体感受" class="headerlink" title="整体感受"></a>整体感受</h1><p>小米武研中心场地并不大, 加上金山办公一起两家公司不到 100 人<br>办公室是那种孵化器式的全开放的, 包括前台, 会客室等等都在一个大厅里</p>
 <img src="/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/inner_side.jpg" class="" title="inner_side">
 
@@ -121,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" data-id="ckenmbhec001pvstz3ws85mlj" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" data-id="ckennrrl4001p4wtzbortcr9g" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       

@@ -8,15 +8,15 @@
   
   <title>谁来拯救误提交的敏感信息 | hldh214&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引子 你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意 夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……  等等  你猛地一惊, 仔细的回想着, 发觉自己好像硬编码了账号密码, 并且跟刚才的提交一起推送了 坏了, 你心里想, 但是这有什么呢, 没人无聊到一个个翻 commit 出来看吧 于是你删掉了代码中">
+  <meta name="description" content="引子你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……  等等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谁来拯救误提交的敏感信息">
 <meta property="og:url" content="https://hldh214.github.io/bfg-repo-cleaner/index.html">
 <meta property="og:site_name" content="hldh214&#39;s blog">
-<meta property="og:description" content="引子 你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意 夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……  等等  你猛地一惊, 仔细的回想着, 发觉自己好像硬编码了账号密码, 并且跟刚才的提交一起推送了 坏了, 你心里想, 但是这有什么呢, 没人无聊到一个个翻 commit 出来看吧 于是你删掉了代码中">
+<meta property="og:description" content="引子你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……  等等">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-02T10:37:47.000Z">
-<meta property="article:modified_time" content="2019-12-23T08:34:54.417Z">
+<meta property="article:modified_time" content="2020-09-04T02:57:11.622Z">
 <meta property="article:author" content="Jim">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -94,6 +94,8 @@
 <blockquote>
 <p>等等</p>
 </blockquote>
+<a id="more"></a>
+
 <p>你猛地一惊, 仔细的回想着, 发觉自己好像硬编码了账号密码, 并且跟刚才的提交一起推送了<br>坏了, 你心里想, 但是这有什么呢, 没人无聊到一个个翻 commit 出来看吧<br>于是你删掉了代码中硬编码的账号密码, 再次提交并推送, 你呷了一口茶, 很快便忘了这事<br>但是事情真的就这样结束了吗?</p>
 <h1 id="谁不怕无聊"><a href="#谁不怕无聊" class="headerlink" title="谁不怕无聊?"></a>谁不怕无聊?</h1><p>电脑这种机器被发明是为了代替人类做一些枯燥重复的事情, 例如加减乘除, 这是众所周知的<br>还记得上面说到<code>没人无聊到一个个翻 commit 出来看吧</code>, 确实没<code>人</code>会这么干, 但是<code>机器</code>就不一样了<br><a target="_blank" rel="noopener" href="https://github.com/michenriksen/gitrob">https://github.com/michenriksen/gitrob</a> 这个项目, 有兴趣的小伙伴可以考察考察<br>正如 README 里面所讲, 他可以用来扫描 git 仓库里面<code>可能</code>是敏感信息的内容, 导出为报告<br>这就有意思了, 没事可以拿来扫一下自己同学呀, 朋友呀, 同事呀等等…</p>
 <h1 id="那怎么办"><a href="#那怎么办" class="headerlink" title="那怎么办"></a>那怎么办</h1><p>这时候就有小朋友要问了, 那现在怎么办呢, 难道要舍弃 commit 记录, 再提交修正的版本重新做人吗<br>严格来说, 这的确是一种方法, 而且大部分人遇到了首先都会想到这个方法, 简洁明了, 通俗易懂<br>但是作为 geek 的你, 这种方法是不可接受的, 拒绝</p>
@@ -105,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/bfg-repo-cleaner/" data-id="ckenmbhe20017vstzhdw3c1m4" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/bfg-repo-cleaner/" data-id="ckennrrkv00174wtzdj0n9vn0" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/bfg-repo-cleaner/#disqus_thread" class="article-comment-link">Comments</a>
       

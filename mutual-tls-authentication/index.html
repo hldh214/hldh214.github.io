@@ -8,12 +8,12 @@
   
   <title>用`降维打击`安排安卓 app 的 TLS 双向认证 | hldh214&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引子 上篇文章谈到了跟安卓 app 抓包有关的 SSL Pinning 的破解方法 后来就有小朋友来信问我如何破解与之相似的双向认证, 也就是客户端证书认证, 便有此文 其实这个所谓双向认证的相关概念还挺有意思的, 容我在开始之前先跟大家吹吹牛 xD  开始之前 在解释一种技术之前我们往往要先清楚的了解这种技术有什么用, 解决了什么问题 追根溯源的讲, 移动互联网的经久不衰, 或多或少是因为移动端">
+  <meta name="description" content="引子上篇文章 谈到了跟安卓 app 抓包有关的 SSL Pinning 的破解方法后来就有小朋友来信问我如何破解与之相似的双向认证, 也就是客户端证书认证, 便有此文其实这个所谓双向认证的相关概念还挺有意思的, 容我在开始之前先跟大家吹吹牛 xD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用&#96;降维打击&#96;安排安卓 app 的 TLS 双向认证">
 <meta property="og:url" content="https://hldh214.github.io/mutual-tls-authentication/index.html">
 <meta property="og:site_name" content="hldh214&#39;s blog">
-<meta property="og:description" content="引子 上篇文章谈到了跟安卓 app 抓包有关的 SSL Pinning 的破解方法 后来就有小朋友来信问我如何破解与之相似的双向认证, 也就是客户端证书认证, 便有此文 其实这个所谓双向认证的相关概念还挺有意思的, 容我在开始之前先跟大家吹吹牛 xD  开始之前 在解释一种技术之前我们往往要先清楚的了解这种技术有什么用, 解决了什么问题 追根溯源的讲, 移动互联网的经久不衰, 或多或少是因为移动端">
+<meta property="og:description" content="引子上篇文章 谈到了跟安卓 app 抓包有关的 SSL Pinning 的破解方法后来就有小朋友来信问我如何破解与之相似的双向认证, 也就是客户端证书认证, 便有此文其实这个所谓双向认证的相关概念还挺有意思的, 容我在开始之前先跟大家吹吹牛 xD">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hldh214.github.io/mutual-tls-authentication/UserName-Password-Based.gif">
 <meta property="og:image" content="https://hldh214.github.io/mutual-tls-authentication/Certificate-Based.gif">
@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://hldh214.github.io/mutual-tls-authentication/client-cert-config.png">
 <meta property="og:image" content="https://hldh214.github.io/mutual-tls-authentication/proof.png">
 <meta property="article:published_time" content="2019-03-23T02:10:00.000Z">
-<meta property="article:modified_time" content="2019-12-23T08:34:54.418Z">
+<meta property="article:modified_time" content="2020-09-04T02:56:20.479Z">
 <meta property="article:author" content="Jim">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Crawler">
@@ -103,6 +103,8 @@
       
         <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><a href="/JustTrustMe-SSL-Pinning/" title="上篇文章">上篇文章</a>
 <p>谈到了跟安卓 app 抓包有关的 SSL Pinning 的破解方法<br>后来就有小朋友来信问我如何破解与之相似的双向认证, 也就是客户端证书认证, 便有此文<br>其实这个所谓双向认证的相关概念还挺有意思的, 容我在开始之前先跟大家吹吹牛 xD</p>
+<a id="more"></a>
+
 <h1 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h1><p>在解释一种技术之前我们往往要先清楚的了解这种技术有什么用, 解决了什么问题<br>追根溯源的讲, 移动互联网的经久不衰, 或多或少是因为移动端相对 web 端更封闭<br>封闭则意味着知识产权能得到更好的保护, 同时也让安全防护(这里特指中间人攻击)变的更容易实现<br>毫不夸张的说, 在 WebAssembly 还没普及之前, web 项目对于中间人攻击是一点办法都没有的<br>而对于移动端来说, app 在一定程度上保证了通信安全, 不被窃听<br>谈到窃听, 这里有两种解决方案, 一种是基于用户名/密码的认证, 如下图</p>
 <img src="/mutual-tls-authentication/UserName-Password-Based.gif" class="" title="UserName-Password-Based">
 
@@ -135,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/mutual-tls-authentication/" data-id="ckenmbhe6001cvstz0pxnbfzy" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/mutual-tls-authentication/" data-id="ckennrrkz001c4wtza5zp9e6k" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/mutual-tls-authentication/#disqus_thread" class="article-comment-link">Comments</a>
       

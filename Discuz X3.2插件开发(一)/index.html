@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   <meta name="theme-color" content="#4D0000">
   
@@ -8,18 +8,18 @@
   
   <title>Discuz X3.2插件开发(一) | hldh214&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="准备 在 config/config_global.php 中添加一行 1 2 3 4   /* 1表示开发者模式, 2表示开发者模式并且显示页面hook */ $_config[&apos;plugindeveloper&apos;] = 2;     插件xml语法  1. 版本兼容  1 2 3 4 5 6 7 8    	 		...... 	 	...... 	 	......    官方文档">
-<meta name="keywords" content="Internet">
+  <meta name="description" content="准备 在 config&#x2F;config_global.php 中添加一行  1 2 3 4   &#x2F;* 1表示开发者模式, 2表示开发者模式并且显示页面hook *&#x2F; $_config[&#39;plugindeveloper&#39;] &#x3D; 2;   插件xml语法  1. 版本兼容  1 2 3 4 5 6 7 8    	 		...... 	 	...... 	 	......    官方文档 D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Discuz X3.2插件开发(一)">
-<meta property="og:url" content="https://hldh214.github.io/Discuz X3.2插件开发(一)/index.html">
+<meta property="og:url" content="https://hldh214.github.io/Discuz%20X3.2%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="hldh214&#39;s blog">
-<meta property="og:description" content="准备 在 config/config_global.php 中添加一行 1 2 3 4   /* 1表示开发者模式, 2表示开发者模式并且显示页面hook */ $_config[&apos;plugindeveloper&apos;] = 2;     插件xml语法  1. 版本兼容  1 2 3 4 5 6 7 8    	 		...... 	 	...... 	 	......    官方文档">
-<meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-12-23T08:34:54.399Z">
+<meta property="og:description" content="准备 在 config&#x2F;config_global.php 中添加一行  1 2 3 4   &#x2F;* 1表示开发者模式, 2表示开发者模式并且显示页面hook *&#x2F; $_config[&#39;plugindeveloper&#39;] &#x3D; 2;   插件xml语法  1. 版本兼容  1 2 3 4 5 6 7 8    	 		...... 	 	...... 	 	......    官方文档 D">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-05-20T04:51:29.000Z">
+<meta property="article:modified_time" content="2019-12-23T08:34:54.399Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Discuz X3.2插件开发(一)">
-<meta name="twitter:description" content="准备 在 config/config_global.php 中添加一行 1 2 3 4   /* 1表示开发者模式, 2表示开发者模式并且显示页面hook */ $_config[&apos;plugindeveloper&apos;] = 2;     插件xml语法  1. 版本兼容  1 2 3 4 5 6 7 8    	 		...... 	 	...... 	 	......    官方文档">
   
     <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
   
@@ -29,9 +29,11 @@
   
     <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -42,10 +44,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">hldh214&#39;s blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">戎码一生</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -72,7 +70,7 @@
       <div class="outer">
         <section id="main"><article id="post-Discuz X3.2插件开发(一)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/Discuz X3.2插件开发(一)/" class="article-date">
+    <a href="/Discuz%20X3.2%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91(%E4%B8%80)/" class="article-date">
   <time datetime="2016-05-20T04:51:29.000Z" itemprop="datePublished">2016-05-20</time>
 </a>
     
@@ -92,19 +90,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>在 <code>config/config_global.php</code> 中添加一行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1表示开发者模式, 2表示开发者模式并且显示页面hook</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">$_config[<span class="string">'plugindeveloper'</span>] = <span class="number">2</span>;</span><br></pre></td></tr></table></figure></p>
+        <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>在 <code>config/config_global.php</code> 中添加一行</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1表示开发者模式, 2表示开发者模式并且显示页面hook</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">$_config[<span class="string">&#x27;plugindeveloper&#x27;</span>] = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
 <h1 id="插件xml语法"><a href="#插件xml语法" class="headerlink" title="插件xml语法"></a>插件xml语法</h1><ol>
 <li>版本兼容</li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">"Data"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">"plugin"</span>&gt;</span></span><br><span class="line">		......</span><br><span class="line">	<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">	......</span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">"version"</span>&gt;</span>&lt;![CDATA[多个版本用逗号分隔, 如 X2,X2.5]]&gt;<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">	......</span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h1><p><a href="http://faq.comsenz.com/library/" target="_blank" rel="noopener">Dz资料库</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">&quot;Data&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">&quot;plugin&quot;</span>&gt;</span></span><br><span class="line">		......</span><br><span class="line">	<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">	......</span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">id</span>=<span class="string">&quot;version&quot;</span>&gt;</span>&lt;![CDATA[多个版本用逗号分隔, 如 X2,X2.5]]&gt;<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">	......</span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h1><p><a target="_blank" rel="noopener" href="http://faq.comsenz.com/library/">Dz资料库</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Discuz X3.2插件开发(一)/" data-id="ck4i70ixs0007rstzwhwmcrci" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Discuz%20X3.2%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91(%E4%B8%80)/" data-id="ckenmbhd50005vstz3cab37ig" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/Discuz X3.2插件开发(一)/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/Discuz%20X3.2%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91(%E4%B8%80)/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -113,7 +114,7 @@
     
 <nav id="article-nav">
   
-    <a href="/Discuz X3.2插件开发(二)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Discuz%20X3.2%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91(%E4%BA%8C)/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -123,7 +124,7 @@
     </a>
   
   
-    <a href="/Python3简单验证码识别/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/Python3%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Python3简单验证码识别</div>
     </a>
@@ -136,7 +137,7 @@
 
 <section id="comments">
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -150,7 +151,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/">Steam</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
     </div>
   </div>
 
@@ -169,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -180,6 +181,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/tencent-cdc-interview-0701/">这都没准备就敢面腾讯。。</a>
+          </li>
         
           <li>
             <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
@@ -194,11 +199,7 @@
           </li>
         
           <li>
-            <a href="/ASF-ui-指北/">ASF-ui 指北 (feat. Caddy)</a>
-          </li>
-        
-          <li>
-            <a href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+            <a href="/ASF-ui-%E6%8C%87%E5%8C%97/">ASF-ui 指北 (feat. Caddy)</a>
           </li>
         
       </ul>
@@ -226,7 +227,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Jim<br>
+      &copy; 2020 Jim<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -243,7 +244,7 @@
 <script>
   var disqus_shortname = 'hldh214s-blog';
   
-  var disqus_url = 'https://hldh214.github.io/Discuz X3.2插件开发(一)/';
+  var disqus_url = 'https://hldh214.github.io/Discuz%20X3.2%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91(%E4%B8%80)/';
   
   (function(){
     var dsq = document.createElement('script');
@@ -258,11 +259,17 @@
 <script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 

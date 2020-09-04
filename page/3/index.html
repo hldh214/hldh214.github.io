@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   <meta name="theme-color" content="#4D0000">
   
@@ -9,16 +9,15 @@
   <title>hldh214&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Student">
-<meta name="keywords" content="Internet">
 <meta property="og:type" content="website">
 <meta property="og:title" content="hldh214&#39;s blog">
 <meta property="og:url" content="https://hldh214.github.io/page/3/index.html">
 <meta property="og:site_name" content="hldh214&#39;s blog">
 <meta property="og:description" content="Student">
-<meta property="og:locale" content="zh-cn">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hldh214&#39;s blog">
-<meta name="twitter:description" content="Student">
   
     <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
   
@@ -28,9 +27,11 @@
   
     <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -41,10 +42,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">hldh214&#39;s blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">戎码一生</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -71,9 +68,82 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-公众号开发 - 保证不超过 5 秒 (fpm + nginx)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/" class="article-date">
+  <time datetime="2017-08-31T02:20:09.000Z" itemprop="datePublished">2017-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/">公众号开发 - 保证不超过 5 秒 (fpm + nginx)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        引子
+做微信公众号开发的时候会遇到超时问题
+例如被动消息回复, 微信有限制必须在 5 秒内得到相应
+否则就会提示 该公众号暂时无法提供服务, 请稍后再试
+
+解决方案
+fpm + nginx
+使用 nginx 的配置保证 5 秒内必须响应
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+
+
+error_page 504 =200 /custom_504.html;
+location = /custom_504.html {
+	return 200;
+}
+location ~ \.php$ {
+	# 这里只设置了 read 的超时
+	# 因为另两个多用于大型架构
+	# 单机运行用不上
+	# 设置
+        
+          <p class="article-more-link">
+            <a href="/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/" data-id="ckenmbhe9001kvstz97zffovq" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-FFmpeg 乱记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/FFmpeg 乱记/" class="article-date">
+    <a href="/FFmpeg%20%E4%B9%B1%E8%AE%B0/" class="article-date">
   <time datetime="2017-08-19T15:42:33.000Z" itemprop="datePublished">2017-08-19</time>
 </a>
     
@@ -85,7 +155,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/FFmpeg 乱记/">FFmpeg 乱记</a>
+      <a class="article-title" href="/FFmpeg%20%E4%B9%B1%E8%AE%B0/">FFmpeg 乱记</a>
     </h1>
   
 
@@ -115,15 +185,15 @@ ffmpeg -i Busines.flv -c copy -ss 25 Busines_cut.flv
 dra
         
           <p class="article-more-link">
-            <a href="/FFmpeg 乱记/#more">Read More</a>
+            <a href="/FFmpeg%20%E4%B9%B1%E8%AE%B0/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/FFmpeg 乱记/" data-id="ck4i70ixz000erstz6dbty20d" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/" data-id="ckenmbhd70008vstza1pk3bap" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/FFmpeg 乱记/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -135,7 +205,7 @@ dra
   
     <article id="post-laravel-from-scratch-2017 笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/laravel-from-scratch-2017 笔记/" class="article-date">
+    <a href="/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/" class="article-date">
   <time datetime="2017-08-12T08:45:09.000Z" itemprop="datePublished">2017-08-12</time>
 </a>
     
@@ -147,7 +217,7 @@ dra
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/laravel-from-scratch-2017 笔记/">laravel-from-scratch-2017 笔记</a>
+      <a class="article-title" href="/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/">laravel-from-scratch-2017 笔记</a>
     </h1>
   
 
@@ -162,6 +232,7 @@ Scope function
 ref: http://laravelacademy.org/post/6979.html#toc_18
 在 Model 中定义 scope 开头的 public function
 相当于创建一个作用于当前 Model 对象的(这和普通写法有什么区别?)新的链式调用
+
 1
 2
 3
@@ -188,18 +259,18 @@ ref: http://laravelacademy.org/post/6979.html#toc_18
 24
 
 
-use Illuminate\Dat
+use Illuminate\Da
         
           <p class="article-more-link">
-            <a href="/laravel-from-scratch-2017 笔记/#more">Read More</a>
+            <a href="/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/laravel-from-scratch-2017 笔记/" data-id="ck4i70iyw001arstzgv9qtiix" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/" data-id="ckenmbhe30018vstzdc422aqi" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/laravel-from-scratch-2017 笔记/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -211,7 +282,7 @@ use Illuminate\Dat
   
     <article id="post-Selenium + Headless Chrome with Python3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/Selenium + Headless Chrome with Python3/" class="article-date">
+    <a href="/Selenium%20+%20Headless%20Chrome%20with%20Python3/" class="article-date">
   <time datetime="2017-08-04T06:15:04.000Z" itemprop="datePublished">2017-08-04</time>
 </a>
     
@@ -223,7 +294,7 @@ use Illuminate\Dat
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Selenium + Headless Chrome with Python3/">Selenium + Headless Chrome with Python3</a>
+      <a class="article-title" href="/Selenium%20+%20Headless%20Chrome%20with%20Python3/">Selenium + Headless Chrome with Python3</a>
     </h1>
   
 
@@ -240,8 +311,10 @@ use Illuminate\Dat
 实现
 准备
  * Chrome
-   *nix 系统需要 chrome >= 59
-   Windows 系统需要 chrome >= 60
+
+*nix 系统需要 chrome >= 59
+Windows 系统需要 chrome >= 60
+
  * Python3.6
  * Selenium==3.4.*
  * ChromeDriver==2.31
@@ -258,20 +331,21 @@ use Illuminate\Dat
 9
 10
 11
+12
 
 
-from seleni
+from seleniu
         
           <p class="article-more-link">
-            <a href="/Selenium + Headless Chrome with Python3/#more">Read More</a>
+            <a href="/Selenium%20+%20Headless%20Chrome%20with%20Python3/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Selenium + Headless Chrome with Python3/" data-id="ck4i70iyl000zrstzb383rkkq" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Selenium%20+%20Headless%20Chrome%20with%20Python3/" data-id="ckenmbhdp000xvstz52lx6trt" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/Selenium + Headless Chrome with Python3/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/Selenium%20+%20Headless%20Chrome%20with%20Python3/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -283,7 +357,7 @@ from seleni
   
     <article id="post-Python3 模拟手机登录熊猫直播(panda.tv)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/Python3 模拟手机登录熊猫直播(panda.tv)/" class="article-date">
+    <a href="/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/" class="article-date">
   <time datetime="2017-07-18T12:10:48.000Z" itemprop="datePublished">2017-07-18</time>
 </a>
     
@@ -295,7 +369,7 @@ from seleni
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Python3 模拟手机登录熊猫直播(panda.tv)/">Python3 模拟手机登录熊猫直播(panda.tv)</a>
+      <a class="article-title" href="/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/">Python3 模拟手机登录熊猫直播(panda.tv)</a>
     </h1>
   
 
@@ -325,15 +399,15 @@ from seleni
     证书类型选择(Android7)
         
           <p class="article-more-link">
-            <a href="/Python3 模拟手机登录熊猫直播(panda.tv)/#more">Read More</a>
+            <a href="/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Python3 模拟手机登录熊猫直播(panda.tv)/" data-id="ck4i70iyi000wrstz9drhagu4" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/" data-id="ckenmbhdl000uvstzh63q7r1j" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/Python3 模拟手机登录熊猫直播(panda.tv)/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -345,7 +419,7 @@ from seleni
   
     <article id="post-python3 json_requests 相关备忘" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/python3 json_requests 相关备忘/" class="article-date">
+    <a href="/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/" class="article-date">
   <time datetime="2017-07-17T12:40:15.000Z" itemprop="datePublished">2017-07-17</time>
 </a>
     
@@ -357,7 +431,7 @@ from seleni
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/python3 json_requests 相关备忘/">python3 json_requests 相关备忘</a>
+      <a class="article-title" href="/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/">python3 json_requests 相关备忘</a>
     </h1>
   
 
@@ -388,6 +462,7 @@ from seleni
 21
 22
 23
+24
 
 
 # from collections import OrderedDict
@@ -398,18 +473,18 @@ oss_forms_res = requests.post('https://shimo.im/api/upload/oss_forms', {
 
 
 # from base64 import b64encode
-policy
+pol
         
           <p class="article-more-link">
-            <a href="/python3 json_requests 相关备忘/#more">Read More</a>
+            <a href="/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/python3 json_requests 相关备忘/" data-id="ck4i70iz0001irstz057ki7cn" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/" data-id="ckenmbhe8001gvstzfvj1f5f7" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/python3 json_requests 相关备忘/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -421,7 +496,7 @@ policy
   
     <article id="post-当 ondrej-sury 遇到七牛云" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/当 ondrej-sury 遇到七牛云/" class="article-date">
+    <a href="/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/" class="article-date">
   <time datetime="2017-03-07T12:52:04.000Z" itemprop="datePublished">2017-03-07</time>
 </a>
     
@@ -433,7 +508,7 @@ policy
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/当 ondrej-sury 遇到七牛云/">当 ondrej-sury 遇到七牛云</a>
+      <a class="article-title" href="/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/">当 ondrej-sury 遇到七牛云</a>
     </h1>
   
 
@@ -464,15 +539,15 @@ signup
 
         
           <p class="article-more-link">
-            <a href="/当 ondrej-sury 遇到七牛云/#more">Read More</a>
+            <a href="/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/当 ondrej-sury 遇到七牛云/" data-id="ck4i70iz6001rrstzfrr5vbat" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/" data-id="ckenmbhed001tvstzhz294w8p" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/当 ondrej-sury 遇到七牛云/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -484,7 +559,7 @@ signup
   
     <article id="post-我是如何使用 Python 优雅的薅到网易uu的羊毛的" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/我是如何使用 Python 优雅的薅到网易uu的羊毛的/" class="article-date">
+    <a href="/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/" class="article-date">
   <time datetime="2017-02-14T13:30:23.000Z" itemprop="datePublished">2017-02-14</time>
 </a>
     
@@ -496,7 +571,7 @@ signup
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/我是如何使用 Python 优雅的薅到网易uu的羊毛的/">我是如何使用 Python 优雅的薅到网易uu的羊毛的</a>
+      <a class="article-title" href="/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/">我是如何使用 Python 优雅的薅到网易uu的羊毛的</a>
     </h1>
   
 
@@ -536,6 +611,7 @@ ref: https://shop.uu.163.com/app/mall/oversea/detail?type=561
 22
 23
 24
+25
 
 
 
@@ -543,18 +619,18 @@ import requests
 
 
 headers = {
-    'Cookie': 'uid=*************
+    'Cookie': 'uid=**********
         
           <p class="article-more-link">
-            <a href="/我是如何使用 Python 优雅的薅到网易uu的羊毛的/#more">Read More</a>
+            <a href="/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/我是如何使用 Python 优雅的薅到网易uu的羊毛的/" data-id="ck4i70iza001yrstzg8dcu15n" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/" data-id="ckenmbhef001wvstzciiw668w" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/我是如何使用 Python 优雅的薅到网易uu的羊毛的/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -566,7 +642,7 @@ headers = {
   
     <article id="post-Linux 服务器用上 SS Client" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/Linux 服务器用上 SS Client/" class="article-date">
+    <a href="/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/" class="article-date">
   <time datetime="2017-02-02T09:13:21.000Z" itemprop="datePublished">2017-02-02</time>
 </a>
     
@@ -578,7 +654,7 @@ headers = {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Linux 服务器用上 SS Client/">Linux 服务器用上 SS Client</a>
+      <a class="article-title" href="/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/">Linux 服务器用上 SS Client</a>
     </h1>
   
 
@@ -592,21 +668,22 @@ ref: https://github.com/shadowsocks/shadowsocks/wiki/Using-Shadowsocks-with-Comm
 
 1
 2
+3
 
 
 
 sslocal -s 153.125.237.238 -p 31274 -k "hldh214" -l 1080 -t 600 -m chacha20
         
           <p class="article-more-link">
-            <a href="/Linux 服务器用上 SS Client/#more">Read More</a>
+            <a href="/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Linux 服务器用上 SS Client/" data-id="ck4i70iy4000jrstzk9binr3v" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/" data-id="ckenmbhdd000hvstz4u5e80ag" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/Linux 服务器用上 SS Client/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -618,7 +695,7 @@ sslocal -s 153.125.237.238 -p 31274 -k "hldh214" -l 1080 -t 600 -m chacha20
   
     <article id="post-Python 解析 json 对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/Python 解析 json 对象/" class="article-date">
+    <a href="/Python%20%E8%A7%A3%E6%9E%90%20json%20%E5%AF%B9%E8%B1%A1/" class="article-date">
   <time datetime="2016-12-17T07:09:58.000Z" itemprop="datePublished">2016-12-17</time>
 </a>
     
@@ -630,7 +707,7 @@ sslocal -s 153.125.237.238 -p 31274 -k "hldh214" -l 1080 -t 600 -m chacha20
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Python 解析 json 对象/">Python 解析 json 对象</a>
+      <a class="article-title" href="/Python%20%E8%A7%A3%E6%9E%90%20json%20%E5%AF%B9%E8%B1%A1/">Python 解析 json 对象</a>
     </h1>
   
 
@@ -644,79 +721,26 @@ sslocal -s 153.125.237.238 -p 31274 -k "hldh214" -l 1080 -t 600 -m chacha20
 
 1
 2
+3
 
 
 
 json.loads(f.read().decode('utf8'),objecthook=decode_dict)
 
 
+
 ref => https://shekhargulati.com/2016/02/03/python-json-object_hook/
         
           <p class="article-more-link">
-            <a href="/Python 解析 json 对象/#more">Read More</a>
+            <a href="/Python%20%E8%A7%A3%E6%9E%90%20json%20%E5%AF%B9%E8%B1%A1/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Python 解析 json 对象/" data-id="ck4i70iyh000vrstz2ioch46z" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Python%20%E8%A7%A3%E6%9E%90%20json%20%E5%AF%B9%E8%B1%A1/" data-id="ckenmbhdl000tvstzh27m5j57" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/Python 解析 json 对象/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Chrome F12 的秘密" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Chrome F12 的秘密/" class="article-date">
-  <time datetime="2016-12-05T04:58:06.000Z" itemprop="datePublished">2016-12-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Chrome F12 的秘密/">Chrome F12 的秘密</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        #shadow-root
-什么是 Shadow DOM 呢?
-
-Shadow DOM 是一个 HTML 的新规范，其允许开发者封装自己的 HTML 标签、CSS 样式和 JavaScript 代码。
-
-https://aotu.io/notes/2016/06/24/Shadow-DOM/index.html
-https://stackoverflow.com/questions/34119639/what-is-shadow-root
-https://github.com/YIXUNFE/blog/issues/10
-
-== $0
-当前被选中的元素
-
-https://www.zhihu.co
-        
-          <p class="article-more-link">
-            <a href="/Chrome F12 的秘密/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Chrome F12 的秘密/" data-id="ck4i70ixp0004rstzbzmenzfl" class="article-share-link">Share</a>
-      
-        <a href="https://hldh214.github.io/Chrome F12 的秘密/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/Python%20%E8%A7%A3%E6%9E%90%20json%20%E5%AF%B9%E8%B1%A1/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -730,7 +754,7 @@ https://www.zhihu.co
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -744,7 +768,7 @@ https://www.zhihu.co
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/">Steam</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
     </div>
   </div>
 
@@ -763,7 +787,7 @@ https://www.zhihu.co
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -774,6 +798,10 @@ https://www.zhihu.co
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/tencent-cdc-interview-0701/">这都没准备就敢面腾讯。。</a>
+          </li>
         
           <li>
             <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
@@ -788,11 +816,7 @@ https://www.zhihu.co
           </li>
         
           <li>
-            <a href="/ASF-ui-指北/">ASF-ui 指北 (feat. Caddy)</a>
-          </li>
-        
-          <li>
-            <a href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+            <a href="/ASF-ui-%E6%8C%87%E5%8C%97/">ASF-ui 指北 (feat. Caddy)</a>
           </li>
         
       </ul>
@@ -820,7 +844,7 @@ https://www.zhihu.co
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Jim<br>
+      &copy; 2020 Jim<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -850,11 +874,17 @@ https://www.zhihu.co
 <script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 

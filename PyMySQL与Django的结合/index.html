@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   <meta name="theme-color" content="#4D0000">
   
@@ -9,17 +9,17 @@
   <title>PyMySQL与Django的结合 | hldh214&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="引子 最近学习Django框架, 是基于Python3的, 配置MySQL的时候出了点岔子, 因为MySQLdb目前还不能完美兼容Python3, 而Django的MySQL驱动只能识别MySQLdb, 于是便有此文  解决方法 使用支持Python3的PyMySQL  而最关键的一点在于, 在站点目录下的init.py文件里面加上  1 2 3   import pymysql  pymysql">
-<meta name="keywords" content="Internet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PyMySQL与Django的结合">
-<meta property="og:url" content="https://hldh214.github.io/PyMySQL与Django的结合/index.html">
+<meta property="og:url" content="https://hldh214.github.io/PyMySQL%E4%B8%8EDjango%E7%9A%84%E7%BB%93%E5%90%88/index.html">
 <meta property="og:site_name" content="hldh214&#39;s blog">
 <meta property="og:description" content="引子 最近学习Django框架, 是基于Python3的, 配置MySQL的时候出了点岔子, 因为MySQLdb目前还不能完美兼容Python3, 而Django的MySQL驱动只能识别MySQLdb, 于是便有此文  解决方法 使用支持Python3的PyMySQL  而最关键的一点在于, 在站点目录下的init.py文件里面加上  1 2 3   import pymysql  pymysql">
-<meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-12-23T08:34:54.405Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-02-10T14:16:11.000Z">
+<meta property="article:modified_time" content="2019-12-23T08:34:54.405Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PyMySQL与Django的结合">
-<meta name="twitter:description" content="引子 最近学习Django框架, 是基于Python3的, 配置MySQL的时候出了点岔子, 因为MySQLdb目前还不能完美兼容Python3, 而Django的MySQL驱动只能识别MySQLdb, 于是便有此文  解决方法 使用支持Python3的PyMySQL  而最关键的一点在于, 在站点目录下的init.py文件里面加上  1 2 3   import pymysql  pymysql">
   
     <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
   
@@ -29,9 +29,11 @@
   
     <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
 <body>
   <div id="container">
     <div id="wrap">
@@ -42,10 +44,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">hldh214&#39;s blog</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">戎码一生</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -72,7 +70,7 @@
       <div class="outer">
         <section id="main"><article id="post-PyMySQL与Django的结合" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/PyMySQL与Django的结合/" class="article-date">
+    <a href="/PyMySQL%E4%B8%8EDjango%E7%9A%84%E7%BB%93%E5%90%88/" class="article-date">
   <time datetime="2016-02-10T14:16:11.000Z" itemprop="datePublished">2016-02-10</time>
 </a>
     
@@ -96,18 +94,21 @@
 <h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>使用支持Python3的PyMySQL</p>
 <p>而最关键的一点在于, 在站点目录下的<strong>init</strong>.py文件里面加上</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+
 <p>这样就能让Django识别出伪装成MySQLdb的PyMySQL了</p>
 <h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>Django关于MySQL的配置代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'django'</span>,  <span class="comment"># 你的数据库名称</span></span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,</span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">''</span>,</span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'PORT'</span>: <span class="string">'3306'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;django&#x27;</span>,  <span class="comment"># 你的数据库名称</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>PyMySQL安装方法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pymysql</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/PyMySQL与Django的结合/" data-id="ck4i70iyb000rrstzn2j3i7v7" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/PyMySQL%E4%B8%8EDjango%E7%9A%84%E7%BB%93%E5%90%88/" data-id="ckenmbhdi000ovstz2nfyfpof" class="article-share-link">Share</a>
       
-        <a href="https://hldh214.github.io/PyMySQL与Django的结合/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://hldh214.github.io/PyMySQL%E4%B8%8EDjango%E7%9A%84%E7%BB%93%E5%90%88/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -116,7 +117,7 @@
     
 <nav id="article-nav">
   
-    <a href="/当phantomJS遇上Requests/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/%E5%BD%93phantomJS%E9%81%87%E4%B8%8ARequests/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -126,7 +127,7 @@
     </a>
   
   
-    <a href="/Python3切换华为hi link设备数据开关/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/Python3%E5%88%87%E6%8D%A2%E5%8D%8E%E4%B8%BAhi%20link%E8%AE%BE%E5%A4%87%E6%95%B0%E6%8D%AE%E5%BC%80%E5%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Python3切换华为hi link设备数据开关</div>
     </a>
@@ -139,7 +140,7 @@
 
 <section id="comments">
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 </section>
@@ -153,7 +154,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/">Steam</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
     </div>
   </div>
 
@@ -172,7 +173,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -183,6 +184,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/tencent-cdc-interview-0701/">这都没准备就敢面腾讯。。</a>
+          </li>
         
           <li>
             <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
@@ -197,11 +202,7 @@
           </li>
         
           <li>
-            <a href="/ASF-ui-指北/">ASF-ui 指北 (feat. Caddy)</a>
-          </li>
-        
-          <li>
-            <a href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+            <a href="/ASF-ui-%E6%8C%87%E5%8C%97/">ASF-ui 指北 (feat. Caddy)</a>
           </li>
         
       </ul>
@@ -229,7 +230,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Jim<br>
+      &copy; 2020 Jim<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -246,7 +247,7 @@
 <script>
   var disqus_shortname = 'hldh214s-blog';
   
-  var disqus_url = 'https://hldh214.github.io/PyMySQL与Django的结合/';
+  var disqus_url = 'https://hldh214.github.io/PyMySQL%E4%B8%8EDjango%E7%9A%84%E7%BB%93%E5%90%88/';
   
   (function(){
     var dsq = document.createElement('script');
@@ -261,11 +262,17 @@
 <script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 

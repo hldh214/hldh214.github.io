@@ -15,6 +15,8 @@ steam 社区大名鼎鼎的开源自动化工具 [ASF](https://github.com/JustAr
 ASF-ui 是纯前端项目, 用于配合 ASF 已有的 IPC server, 因为项目是基于 Vue 写的, 顺路学习了 vue 相关的知识
 不得不说 vue-router 是真滴方便, 合理的 rewrite 规则让妈妈再也不用担心路由啦, 不愧是 [前端界的 ThinkPHP](https://www.v2ex.com/t/382344) :D
 
+<!-- more -->
+
 # 安装
 
 可能是因为还处于开发初期, 项目 README 并没有写的很详细, 只能摸着石头过河

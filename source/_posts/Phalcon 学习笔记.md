@@ -6,6 +6,8 @@ date: 2016-08-19 18:47:36
 
 Phalcon 的文档非常的优雅
 
+<!-- more -->
+
 # 安装 #
 
 Windows 直接下载 dll 文件, 配置 php.ini 即可

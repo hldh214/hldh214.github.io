@@ -4,6 +4,8 @@ date: 2016-11-20 10:31:52
 ---
 ref : http://www.qlcoder.com/task/76a4
 
+<!-- more -->
+
 ``` bash
 
 Jim@hldh214 MINGW64 /c/tmp (master)

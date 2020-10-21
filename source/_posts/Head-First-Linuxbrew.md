@@ -11,6 +11,8 @@ tags: Linux
 用腻了传统包管理(apt, yum, ...), 受够了他们的远古版本, 各种参差不齐的第三方源, 逼死强迫症的卸载残留......
 在[基友](https://fyibmsd.github.io)的推荐下尝试了 linuxbrew, 本文记录了 linuxbrew 从入门到~~放弃~~
 
+<!-- more -->
+
 # 安装 && 使用
 
 其实按照[官网](https://linuxbrew.sh)安装就可以了, 这里主要讲一下遇到的问题和解决方案

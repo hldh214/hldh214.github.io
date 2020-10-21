@@ -9,6 +9,8 @@ date: 2018-09-20 09:44:35
 面试地点在广东省深圳市百度国际大厦, 粗略估计了一下我那一场的面试大概有 15~20 来人参加
 https://youtu.be/nXT_wz5Gcq4
 
+<!-- more -->
+
 {% asset_img no_photography.jpg no_photography %}
 
 # 面试

@@ -94,12 +94,12 @@
 
 <h2 id="drawtext"><a href="#drawtext" class="headerlink" title="drawtext"></a>drawtext</h2><p><a target="_blank" rel="noopener" href="https://ffmpeg.org/ffmpeg-filters.html#drawtext">https://ffmpeg.org/ffmpeg-filters.html#drawtext</a><br><a target="_blank" rel="noopener" href="https://superuser.com/questions/939357/ffmpeg-watermark-on-bottom-right-corner">https://superuser.com/questions/939357/ffmpeg-watermark-on-bottom-right-corner</a></p>
 <h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/34803506/how-to-push-a-video-list-to-rtmp-server-and-keep-connect">https://stackoverflow.com/questions/34803506/how-to-push-a-video-list-to-rtmp-server-and-keep-connect</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">prefix = <span class="string">&#x27;/home/ubuntu/DX-BALL2-Video&#x27;</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&#x27;../videos.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> os.listdir():</span><br><span class="line">        <span class="keyword">if</span> each == <span class="string">&#x27;tmp.py&#x27;</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        fp.write(<span class="string">&quot;file &#x27;&#123;0&#125;/&#123;1&#125;&#x27;\n&quot;</span>.format(prefix, each))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">prefix = <span class="string">&#x27;/home/ubuntu/DX-BALL2-Video&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;../videos.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> os.listdir():</span><br><span class="line">        <span class="keyword">if</span> each == <span class="string">&#x27;tmp.py&#x27;</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        fp.write(<span class="string">&quot;file &#x27;&#123;0&#125;/&#123;1&#125;&#x27;\n&quot;</span>.<span class="built_in">format</span>(prefix, each))</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/" data-id="ckennrrk500074wtz5y0t9i7c" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/" data-id="ckji7vmo60008a4tz72sx36nz" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -223,7 +223,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jim<br>
+      &copy; 2021 Jim<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

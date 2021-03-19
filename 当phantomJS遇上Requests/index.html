@@ -32,7 +32,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -95,14 +95,16 @@
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>获取RSA键值对对于Python是很容易的,因为是静态存在于html内,而对于动态的算法,Python则显得无力,这时候便祭出Python的拜把子兄弟PhantomJS,使用PhantomJS处理JavaScript部分的算法,返回加密后的数据给Python继续进行POST操作.</p>
 <h1 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h1><p>JavaScript部分:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> system = <span class="built_in">require</span>(<span class="string">&#x27;system&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> modulus = system.args[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> exponent = system.args[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">var</span> tokenId = system.args[<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> password = system.args[<span class="number">4</span>];  <span class="comment">// 密码</span></span><br><span class="line">setMaxDigits(<span class="number">130</span>);</span><br><span class="line">key = <span class="keyword">new</span> RSAKeyPair(exponent, <span class="string">&quot;&quot;</span>, modulus);</span><br><span class="line">token = tokenId+<span class="string">&quot;\n&quot;</span>+password;</span><br><span class="line">strToken = encryptedString(key, token);</span><br><span class="line"><span class="built_in">console</span>.log(strToken);</span><br><span class="line">phantom.exit();</span><br></pre></td></tr></table></figure>
+
 <p>Python部分:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmd = <span class="string">&#x27;phantomjs E:\\demo.js&#x27;</span> \</span><br><span class="line">      + <span class="string">&#x27; &#x27;</span> + modulus + <span class="string">&#x27; &#x27;</span> + exponent + <span class="string">&#x27; &#x27;</span> + tokenId + <span class="string">&#x27; &#x27;</span> + password</span><br><span class="line">strToken = os.popen(cmd).read().strip(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">print(strToken.encode())  <span class="comment"># check spare spaces</span></span><br></pre></td></tr></table></figure>
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>登录搞定了基本上相当于搞定了全部,之后你可以发帖,回帖,等等……玩法很多.甚至玩刺激点的可以把脚本挂上vps,然后……</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E5%BD%93phantomJS%E9%81%87%E4%B8%8ARequests/" data-id="ckkp5ov9p001wnwtzb9z078wk" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E5%BD%93phantomJS%E9%81%87%E4%B8%8ARequests/" data-id="ckmg3o819001xmwtz96qualfe" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E5%BD%93phantomJS%E9%81%87%E4%B8%8ARequests/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -169,7 +171,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -180,6 +182,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
         
           <li>
             <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
@@ -195,10 +201,6 @@
         
           <li>
             <a href="/toutiao-interview/">头条研发-SRE运维研发实习生视频面试(一, 二面)杂记</a>
-          </li>
-        
-          <li>
-            <a href="/bfg-repo-cleaner/">谁来拯救误提交的敏感信息</a>
           </li>
         
       </ul>

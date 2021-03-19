@@ -30,7 +30,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -68,6 +68,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小米武研 web 后端开发面试杂记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" class="article-date">
+  <time datetime="2018-03-31T07:15:49.000Z" itemprop="datePublished">2018-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">小米武研 web 后端开发面试杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>2018/03/20 多云</p>
+<img src="/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/cloudy_day.jpg" class="" title="cloudy_day">
+
+<p>我参加了小米武汉研发中心的面试, 岗位是 web 后端开发<br>当中还有一个小插曲, 在当天的上午接到人事电话, 约好当天下午 3 点现场面试<br>电话结束前说好了以电邮的形式告知详细信息, 然后一直到当天下午 2 点都没收到电邮<br>可能是被拒了我也没在意, 直到当天下午 3 点一刻的时候, 人事打来电话询问到哪了<br>我回复没有收到电邮, 没有准备动身… 最后还是定好当天下午 6~7 点进行现场面试</p>
+        
+          <p class="article-more-link">
+            <a href="/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" data-id="ckmg3o818001umwtzdkh3bem1" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/%E5%B0%8F%E7%B1%B3%E6%AD%A6%E7%A0%94%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Linux unzip 的后悔药" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/Linux%20unzip%20%E7%9A%84%E5%90%8E%E6%82%94%E8%8D%AF/" class="article-date">
@@ -92,12 +138,13 @@
       
         <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>疏忽导致在家目录做了 unzip 操作, 需要撤销:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> work</span></span><br><span class="line">unzip -l filename |  awk &#x27;BEGIN &#123; OFS=&quot;&quot; ; ORS=&quot;&quot; &#125; ; &#123; for ( i=4; i&lt;NF; i++ ) print $i &quot; &quot;; print $NF &quot;\n&quot; &#125;&#x27; | xargs -I&#123;&#125; rm -v &#123;&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash"> more readable</span></span><br><span class="line">zipinfo -1 /path/to/zip/file.zip | xargs -d &#x27;\n&#x27; rm -i</span><br></pre></td></tr></table></figure>
+
 <h1 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h1><p><a target="_blank" rel="noopener" href="https://superuser.com/questions/384611/how-to-undo-unzip-command">https://superuser.com/questions/384611/how-to-undo-unzip-command</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Linux%20unzip%20%E7%9A%84%E5%90%8E%E6%82%94%E8%8D%AF/" data-id="ckkp5ov8o000gnwtzhprnbb92" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Linux%20unzip%20%E7%9A%84%E5%90%8E%E6%82%94%E8%8D%AF/" data-id="ckmg3o803000gmwtzdqb2eeue" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Linux%20unzip%20%E7%9A%84%E5%90%8E%E6%82%94%E8%8D%AF/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -138,6 +185,7 @@
 <img src="/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/01.jpg" class="" title="img_01">
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">error_page 504 &#x3D;200 &#x2F;custom_504.html;</span><br><span class="line">location &#x3D; &#x2F;custom_504.html &#123;</span><br><span class="line">	return 200;</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">	# 这里只设置了 read 的超时</span><br><span class="line">	# 因为另两个多用于大型架构</span><br><span class="line">	# 单机运行用不上</span><br><span class="line">	# 设置 4 秒是因为还需计算网路传输时间</span><br><span class="line">	fastcgi_read_timeout 4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p>从 <code>2017-08-28</code> 开始明显看到变化</p>
 <img src="/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/02.jpg" class="" title="img_02">
 
@@ -146,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/" data-id="ckkp5ov9m001onwtz560fcgkv" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/" data-id="ckmg3o815001pmwtz6j9md6zl" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%20-%20%E4%BF%9D%E8%AF%81%E4%B8%8D%E8%B6%85%E8%BF%87%205%20%E7%A7%92%20(fpm%20+%20nginx)/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -181,13 +229,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转码</span></span><br><span class="line">ffmpeg -i Busines.mp4 -c:v libx264 -crf 19 Busines.flv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 裁切</span></span><br><span class="line"><span class="comment"># -ss is the starttime and -t is the duration</span></span><br><span class="line"><span class="comment"># ref: https://vollnixx.wordpress.com/2012/06/01/howto-cut-a-video-directly-with-ffmpeg-without-transcoding/</span></span><br><span class="line">ffmpeg -i Busines.flv -c copy -ss 25 Busines_cut.flv</span><br></pre></td></tr></table></figure>
+
 <h2 id="drawtext"><a href="#drawtext" class="headerlink" title="drawtext"></a>drawtext</h2><p><a target="_blank" rel="noopener" href="https://ffmpeg.org/ffmpeg-filters.html#drawtext">https://ffmpeg.org/ffmpeg-filters.html#drawtext</a><br><a target="_blank" rel="noopener" href="https://superuser.com/questions/939357/ffmpeg-watermark-on-bottom-right-corner">https://superuser.com/questions/939357/ffmpeg-watermark-on-bottom-right-corner</a></p>
 <h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/34803506/how-to-push-a-video-list-to-rtmp-server-and-keep-connect">https://stackoverflow.com/questions/34803506/how-to-push-a-video-list-to-rtmp-server-and-keep-connect</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">prefix = <span class="string">&#x27;/home/ubuntu/DX-BALL2-Video&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;../videos.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> os.listdir():</span><br><span class="line">        <span class="keyword">if</span> each == <span class="string">&#x27;tmp.py&#x27;</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        fp.write(<span class="string">&quot;file &#x27;&#123;0&#125;/&#123;1&#125;&#x27;\n&quot;</span>.<span class="built_in">format</span>(prefix, each))</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/" data-id="ckkp5ov8k0008nwtz6lnqebi5" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/" data-id="ckmg3o7zy0008mwtz14da8yzv" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/FFmpeg%20%E4%B9%B1%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -227,18 +277,22 @@
 <p>调用时不需要加上 <code>scope</code> 前缀<br><code>$users = \App\User::popular()-&gt;active()-&gt;orderBy(&#39;created_at&#39;)-&gt;get();</code></p>
 <p>如果是普通写法会产生这样的问题</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">custom_wh</span>(<span class="params"><span class="variable">$data</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">static</span>::where_in(<span class="string">&#x27;categories_id&#x27;</span>, <span class="variable">$data</span>, <span class="string">&#x27;AND&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// this works fine</span></span><br><span class="line"><span class="variable">$posts</span> = Post::custom_wh(<span class="keyword">array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))-&gt;get();</span><br><span class="line"></span><br><span class="line"><span class="comment">// but this says custom_wh is not defined in the query class</span></span><br><span class="line"><span class="variable">$posts</span> = Post::where_in(<span class="string">&#x27;tags&#x27;</span>, <span class="keyword">array</span>(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>), <span class="string">&#x27;AND&#x27;</span>)-&gt;custom_wh(<span class="keyword">array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))-&gt;get();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h2 id="Querying-Relationship-Existence"><a href="#Querying-Relationship-Existence" class="headerlink" title="Querying Relationship Existence"></a>Querying Relationship Existence</h2><p>ref: <a target="_blank" rel="noopener" href="http://laravelacademy.org/post/6996.html#toc_11">http://laravelacademy.org/post/6996.html#toc_11</a><br>查询存在的关联关系, 例如<br>博客有许多 tags, 我们不希望显示没有 post 的 tag</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Retrieve all tags that have at least one post...</span></span><br><span class="line"><span class="variable">$posts</span> = \App\Tag::has(<span class="string">&#x27;posts&#x27;</span>)-&gt;get();</span><br></pre></td></tr></table></figure>
+
 
 <h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><h2 id="View-composer"><a href="#View-composer" class="headerlink" title="View composer"></a>View composer</h2><p>ref: <a target="_blank" rel="noopener" href="http://laravelacademy.org/post/6758.html#toc_2">http://laravelacademy.org/post/6758.html#toc_2</a><br>网站的公共部分需要 assign 变量的时候, 比如 blog 的 sidebar 需要博客归档<br>可以使用 view composer 来避免在不同方法中重复 assign 变量<br>在 AppServiceProvider 中的 <code>boot</code> 方法中</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    view()-&gt;composer(<span class="string">&#x27;view.name&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"><span class="variable">$view</span></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// just like data assign in controller</span></span><br><span class="line">        <span class="variable">$view</span>-&gt;with([<span class="string">&#x27;var name here&#x27;</span> =&gt; <span class="variable">$var</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
 <h1 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h1><h2 id="RESTful-Controller"><a href="#RESTful-Controller" class="headerlink" title="RESTful Controller"></a>RESTful Controller</h2><p>ref: <a target="_blank" rel="noopener" href="http://laravelacademy.org/post/6745.html#toc_6">http://laravelacademy.org/post/6745.html#toc_6</a><br><code>php artisan make:controller TasksController -r</code><br><code>Route::resource(&#39;tasks&#39;, &#39;TasksController&#39;);</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET    /tasks =&gt; TasksController@index  <span class="comment">// 列出所有 task</span></span><br><span class="line">GET    /tasks/create =&gt; TasksController@create  <span class="comment">// 显示创建 task 的表单页</span></span><br><span class="line">POST   /tasks =&gt; TasksController@store  <span class="comment">// 创建 task</span></span><br><span class="line">GET    /tasks/&#123;id&#125; =&gt; TasksController@show/&#123;id&#125;  <span class="comment">// 列出指定 task</span></span><br><span class="line">GET    /tasks/&#123;id&#125;/edit =&gt; TasksController@edit/&#123;id&#125;  <span class="comment">// 显示编辑指定 task 的表单页</span></span><br><span class="line">PATCH  /tasks/&#123;id&#125; =&gt; TasksController@update/&#123;id&#125;  <span class="comment">// 编辑指定 task</span></span><br><span class="line">DELETE /tasks/&#123;id&#125; =&gt; TasksController@destroy/&#123;id&#125;  <span class="comment">// 删除指定 task</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/" data-id="ckkp5ov9e001anwtz33ys8p6p" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/" data-id="ckmg3o80z001cmwtzfr9gevqy" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -283,13 +337,14 @@
 <li><a target="_blank" rel="noopener" href="https://sites.google.com/a/chromium.org/chromedriver/downloads">ChromeDriver==2.31</a></li>
 </ul>
 <h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"></span><br><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--headless&#x27;</span>)</span><br><span class="line">chrome_options.add_argument(<span class="string">&#x27;--disable-gpu&#x27;</span>)</span><br><span class="line"></span><br><span class="line">chrome_options.binary_location = <span class="string">r&#x27;C:\Users\hldh214\AppData\Local\Google\Chrome\Application\chrome.exe&#x27;</span></span><br><span class="line"><span class="comment"># chrome_options.binary_location = &#x27;/opt/google/chrome/chrome&#x27;</span></span><br><span class="line"></span><br><span class="line">opener = webdriver.Chrome(chrome_options=chrome_options)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在 PhantomJS 年久失修, 后继无人的节骨眼<br>Chrome 出来救场, 再次成为了反爬虫 Team 的噩梦</p>
 <h1 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h1><p><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2017/04/headless-chrome">https://developers.google.com/web/updates/2017/04/headless-chrome</a><br><a target="_blank" rel="noopener" href="https://duo.com/blog/driving-headless-chrome-with-python">https://duo.com/blog/driving-headless-chrome-with-python</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Selenium%20+%20Headless%20Chrome%20with%20Python3/" data-id="ckkp5ov97000xnwtz2py1cmp2" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Selenium%20+%20Headless%20Chrome%20with%20Python3/" data-id="ckmg3o80o000xmwtzglg92ns7" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Selenium%20+%20Headless%20Chrome%20with%20Python3/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -347,6 +402,7 @@
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2></li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64encode</span><br><span class="line"></span><br><span class="line">account = <span class="string">&#x27;&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span>(<span class="params">text, key, iv=<span class="string">&#x27;995d1b5ebbac3761&#x27;</span></span>):</span></span><br><span class="line">    cryptor = AES.new(key, mode=AES.MODE_CBC, IV=iv)</span><br><span class="line">    text = text.encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    add = <span class="number">16</span> - (<span class="built_in">len</span>(text) % <span class="number">16</span>)</span><br><span class="line">    text = text + (<span class="string">b&#x27;\0&#x27;</span> * add)</span><br><span class="line">    ciphertext = cryptor.encrypt(text)</span><br><span class="line">    <span class="keyword">return</span> b64encode(ciphertext).decode()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># login</span></span><br><span class="line">opener = requests.session()</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">&#x27;https://u.panda.tv/ajax_aeskey&#x27;</span>).json()</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">&#x27;https://u.panda.tv/ajax_login&#x27;</span>, params=&#123;</span><br><span class="line">    <span class="string">&#x27;regionId&#x27;</span>: <span class="string">&#x27;86&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;account&#x27;</span>: account,</span><br><span class="line">    <span class="string">&#x27;password&#x27;</span>: encrypt(password, res[<span class="string">&#x27;data&#x27;</span>]),</span><br><span class="line">    <span class="string">&#x27;pdft&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;__plat&#x27;</span>: <span class="string">&#x27;android&#x27;</span></span><br><span class="line">&#125;).json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> res[<span class="string">&#x27;errno&#x27;</span>] != <span class="number">0</span>:</span><br><span class="line">    print(res)</span><br><span class="line"></span><br><span class="line"><span class="comment"># sign</span></span><br><span class="line">res = opener.get(<span class="string">&#x27;https://m.panda.tv/sign/index&#x27;</span>).text</span><br><span class="line"></span><br><span class="line">token = re.search(<span class="string">r&#x27;name=&quot;token&quot;\s+value=&quot;(\w+)&quot;&#x27;</span>, res)</span><br><span class="line"></span><br><span class="line">lottery_param = re.search(<span class="string">r&#x27;&quot;key&quot;:\s*&quot;(?P&lt;app&gt;[\w-]+)&quot;,\s*&quot;date&quot;:\s*&quot;(?P&lt;validate&gt;[\d-]+)&quot;&#x27;</span>, res)</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">&#x27;https://m.panda.tv/api/sign/apply_sign&#x27;</span>, params=&#123;</span><br><span class="line">    <span class="string">&#x27;token&#x27;</span>: token.group(<span class="number">1</span>)</span><br><span class="line">&#125;).json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> res[<span class="string">&#x27;errno&#x27;</span>] != <span class="number">0</span>:</span><br><span class="line">    print(res)</span><br><span class="line"></span><br><span class="line">res = opener.get(<span class="string">&#x27;https://roll.panda.tv/ajax_roll_draw&#x27;</span>, params=&#123;</span><br><span class="line">    <span class="string">&#x27;app&#x27;</span>: lottery_param.group(<span class="string">&#x27;app&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;validate&#x27;</span>: lottery_param.group(<span class="string">&#x27;validate&#x27;</span>)</span><br><span class="line">&#125;).json()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> res[<span class="string">&#x27;errno&#x27;</span>] != <span class="number">0</span>:</span><br><span class="line">    print(res)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li>善用搜索引擎</li>
 <li>再好的前端加密不如一个 HTTPS</li>
@@ -356,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/" data-id="ckkp5ov91000unwtz9i2n2f7m" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/" data-id="ckmg3o80k000vmwtzgp0rcjos" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -391,10 +447,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from collections import OrderedDict</span></span><br><span class="line">oss_forms_res = requests.post(<span class="string">&#x27;https://shimo.im/api/upload/oss_forms&#x27;</span>, &#123;</span><br><span class="line">    <span class="string">&#x27;head&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;guid&#x27;</span>: guid</span><br><span class="line">&#125;, headers=headers).json(object_pairs_hook=OrderedDict)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># from base64 import b64encode</span></span><br><span class="line">policy = b64encode(dumps(</span><br><span class="line">    oss_forms_res[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;policy&#x27;</span>],</span><br><span class="line">    separators=(<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;:&#x27;</span>)  <span class="comment"># disable white space</span></span><br><span class="line">).encode()).decode()</span><br><span class="line"></span><br><span class="line"><span class="comment"># import requests</span></span><br><span class="line"><span class="comment"># keep your payload in order</span></span><br><span class="line">oss_res = requests.post(oss_base_url, headers=headers, files=(</span><br><span class="line">    (<span class="string">&#x27;OSSAccessKeyId&#x27;</span>, (<span class="literal">None</span>, oss_forms_res[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;OSSAccessKeyId&#x27;</span>], <span class="literal">None</span>)),</span><br><span class="line">    (<span class="string">&#x27;policy&#x27;</span>, (<span class="literal">None</span>, policy, <span class="literal">None</span>)),</span><br><span class="line">    (<span class="string">&#x27;Signature&#x27;</span>, (<span class="literal">None</span>, oss_forms_res[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;signature&#x27;</span>], <span class="literal">None</span>)),</span><br><span class="line">    (<span class="string">&#x27;key&#x27;</span>, (<span class="literal">None</span>, uri, <span class="literal">None</span>)),</span><br><span class="line">    (<span class="string">&#x27;Content-Type&#x27;</span>, (<span class="literal">None</span>, <span class="string">&#x27;multipart/form-data&#x27;</span>, <span class="literal">None</span>)),</span><br><span class="line">    (<span class="string">&#x27;file&#x27;</span>, (<span class="string">&#x27;blob&#x27;</span>, <span class="string">b&#x27;qq&#x27;</span>, <span class="string">&#x27;application/zip&#x27;</span>)),</span><br><span class="line">))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/" data-id="ckkp5ov9i001gnwtz0rsa8fi8" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/" data-id="ckmg3o813001kmwtz5oze1pzx" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -437,12 +494,13 @@
 <p>四、更新旧的源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:ondrej/php</span><br><span class="line"></span><br><span class="line">sudo sed -r -i <span class="string">&quot;s/deb\s\S+\s<span class="subst">$(lsb_release -sc)</span>\smain/deb http:\/\/omfv813bz.bkt.gdipper.com <span class="subst">$(lsb_release -sc)</span> main/&quot;</span> /etc/apt/sources.list.d/ondrej-ubuntu-php-$(lsb_release -sc).list</span><br><span class="line"></span><br><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line"><span class="comment"># have fun</span></span><br></pre></td></tr></table></figure>
 
+
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.mf8.biz/ondrej-sury-php7-1/">https://www.mf8.biz/ondrej-sury-php7-1/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/" data-id="ckkp5ov9p001vnwtzhrghcm8h" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/" data-id="ckmg3o818001wmwtza4mk47n6" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E5%BD%93%20ondrej-sury%20%E9%81%87%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -480,6 +538,7 @@
 <p>ref: <a target="_blank" rel="noopener" href="https://shop.uu.163.com/app/mall/oversea/detail?type=561">https://shop.uu.163.com/app/mall/oversea/detail?type=561</a></p>
 <p>分析下单页面, 点击下单实则进行 Ajax 请求<br>祭出 requests<br>对这个 Ajax 进行狂轰滥炸, 本来想加个延时的, 但是, 男人要猛一点才有魅力</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;uid=*******************;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;X-Requested-With&#x27;</span>: <span class="string">&#x27;XMLHttpRequest&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://shop.uu.163.com/app/mall/order/oversea/create?good_type=561&amp;pay_type=2&#x27;</span></span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        res = requests.get(url, headers=headers)</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    json = res.json()</span><br><span class="line">    <span class="keyword">if</span> json != &#123;<span class="string">&#x27;error&#x27;</span>: <span class="string">&#x27;很抱歉，兑换物品没有剩余了&#x27;</span>&#125;:</span><br><span class="line">        print(<span class="string">&#x27;bingo&#x27;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    print(json, i)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>小插曲: 正常情况带上 cookie 就行的, 这里需要多加一个来自 XHR 的头<br><code>&#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;</code><br>也是经过多次实验得出的结论<br>猜测网易后台有通过类似 phalcon 的 isAjax() 方法判断请求类型</p>
 <p>截图纪念, 人生中第二个十年</p>
 <img src="/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/happy_birthday.jpg" class="" title="happy_birthday">
@@ -487,50 +546,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/" data-id="ckkp5ov9r001znwtzficrgxko" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/" data-id="ckmg3o81b0020mwtz8q146mzq" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20Python%20%E4%BC%98%E9%9B%85%E7%9A%84%E8%96%85%E5%88%B0%E7%BD%91%E6%98%93uu%E7%9A%84%E7%BE%8A%E6%AF%9B%E7%9A%84/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Linux 服务器用上 SS Client" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/" class="article-date">
-  <time datetime="2017-02-02T09:13:21.000Z" itemprop="datePublished">2017-02-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/">Linux 服务器用上 SS Client</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习 golang, 被 gfw 教做人, 寻思给服务器加上代理</p>
-<p>ref: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks/wiki/Using-Shadowsocks-with-Command-Line-Tools">https://github.com/shadowsocks/shadowsocks/wiki/Using-Shadowsocks-with-Command-Line-Tools</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sslocal -s 153.125.237.238 -p 31274 -k <span class="string">&quot;hldh214&quot;</span> -l 1080 -t 600 -m chacha20</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/" data-id="ckkp5ov8p000hnwtzdbqafsn5" class="article-share-link">Share</a>
-      
-        <a href="https://hldh214.github.io/Linux%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E4%B8%8A%20SS%20Client/#disqus_thread" class="article-comment-link">Comments</a>
       
       
     </footer>
@@ -577,7 +595,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -588,6 +606,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
         
           <li>
             <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
@@ -603,10 +625,6 @@
         
           <li>
             <a href="/toutiao-interview/">头条研发-SRE运维研发实习生视频面试(一, 二面)杂记</a>
-          </li>
-        
-          <li>
-            <a href="/bfg-repo-cleaner/">谁来拯救误提交的敏感信息</a>
           </li>
         
       </ul>

@@ -32,7 +32,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -91,7 +91,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假期在家空余时间, 发现微信小游戏突然火了, 群友推荐一款名为: 海盗来了 的小游戏<br>稍微体验了一把感觉很不错, 真正实现了微信对小程序的期望 —- 取代原生 app<br>得益于日益强大的 js 引擎, 在手机端也能做出很华丽的效果, 而且性能也不算很差<br>回到正题: 此款游戏有所谓金币的概念, 而获取金币的一个方式是不断的点击转动转盘<br>寻思如何让脚本来代替我们来干苦力, 便有此文</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>我首先尝试用 fiddler 对目标进行刺探, 发现所有关键请求均做了 sign 签名机制<br>加入了时间戳来防止重放攻击, 可见通过简单的黑盒测试已经没办法获取更多信息了<br>便考虑从白盒角度来找问题, 而白盒的首要条件是拿到所谓源代码<br>这里我尝试了很多网上的解决方法, 一些说构造 url 进行下载的均以失败告终<br>只好用笨办法, 在 root 过的安卓机上去微信安装目录找小游戏缓存的源代码<br>顺利拿到源代码后就结合前面的一些信息进行继续查找<br>在前面我获得了请求的一些特定的参数 <code>sign</code>, <code>t</code> 等等<br>便以此为关键词全局搜索 js 文件, 找到疑似签名算法的方法, 这里贴一下具体代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e += <span class="string">&quot;&amp;secret=&quot;</span> + InitMark.secret;</span><br><span class="line">    <span class="comment">// 这里的 InitMark.secret 是硬编码在 js 中的</span></span><br><span class="line">    <span class="comment">// e = &quot;clientVer=v2.0.78&amp;isWxGame=true&amp;t=1525007445&amp;secret=418785a803d8e0d9&quot;</span></span><br><span class="line">    <span class="keyword">var</span> t = <span class="string">&quot;&quot;</span></span><br><span class="line">      , i = e.split(<span class="string">&quot;&amp;&quot;</span>);</span><br><span class="line">    i.sort();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> n = <span class="number">0</span>; n &lt; i.length; n++)</span><br><span class="line">        t += i[n];</span><br><span class="line">    <span class="comment">// dictionary order</span></span><br><span class="line">    <span class="comment">// t = &quot;clientVer=v2.0.78isWxGame=truesecret=418785a803d8e0d9t=1525007445&quot;</span></span><br><span class="line">    <span class="number">1e4</span> == InitMark.uid &amp;&amp; <span class="built_in">console</span>.log(<span class="string">&quot;data = &quot;</span> + t);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="keyword">new</span> md5;</span><br><span class="line">    <span class="keyword">return</span> t = a.hex_md5(t)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -103,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/" data-id="ckkp5ov9q001xnwtz1aena2p3" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/" data-id="ckmg3o81a001ymwtzazrx98b3" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -170,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -181,6 +181,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
         
           <li>
             <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
@@ -196,10 +200,6 @@
         
           <li>
             <a href="/toutiao-interview/">头条研发-SRE运维研发实习生视频面试(一, 二面)杂记</a>
-          </li>
-        
-          <li>
-            <a href="/bfg-repo-cleaner/">谁来拯救误提交的敏感信息</a>
           </li>
         
       </ul>

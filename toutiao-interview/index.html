@@ -32,6 +32,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -145,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/toutiao-interview/" data-id="ckmg3o814001mmwtz9ky36pon" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/toutiao-interview/" data-id="ckr61ecbg001mrstzho5i28hl" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/toutiao-interview/#disqus_thread" class="article-comment-link">Comments</a>
       

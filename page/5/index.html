@@ -30,6 +30,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -99,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/12306%20API%20%E7%A0%94%E7%A9%B6/" data-id="ckmg3o7zp0001mwtz2vjrajr4" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/12306%20API%20%E7%A0%94%E7%A9%B6/" data-id="ckr61ec9v0000rstzchg462ml" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/12306%20API%20%E7%A0%94%E7%A9%B6/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -143,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Nginx%20%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/" data-id="ckmg3o80c000kmwtzfih8ajcs" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Nginx%20%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/" data-id="ckr61ecao000krstzadb7g7fm" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Nginx%20%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -194,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Ubuntu14.04%20%E5%AF%BC%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E6%BA%90%E5%AE%89%E8%A3%85%20LNMP%20%E5%A0%86%E6%A0%88/" data-id="ckmg3o80r0012mwtz04tbadtt" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Ubuntu14.04%20%E5%AF%BC%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E6%BA%90%E5%AE%89%E8%A3%85%20LNMP%20%E5%A0%86%E6%A0%88/" data-id="ckr61ecb20012rstz2bls5pvl" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Ubuntu14.04%20%E5%AF%BC%E5%85%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E6%BA%90%E5%AE%89%E8%A3%85%20LNMP%20%E5%A0%86%E6%A0%88/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -242,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E9%82%A3%E4%BA%9B%E4%BA%8B/" data-id="ckmg3o81a001zmwtzfyvdao37" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E9%82%A3%E4%BA%9B%E4%BA%8B/" data-id="ckr61ecbm001zrstz55a7d3oc" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E9%82%A3%E4%BA%9B%E4%BA%8B/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -316,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/" data-id="ckmg3o80p000zmwtz93n0683x" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/" data-id="ckr61ecaz000zrstzf2z949qh" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -394,7 +410,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/" data-id="ckmg3o7zt0004mwtz7p9jg2ox" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/" data-id="ckr61eca50004rstz7kytfwik" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -478,7 +494,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/" data-id="ckmg3o80r0011mwtz1va94sgd" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/" data-id="ckr61ecb10011rstz4p2sa9bc" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -546,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Ubuntu%E4%B8%8BApache%E9%85%8D%E7%BD%AESSL%E7%AC%94%E8%AE%B0/" data-id="ckmg3o80s0013mwtz6jz1e9o3" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Ubuntu%E4%B8%8BApache%E9%85%8D%E7%BD%AESSL%E7%AC%94%E8%AE%B0/" data-id="ckr61ecb30013rstz8he7bwg4" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Ubuntu%E4%B8%8BApache%E9%85%8D%E7%BD%AESSL%E7%AC%94%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -588,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckmg3o81l0027mwtz3ul8gxsh" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckr61ecbw0027rstz6fb65d5k" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -636,7 +652,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BApache%E7%AF%87/" data-id="ckmg3o80u0016mwtzekadfopl" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BApache%E7%AF%87/" data-id="ckr61ecb60016rstz6dutfdiq" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8BApache%E7%AF%87/#disqus_thread" class="article-comment-link">Comments</a>
       

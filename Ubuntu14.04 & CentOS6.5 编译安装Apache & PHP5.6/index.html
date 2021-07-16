@@ -32,6 +32,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -140,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/" data-id="ckmg3o80r0011mwtz1va94sgd" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/" data-id="ckr61ecb10011rstz4p2sa9bc" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/#disqus_thread" class="article-comment-link">Comments</a>
       

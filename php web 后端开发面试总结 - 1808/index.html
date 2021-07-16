@@ -34,6 +34,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -142,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/" data-id="ckmg3o812001hmwtzad4p8dse" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/" data-id="ckr61ecbe001hrstz0yuw5cwe" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/#disqus_thread" class="article-comment-link">Comments</a>
       

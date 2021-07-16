@@ -36,6 +36,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -128,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/" data-id="ckmg3o80k000vmwtzgp0rcjos" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/" data-id="ckr61ecau000urstz5zry066n" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Python3%20%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E5%BD%95%E7%86%8A%E7%8C%AB%E7%9B%B4%E6%92%AD(panda.tv)/#disqus_thread" class="article-comment-link">Comments</a>
       

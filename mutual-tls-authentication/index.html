@@ -43,6 +43,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -137,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/mutual-tls-authentication/" data-id="ckmg3o812001gmwtz4keccx73" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/mutual-tls-authentication/" data-id="ckr61ecbd001grstz5fmq99u9" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/mutual-tls-authentication/#disqus_thread" class="article-comment-link">Comments</a>
       

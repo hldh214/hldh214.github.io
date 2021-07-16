@@ -32,6 +32,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -95,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/" data-id="ckmg3o813001kmwtz5oze1pzx" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/" data-id="ckr61ecbf001krstzhvug37gd" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/python3%20json_requests%20%E7%9B%B8%E5%85%B3%E5%A4%87%E5%BF%98/#disqus_thread" class="article-comment-link">Comments</a>
       

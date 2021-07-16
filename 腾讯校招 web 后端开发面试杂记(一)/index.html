@@ -35,6 +35,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -131,7 +147,7 @@ E5 E4 E3 E2 E1
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%80)/" data-id="ckmg3o81d0023mwtzh7wj9kkb" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%80)/" data-id="ckr61ecbo0023rstzagt9dgel" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%80)/#disqus_thread" class="article-comment-link">Comments</a>
       

@@ -30,6 +30,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -99,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/infipower-interview-0219/" data-id="ckmg3o80w001amwtzf58jejvy" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/infipower-interview-0219/" data-id="ckr61ecb9001arstz6j07duct" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/infipower-interview-0219/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -145,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/futu-interview-0127/" data-id="ckmg3o80v0018mwtzf16u8ek7" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/futu-interview-0127/" data-id="ckr61ecb70018rstz580cdd9r" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/futu-interview-0127/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -193,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/tencent-cdc-interview-0701/" data-id="ckmg3o814001lmwtzgo7k2ovz" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/tencent-cdc-interview-0701/" data-id="ckr61ecbg001lrstz9hhl2bmz" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/tencent-cdc-interview-0701/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -239,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/mutual-tls-authentication/" data-id="ckmg3o812001gmwtz4keccx73" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/mutual-tls-authentication/" data-id="ckr61ecbd001grstz5fmq99u9" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/mutual-tls-authentication/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -285,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/toutiao-interview/" data-id="ckmg3o814001mmwtz9ky36pon" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/toutiao-interview/" data-id="ckr61ecbg001mrstzho5i28hl" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/toutiao-interview/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -333,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/bfg-repo-cleaner/" data-id="ckmg3o80u0017mwtz6kbqc1e0" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/bfg-repo-cleaner/" data-id="ckr61ecb70017rstz3y8pgddn" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/bfg-repo-cleaner/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -380,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/ASF-ui-%E6%8C%87%E5%8C%97/" data-id="ckmg3o7zk0000mwtzhfpsdjy5" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/ASF-ui-%E6%8C%87%E5%8C%97/" data-id="ckr61eca00001rstzh1r6dozb" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/ASF-ui-%E6%8C%87%E5%8C%97/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -427,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Head-First-Linuxbrew/" data-id="ckmg3o801000dmwtz9zjleidu" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/Head-First-Linuxbrew/" data-id="ckr61ecaj000crstz0udi2ye2" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/Head-First-Linuxbrew/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -472,7 +488,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/laravel-timestamp-fields-on-migration/" data-id="ckmg3o80y001bmwtzesyhf8p2" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/laravel-timestamp-fields-on-migration/" data-id="ckr61ecbb001crstz41jb9tjk" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/laravel-timestamp-fields-on-migration/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -515,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/migrate-to-hexo/" data-id="ckmg3o811001fmwtz5akk3ezf" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/migrate-to-hexo/" data-id="ckr61ecbc001frstz7gt0gimk" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/migrate-to-hexo/#disqus_thread" class="article-comment-link">Comments</a>
       

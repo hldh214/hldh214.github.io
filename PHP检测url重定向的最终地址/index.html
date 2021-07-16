@@ -32,6 +32,22 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+<script>
+function isTencent(){
+            var ua = navigator.userAgent.toLowerCase();
+            return ua.indexOf("micromess") > 1||ua.indexOf("qqbrow")>1;
+        }
+    
+function taunt() {
+    if (isTencent()) { 
+                alert("系统检测出来你使用了腾讯系浏览器,访问被禁止;\r\n珍爱生命，远离烂人张小龙");
+        document.execCommand("stop");
+        document.body.innerHTML = "系统检测出来你使用了腾讯系浏览器,访问被禁止\r\n珍爱生命，远离烂人张小龙";
+            }
+  }
+document.addEventListener("DOMContentLoaded", taunt);
+      
+</script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -98,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/PHP%E6%A3%80%E6%B5%8Burl%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E6%9C%80%E7%BB%88%E5%9C%B0%E5%9D%80/" data-id="ckmg3o80e000mmwtz0zou9gpj" class="article-share-link">Share</a>
+      <a data-url="https://hldh214.github.io/PHP%E6%A3%80%E6%B5%8Burl%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E6%9C%80%E7%BB%88%E5%9C%B0%E5%9D%80/" data-id="ckr61ecap000mrstz7hib5ljf" class="article-share-link">Share</a>
       
         <a href="https://hldh214.github.io/PHP%E6%A3%80%E6%B5%8Burl%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E6%9C%80%E7%BB%88%E5%9C%B0%E5%9D%80/#disqus_thread" class="article-comment-link">Comments</a>
       

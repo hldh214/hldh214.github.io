@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>Python3切换华为hi link设备数据开关 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OOP版本 2015&#x2F;12&#x2F;15更新OOP版本   POP版本代码先贴上代码,注释都写的比较详细了 import urllib.request import http.cookiejar import re import hashlib import base64  re_csrf_token &#x3D; re.compile(r&#39;(?&lt;&#x3D;&quot;csrf_token">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python3切换华为hi link设备数据开关">
+<meta property="og:url" content="https://hldh214.github.io/Python3%E5%88%87%E6%8D%A2%E5%8D%8E%E4%B8%BAhi%20link%E8%AE%BE%E5%A4%87%E6%95%B0%E6%8D%AE%E5%BC%80%E5%85%B3/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="OOP版本 2015&#x2F;12&#x2F;15更新OOP版本   POP版本代码先贴上代码,注释都写的比较详细了 import urllib.request import http.cookiejar import re import hashlib import base64  re_csrf_token &#x3D; re.compile(r&#39;(?&lt;&#x3D;&quot;csrf_token">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-12-13T07:56:18.000Z">
+<meta property="article:modified_time" content="2022-02-07T09:03:13.471Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python3切换华为hi link设备数据开关" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Python3%E5%88%87%E6%8D%A2%E5%8D%8E%E4%B8%BAhi%20link%E8%AE%BE%E5%A4%87%E6%95%B0%E6%8D%AE%E5%BC%80%E5%85%B3/" class="article-date">
+  <time datetime="2015-12-13T07:56:18.000Z" itemprop="datePublished">2015-12-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python3切换华为hi link设备数据开关
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="OOP版本"><a href="#OOP版本" class="headerlink" title="OOP版本"></a>OOP版本</h1><blockquote>
+<p>2015&#x2F;12&#x2F;15更新<br><a target="_blank" rel="noopener" href="https://github.com/hldh214/MobileWiFi">OOP版本</a></p>
+</blockquote>
+<hr>
+<h1 id="POP版本"><a href="#POP版本" class="headerlink" title="POP版本"></a>POP版本</h1><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>先贴上代码,注释都写的比较详细了</p>
+<pre><code>import urllib.request
+import http.cookiejar
+import re
+import hashlib
+import base64
+
+re_csrf_token = re.compile(r&#39;(?&lt;=&quot;csrf_token&quot; content=&quot;).+(?=&quot;/&gt;)&#39;) # 预编译匹配csrf_token的正则表达式
+re_switch_status = re.compile(r&#39;(?&lt;=&lt;dataswitch&gt;).+(?=&lt;/dataswitch&gt;)&#39;) # 预编译匹配csrf_token的正则表达式
+re_response = re.compile(r&#39;(?&lt;=&lt;response&gt;).+(?=&lt;/response&gt;)&#39;) # 预编译匹配csrf_token的正则表达式
+
+
+main_url = &#39;http://192.168.8.1/html/unicomhome.html&#39; # 用于获取csrf_token的url
+login_url = &#39;http://192.168.8.1/api/user/login&#39; # 登录api
+dataswitch_url = &#39;http://192.168.8.1/api/dialup/mobile-dataswitch&#39; # 数据开关api
+
+user = &#39;admin&#39; # 用户名
+psw = &#39;hldh214&#39; # 密码
+
+cookie = http.cookiejar.CookieJar() # 用cookiejar存储cookies
+opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie))
+
+csrf_token = opener.open(main_url).read().decode()
+g_requestVerificationToken = re_csrf_token.findall(csrf_token)
+
+# 开始编码密码
+psw1 = hashlib.sha256(psw.encode()).hexdigest()
+psw2 = base64.b64encode(psw1.encode()).decode()
+psw3 = user + psw2 + g_requestVerificationToken[0]
+psw4 = hashlib.sha256(psw3.encode()).hexdigest().encode()
+psd = base64.b64encode(psw4).decode()
+# 编码结束
+
+login_data = &#39;&#39;&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;request&gt;&lt;Username&gt;&#39;&#39;&#39; + user + &#39;&#39;&#39;&lt;/Username&gt;&lt;Password&gt;&#39;&#39;&#39; + psd + &#39;&#39;&#39;&lt;/Password&gt;&lt;password_type&gt;4&lt;/password_type&gt;&lt;/request&gt;&#39;&#39;&#39; # 构造post数据
+
+opener.addheaders = [(&#39;__RequestVerificationToken&#39;, g_requestVerificationToken[0])] # 伪造csrf_token头
+
+login = opener.open(login_url, login_data.encode()).read().decode() # 登录
+
+switch_on_data = &#39;&#39;&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;request&gt;&lt;dataswitch&gt;1&lt;/dataswitch&gt;&lt;/request&gt;&#39;&#39;&#39;
+switch_off_data = &#39;&#39;&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;request&gt;&lt;dataswitch&gt;0&lt;/dataswitch&gt;&lt;/request&gt;&#39;&#39;&#39;
+
+switch_status = opener.open(dataswitch_url).read().decode()
+switch_status = re_switch_status.findall(switch_status)[0]
+
+if (not int(switch_status)):
+    csrf_token = opener.open(main_url).read().decode()
+    g_requestVerificationToken = re_csrf_token.findall(csrf_token)
+    opener.addheaders = [(&#39;__RequestVerificationToken&#39;, g_requestVerificationToken[0])]
+    data_switch_on = opener.open(dataswitch_url, switch_on_data.encode()).read().decode()
+    response = re_response.findall(data_switch_on)[0]
+    print(response)
+else:
+    csrf_token = opener.open(main_url).read().decode()
+    g_requestVerificationToken = re_csrf_token.findall(csrf_token)
+    opener.addheaders = [(&#39;__RequestVerificationToken&#39;, g_requestVerificationToken[0])]
+    data_switch_off = opener.open(dataswitch_url, switch_off_data.encode()).read().decode()
+    response = re_response.findall(data_switch_off)[0]
+    print(response)
+</code></pre>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>分析网关网页的JavaScript代码,发现设备只验证动态生成的csrf_token,通过正则表达式获取之,添加至头信息,之后就是常规GET&#x2F;POST操作了</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p> 修改代码的第16-17行,输入自己设备的账号密码</p>
+<ul>
+<li>运行代码,输出OK即表示正常</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Python3%E5%88%87%E6%8D%A2%E5%8D%8E%E4%B8%BAhi%20link%E8%AE%BE%E5%A4%87%E6%95%B0%E6%8D%AE%E5%BC%80%E5%85%B3/" data-id="ckzchehs3000xhcuw8geb9ln7" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Python3%E5%88%87%E6%8D%A2%E5%8D%8E%E4%B8%BAhi%20link%E8%AE%BE%E5%A4%87%E6%95%B0%E6%8D%AE%E5%BC%80%E5%85%B3/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/PyMySQL%E4%B8%8EDjango%E7%9A%84%E7%BB%93%E5%90%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PyMySQL与Django的结合
+        
+      </div>
+    </a>
+  
+  
+    <a href="/PyQt5-Beginner-tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PyQt5-Beginner-tutorial</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+          <li>
+            <a href="/tencent-cdc-interview-0701/">这都没准备就敢面腾讯。。</a>
+          </li>
+        
+          <li>
+            <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/Python3%E5%88%87%E6%8D%A2%E5%8D%8E%E4%B8%BAhi%20link%E8%AE%BE%E5%A4%87%E6%95%B0%E6%8D%AE%E5%BC%80%E5%85%B3/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

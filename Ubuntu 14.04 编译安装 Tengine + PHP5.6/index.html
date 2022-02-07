@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>Ubuntu 14.04 编译安装 Tengine + PHP5.6 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引子本篇从头开始讲解Ubuntu下编译安装 Tengine 和 PHP 确保已经安装编译器! 1apt-get install build-essential -y  懒人专用 1234567apt-get install gcc make build-essential libxml2 libxml2-dev openssl bzip2 libbz2-dev curl libpng12-dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu 14.04 编译安装 Tengine + PHP5.6">
+<meta property="og:url" content="https://hldh214.github.io/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="引子本篇从头开始讲解Ubuntu下编译安装 Tengine 和 PHP 确保已经安装编译器! 1apt-get install build-essential -y  懒人专用 1234567apt-get install gcc make build-essential libxml2 libxml2-dev openssl bzip2 libbz2-dev curl libpng12-dev">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-06-27T14:51:46.000Z">
+<meta property="article:modified_time" content="2022-02-07T09:03:13.471Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ubuntu 14.04 编译安装 Tengine + PHP5.6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/" class="article-date">
+  <time datetime="2016-06-27T14:51:46.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu 14.04 编译安装 Tengine + PHP5.6
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>本篇从头开始讲解Ubuntu下编译安装 Tengine 和 PHP</p>
+<p>确保已经安装编译器!</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install build-essential -y</span><br></pre></td></tr></table></figure>
+
+<p>懒人专用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gcc make build-essential libxml2 libxml2-dev openssl bzip2 libbz2-dev curl libpng12-dev libmcrypt-dev -y</span><br><span class="line">apt-get install libcurl4-gnutls-dev -y</span><br><span class="line">apt-get install libcurl4-openssl-dev -y</span><br><span class="line"></span><br><span class="line">wget &quot;http://tengine.taobao.org/download/tengine-2.1.2.tar.gz&quot; &quot;ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz&quot; &quot;http://cn2.php.net/distributions/php-5.6.23.tar.gz&quot;</span><br><span class="line"></span><br><span class="line">for tar in *.tar.gz; do tar -zxvf $tar; done</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="编译-Tengine"><a href="#编译-Tengine" class="headerlink" title="编译 Tengine"></a>编译 Tengine</h1><p><a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz">ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz</a><br><a target="_blank" rel="noopener" href="http://tengine.taobao.org/download/tengine-2.1.2.tar.gz">http://tengine.taobao.org/download/tengine-2.1.2.tar.gz</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 安装依赖</span><br><span class="line">apt-get install openssl libssl-dev -y</span><br><span class="line"></span><br><span class="line"># 编译</span><br><span class="line">./configure --with-pcre=/path/to/pcre-8.39</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="编译-PHP"><a href="#编译-PHP" class="headerlink" title="编译 PHP"></a>编译 PHP</h1><p><a target="_blank" rel="noopener" href="http://cn2.php.net/distributions/php-5.6.23.tar.gz">http://cn2.php.net/distributions/php-5.6.23.tar.gz</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 安装依赖</span><br><span class="line">apt-get install libxml2 libxml2-dev bzip2 libbz2-dev curl libpng12-dev libmcrypt-dev -y</span><br><span class="line">apt-get install libcurl4-gnutls-dev -y</span><br><span class="line">apt-get install libcurl4-openssl-dev -y</span><br><span class="line"></span><br><span class="line"># 编译</span><br><span class="line">./configure --prefix=/usr/local/php --enable-fpm --with-config-file-path=/usr/local/php/etc --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-gettext --enable-mbstring --enable-exif --with-iconv --with-mcrypt --with-mhash --with-openssl --enable-bcmath --enable-soap --with-libxml-dir --enable-pcntl --enable-shmop --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-sockets --with-curl --with-gd --with-zlib --enable-zip --with-bz2  --without-sqlite3 --without-pdo-sqlite --with-pear --enable-opcache --with-fpm-group=www-data --with-fpm-user=www-data</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>安装完毕之后, 开始配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 配置php-fpm</span><br><span class="line">cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</span><br><span class="line"></span><br><span class="line"># 整合nginx+php</span><br><span class="line">vim nginx.conf</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">	root   /var/www/html;</span><br><span class="line">	index  index.html index.php;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">    root           /var/www/html;</span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_index  index.php;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME  $DOCUMENT_ROOT$fastcgi_script_name;</span><br><span class="line">    include        fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="MySQL-相关"><a href="#MySQL-相关" class="headerlink" title="MySQL 相关"></a>MySQL 相关</h1><p>使用apt-get install mysql-server 之后, 发觉mysql_connect()这类函数会报错, 提示</p>
+<pre><code>mysql_connect(): [2002] No such file or directory
+</code></pre>
+<p>这是表示没有找到mysql.sock文件, 只需去mysql的my.cnf中找一下真实路径, 然后做一下软连接即可, 也可能是mysqld.sock.</p>
+<pre><code>ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
+</code></pre>
+<p>这个是4.6版本, 仅支持5.5以及以上的 mysql :<br><a target="_blank" rel="noopener" href="https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-all-languages.tar.gz">https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-all-languages.tar.gz</a></p>
+<p>另外, 如果使用 apt-get 安装的 mysql5.6, 则需要确定机器内存大于 2GB<br>或者使用 swap, 否则会安装失败</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">On Ubuntu 14.04, I do the following to solve the problem:</span><br><span class="line"></span><br><span class="line">Create a 4G swap file:</span><br><span class="line">sudo fallocate -l 4G /swapfile</span><br><span class="line"></span><br><span class="line">Change its permission to only root could access and change:</span><br><span class="line">sudo chmod 600 /swapfile</span><br><span class="line"></span><br><span class="line">Make it swap:</span><br><span class="line">sudo mkswap /swapfile</span><br><span class="line"></span><br><span class="line">Activate:</span><br><span class="line">sudo swapon /swapfile</span><br><span class="line"></span><br><span class="line">Now you can try install mysql again, it should success this time. Just remember to remove the previous unsuccessful installation before you do so.</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="OPcache"><a href="#OPcache" class="headerlink" title="OPcache"></a>OPcache</h1><p>需要如下配置才能启用 OPcache :</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim php.ini</span><br><span class="line"></span><br><span class="line">zend_extension=/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/opcache.so</span><br><span class="line"></span><br><span class="line">opcache.enable=1</span><br><span class="line">opcache.memory_consumption=128</span><br><span class="line">opcache.interned_strings_buffer=8</span><br><span class="line">opcache.max_accelerated_files=5000</span><br><span class="line">opcache.revalidate_freq=60</span><br><span class="line">opcache.fast_shutdown=1</span><br></pre></td></tr></table></figure>
+
+<h1 id="整合ThinkPHP"><a href="#整合ThinkPHP" class="headerlink" title="整合ThinkPHP"></a>整合ThinkPHP</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">vim nginx.conf</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">	root   /var/www/html;</span><br><span class="line">	index  index.html index.php;</span><br><span class="line">	# ThinkPHP hide index.php</span><br><span class="line">	try_files $uri $uri/ /index.php?s=$uri&amp;$args;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~ \.php &#123;</span><br><span class="line">	root /var/www/html;</span><br><span class="line">	fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">	fastcgi_index index.php;</span><br><span class="line">	include fastcgi_params;</span><br><span class="line">	set $path_info &quot;&quot;;</span><br><span class="line">	set $real_script_name $fastcgi_script_name;</span><br><span class="line">	if ($fastcgi_script_name ~ &quot;^(.+?\.php)(/.+)$&quot;) &#123;</span><br><span class="line">	set $real_script_name $1;</span><br><span class="line">	set $path_info $2;</span><br><span class="line">	&#125;</span><br><span class="line">	fastcgi_param SCRIPT_FILENAME $document_root$real_script_name;</span><br><span class="line">	fastcgi_param SCRIPT_NAME $real_script_name;</span><br><span class="line">	fastcgi_param PATH_INFO $path_info;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="http://www.yanshiba.com/archives/727">http://www.yanshiba.com/archives/727</a><br><a target="_blank" rel="noopener" href="http://php.net/manual/zh/opcache.installation.php">http://php.net/manual/zh/opcache.installation.php</a><br><a target="_blank" rel="noopener" href="http://www.th7.cn/system/lin/201410/74518.shtml">http://www.th7.cn/system/lin/201410/74518.shtml</a><br><a target="_blank" rel="noopener" href="http://havee.me/internet/2014-04/nginx-gzip-compression.html">http://havee.me/internet/2014-04/nginx-gzip-compression.html</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/tinico/article/details/18033573">http://blog.csdn.net/tinico/article/details/18033573</a><br><a target="_blank" rel="noopener" href="http://www.jb51.net/article/82276.htm">http://www.jb51.net/article/82276.htm</a><br><a target="_blank" rel="noopener" href="http://askubuntu.com/questions/457923/why-did-installation-of-mysql-5-6-on-ubuntu-14-04-fail">http://askubuntu.com/questions/457923/why-did-installation-of-mysql-5-6-on-ubuntu-14-04-fail</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/" data-id="ckzchehs40011hcuw1fgifbbj" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E9%82%A3%E4%BA%9B%E4%BA%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          微信支付那些事
+        
+      </div>
+    </a>
+  
+  
+    <a href="/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CentOS6编译安装Apache2.4 &amp; PHP5.6</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+          <li>
+            <a href="/tencent-cdc-interview-0701/">这都没准备就敢面腾讯。。</a>
+          </li>
+        
+          <li>
+            <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/Ubuntu%2014.04%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Tengine%20+%20PHP5.6/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

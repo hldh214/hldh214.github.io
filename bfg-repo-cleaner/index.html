@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>谁来拯救误提交的敏感信息 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引子你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……  等等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谁来拯救误提交的敏感信息">
+<meta property="og:url" content="https://hldh214.github.io/bfg-repo-cleaner/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="引子你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……  等等">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-02T10:37:47.000Z">
+<meta property="article:modified_time" content="2022-02-07T09:03:13.471Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-bfg-repo-cleaner" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/bfg-repo-cleaner/" class="article-date">
+  <time datetime="2019-03-02T10:37:47.000Z" itemprop="datePublished">2019-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      谁来拯救误提交的敏感信息
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>你搬了一天的砖, 终于提交了最后一行代码, 翻看着你刚写的晦涩难懂的代码, 你的心里居然有一丝得意<br>夜幕降临, 你点了外卖, 给自己泡了杯淡茶, 望着杯里氤氲着的水汽, 你的思绪飘向了远方……</p>
+<blockquote>
+<p>等等</p>
+</blockquote>
+<span id="more"></span>
+
+<p>你猛地一惊, 仔细的回想着, 发觉自己好像硬编码了账号密码, 并且跟刚才的提交一起推送了<br>坏了, 你心里想, 但是这有什么呢, 没人无聊到一个个翻 commit 出来看吧<br>于是你删掉了代码中硬编码的账号密码, 再次提交并推送, 你呷了一口茶, 很快便忘了这事<br>但是事情真的就这样结束了吗?</p>
+<h1 id="谁不怕无聊"><a href="#谁不怕无聊" class="headerlink" title="谁不怕无聊?"></a>谁不怕无聊?</h1><p>电脑这种机器被发明是为了代替人类做一些枯燥重复的事情, 例如加减乘除, 这是众所周知的<br>还记得上面说到<code>没人无聊到一个个翻 commit 出来看吧</code>, 确实没<code>人</code>会这么干, 但是<code>机器</code>就不一样了<br><a target="_blank" rel="noopener" href="https://github.com/michenriksen/gitrob">https://github.com/michenriksen/gitrob</a> 这个项目, 有兴趣的小伙伴可以考察考察<br>正如 README 里面所讲, 他可以用来扫描 git 仓库里面<code>可能</code>是敏感信息的内容, 导出为报告<br>这就有意思了, 没事可以拿来扫一下自己同学呀, 朋友呀, 同事呀等等…</p>
+<h1 id="那怎么办"><a href="#那怎么办" class="headerlink" title="那怎么办"></a>那怎么办</h1><p>这时候就有小朋友要问了, 那现在怎么办呢, 难道要舍弃 commit 记录, 再提交修正的版本重新做人吗<br>严格来说, 这的确是一种方法, 而且大部分人遇到了首先都会想到这个方法, 简洁明了, 通俗易懂<br>但是作为 geek 的你, 这种方法是不可接受的, 拒绝</p>
+<h1 id="bfg-repo-cleaner"><a href="#bfg-repo-cleaner" class="headerlink" title="bfg-repo-cleaner"></a>bfg-repo-cleaner</h1><p>现在介绍一款专门干这活的利器: <a target="_blank" rel="noopener" href="https://rtyley.github.io/bfg-repo-cleaner">https://rtyley.github.io/bfg-repo-cleaner</a><br>别看这玩意虽然是 Scala 写的, 要 Jvm 环境才能运行, 但是确确实实是可以解决我们的问题的<br>首先下载 jar 文件, 按照给出的命令执行, 这里需要事先准备<code>pwd.txt</code>文件来存放敏感词, 一行一个即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"># 先 clone 一份纯 git database 到本地</span><br><span class="line">C:\Users\hldh214\Downloads&gt;git clone --mirror git@github.com:hldh214/buff2steam.git</span><br><span class="line">Cloning into bare repository &#x27;buff2steam.git&#x27;...</span><br><span class="line">remote: Enumerating objects: 127, done.</span><br><span class="line">remote: Counting objects: 100% (127/127), done.</span><br><span class="line">remote: Compressing objects: 100% (82/82), done.</span><br><span class="line">Receiving objects: 100% (127/127), 28.20 KiB | 159.00 KiB/s, done.</span><br><span class="line">Resolving deltas: 100% (62/62), done.</span><br><span class="line">remote: Total 127 (delta 62), reused 75 (delta 32), pack-reused 0</span><br><span class="line"></span><br><span class="line"># --replace-text 表示 grep 替换掉敏感词, 当然你也可以用 --delete-files 来毁尸灭迹</span><br><span class="line">C:\Users\hldh214\Downloads&gt;java -jar bfg-1.13.0.jar --replace-text pwd.txt buff2steam.git</span><br><span class="line"></span><br><span class="line">Using repo : C:\Users\hldh214\Downloads\buff2steam.git</span><br><span class="line"></span><br><span class="line">Found 12 objects to protect</span><br><span class="line">Found 3 commit-pointing refs : HEAD, refs/heads/master, refs/tags/0.0.1</span><br><span class="line"></span><br><span class="line">Protected commits</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">These are your protected commits, and so their contents will NOT be altered:</span><br><span class="line"></span><br><span class="line"> * commit ba928494 (protected by &#x27;HEAD&#x27;)</span><br><span class="line"></span><br><span class="line">Cleaning</span><br><span class="line">--------</span><br><span class="line"></span><br><span class="line">Found 32 commits</span><br><span class="line">Cleaning commits:       100% (32/32)</span><br><span class="line">Cleaning commits completed in 247 ms.</span><br><span class="line"></span><br><span class="line">Updating 1 Ref</span><br><span class="line">--------------</span><br><span class="line"></span><br><span class="line">        Ref                 Before     After</span><br><span class="line">        ---------------------------------------</span><br><span class="line">        refs/heads/master | ba928494 | c0d9ed49</span><br><span class="line"></span><br><span class="line">Updating references:    100% (1/1)</span><br><span class="line">...Ref update completed in 28 ms.</span><br><span class="line"></span><br><span class="line">Commit Tree-Dirt History</span><br><span class="line">------------------------</span><br><span class="line"></span><br><span class="line">        Earliest                  Latest</span><br><span class="line">        |                              |</span><br><span class="line">        ............................DDDm</span><br><span class="line"></span><br><span class="line">        D = dirty commits (file tree fixed)</span><br><span class="line">        m = modified commits (commit message or parents changed)</span><br><span class="line">        . = clean commits (no changes to file tree)</span><br><span class="line"></span><br><span class="line">                                Before     After</span><br><span class="line">        -------------------------------------------</span><br><span class="line">        First modified commit | fc4b9763 | 756caa93</span><br><span class="line">        Last dirty commit     | 16e9e3ef | 3740fc1a</span><br><span class="line"></span><br><span class="line">Changed files</span><br><span class="line">-------------</span><br><span class="line"></span><br><span class="line">        Filename   Before &amp; After</span><br><span class="line">        ------------------------------</span><br><span class="line">        steam.py | 001439f4 ? 90ab2216</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In total, 8 object ids were changed. Full details are logged here:</span><br><span class="line"></span><br><span class="line">        C:\Users\hldh214\Downloads\buff2steam.git.bfg-report\2019-03-02\17-28-42</span><br><span class="line"></span><br><span class="line">BFG run is complete! When ready, run: git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--</span><br><span class="line">You can rewrite history in Git - don&#x27;t let Trump do it for real!</span><br><span class="line">Trump&#x27;s administration has lied consistently, to make people give up on ever</span><br><span class="line">being told the truth. Don&#x27;t give up: https://www.rescue.org/topic/refugees-america</span><br><span class="line">--</span><br><span class="line"></span><br><span class="line"># 可以看到上面的输出, 作者很贴心的告诉你可以直接 reflog expire &amp;&amp; gc 就行了</span><br><span class="line"># 结尾暗藏私货, 举报了:D</span><br><span class="line">C:\Users\hldh214\Downloads&gt;cd buff2steam.git</span><br><span class="line"></span><br><span class="line">C:\Users\hldh214\Downloads\buff2steam.git&gt;git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br><span class="line">Enumerating objects: 127, done.</span><br><span class="line">Counting objects: 100% (127/127), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (114/114), done.</span><br><span class="line">Writing objects: 100% (127/127), done.</span><br><span class="line">Total 127 (delta 62), reused 52 (delta 0)</span><br><span class="line"></span><br><span class="line"># 打完收工</span><br><span class="line">C:\Users\hldh214\Downloads\buff2steam.git&gt;git push</span><br><span class="line">Enumerating objects: 85, done.</span><br><span class="line">Counting objects: 100% (85/85), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (36/36), done.</span><br><span class="line">Writing objects: 100% (80/80), 13.75 KiB | 2.75 MiB/s, done.</span><br><span class="line">Total 80 (delta 41), reused 77 (delta 38)</span><br><span class="line">remote: Resolving deltas: 100% (41/41), completed with 3 local objects.</span><br><span class="line">To github.com:hldh214/buff2steam.git</span><br><span class="line"> + ba92849...c0d9ed4 master -&gt; master (forced update)</span><br><span class="line"></span><br><span class="line">C:\Users\hldh214\Downloads\buff2steam.git&gt;</span><br></pre></td></tr></table></figure>
+<p>一顿操作猛如虎, 再次去查看 commit history 发现, 账号密码等敏感信息都换成了<code>***REMOVED***</code><br>commit hash 也改了, 在 history 里面已经找不到原来的 commit hash 了<br>但是手动输入原来的 commit hash 是可以查看原来的版本的, 如果各位看官有兴趣可以来瞧瞧:<br>raw: <a target="_blank" rel="noopener" href="https://github.com/hldh214/buff2steam/commit/ba92849489d406f62d9473930185fdb699e02ac3#diff-b935f1a5dc14299393e08e0465a70447L46">https://github.com/hldh214/buff2steam/commit/ba92849489d406f62d9473930185fdb699e02ac3#diff-b935f1a5dc14299393e08e0465a70447L46</a><br>fixed: <a target="_blank" rel="noopener" href="https://github.com/hldh214/buff2steam/commit/c0d9ed498c90303fe265678d6645498b329157d5#diff-b935f1a5dc14299393e08e0465a70447L46">https://github.com/hldh214/buff2steam/commit/c0d9ed498c90303fe265678d6645498b329157d5#diff-b935f1a5dc14299393e08e0465a70447L46</a></p>
+<h1 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h1><p><a target="_blank" rel="noopener" href="https://www.bennythink.com/git-password.html">https://www.bennythink.com/git-password.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/bfg-repo-cleaner/" data-id="ckzchehs70019hcuwfky0h7pm" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/bfg-repo-cleaner/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/toutiao-interview/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          头条研发-SRE运维研发实习生视频面试(一, 二面)杂记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ASF-ui-%E6%8C%87%E5%8C%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ASF-ui 指北 (feat. Caddy)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+          <li>
+            <a href="/tencent-cdc-interview-0701/">这都没准备就敢面腾讯。。</a>
+          </li>
+        
+          <li>
+            <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/bfg-repo-cleaner/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

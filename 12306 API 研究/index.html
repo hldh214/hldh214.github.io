@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>12306 API 研究 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引子本篇记录 12306 对外暴露的 API 信息, 具有时效性, 仅供学习.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12306 API 研究">
+<meta property="og:url" content="https://hldh214.github.io/12306%20API%20%E7%A0%94%E7%A9%B6/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="引子本篇记录 12306 对外暴露的 API 信息, 具有时效性, 仅供学习.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-08-02T07:26:49.000Z">
+<meta property="article:modified_time" content="2022-02-07T09:03:13.461Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-12306 API 研究" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/12306%20API%20%E7%A0%94%E7%A9%B6/" class="article-date">
+  <time datetime="2016-08-02T07:26:49.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      12306 API 研究
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>本篇记录 12306 对外暴露的 API 信息, 具有时效性, 仅供学习.</p>
+<span id="more"></span>
+
+<h1 id="APIs"><a href="#APIs" class="headerlink" title="APIs"></a>APIs</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&amp;queryDate=2016-08-20&amp;from_station=WHN&amp;to_station=SNH">https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&amp;queryDate=2016-08-20&amp;from_station=WHN&amp;to_station=SNH</a></li>
+</ol>
+<p>余票查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import os</span><br><span class="line">from pprint import pprint</span><br><span class="line">from requests.packages.urllib3.exceptions import InsecureRequestWarning</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Train:</span><br><span class="line">    ticket_hash = &#123;</span><br><span class="line">        &#x27;商务座&#x27;: &#x27;swz_num&#x27;,</span><br><span class="line">        &#x27;特等座&#x27;: &#x27;tz_num&#x27;,</span><br><span class="line">        &#x27;一等座&#x27;: &#x27;zy_num&#x27;,</span><br><span class="line">        &#x27;二等座&#x27;: &#x27;ze_num&#x27;,</span><br><span class="line">        &#x27;高级软卧&#x27;: &#x27;gr_num&#x27;,</span><br><span class="line">        &#x27;软卧&#x27;: &#x27;rw_num&#x27;,</span><br><span class="line">        &#x27;硬卧&#x27;: &#x27;yw_num&#x27;,</span><br><span class="line">        &#x27;软座&#x27;: &#x27;rz_num&#x27;,</span><br><span class="line">        &#x27;硬座&#x27;: &#x27;yz_num&#x27;,</span><br><span class="line">        &#x27;无座&#x27;: &#x27;wz_num&#x27;,</span><br><span class="line">        &#x27;其它&#x27;: &#x27;qt_num&#x27;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    def __init__(self, date, from_station, to_station, train_code=None, ticket_type=None):</span><br><span class="line">        # 抑制 12306 自签发的 SSL 证书引发的 warning</span><br><span class="line">        requests.packages.urllib3.disable_warnings(InsecureRequestWarning)</span><br><span class="line"></span><br><span class="line">        self.stationList = self.stationInit()</span><br><span class="line">        self.date = date</span><br><span class="line">        self.from_station = from_station</span><br><span class="line">        self.to_station = to_station</span><br><span class="line">        self.train_code = train_code</span><br><span class="line">        self.ticket_type = ticket_type</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def stationInit():</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        @bji|北京|BJP|beijing|bj|2</span><br><span class="line">        @拼音缩写三位|站点名称|编码|拼音|拼音缩写|序号</span><br><span class="line">        :return:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        stations = &#123;&#125;</span><br><span class="line">        if not os.path.isfile(&#x27;station_name.js&#x27;):</span><br><span class="line">            res = requests.get(</span><br><span class="line">                &#x27;https://kyfw.12306.cn/otn/resources/js/framework/station_name.js&#x27;,</span><br><span class="line">                verify=False</span><br><span class="line">            )</span><br><span class="line">            with open(&#x27;station_name.js&#x27;, &#x27;wb&#x27;) as fp:</span><br><span class="line">                fp.write(res.content)</span><br><span class="line">        with open(&#x27;station_name.js&#x27;, encoding=&#x27;utf8&#x27;) as fp:</span><br><span class="line">            data = fp.read()</span><br><span class="line">            data = data.partition(&#x27;=&#x27;)[2].strip(&quot;&#x27;&quot;)  # var station_names =&#x27;..&#x27;</span><br><span class="line">        for station in data.split(&#x27;@&#x27;)[1:]:</span><br><span class="line">            items = station.split(&#x27;|&#x27;)  # bjb|北京北|VAP|beijingbei|bjb|0</span><br><span class="line">            stations[items[1]] = items[2]</span><br><span class="line">        return stations</span><br><span class="line"></span><br><span class="line">    def query(self):</span><br><span class="line">        query_url = &#x27;https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&amp;queryDate=&#123;&#125;&#x27; \</span><br><span class="line">                    &#x27;&amp;from_station=&#123;&#125;&amp;to_station=&#123;&#125;&#x27;.format(</span><br><span class="line">            self.date,</span><br><span class="line">            self.stationList[self.from_station],</span><br><span class="line">            self.stationList[self.to_station]</span><br><span class="line">        )</span><br><span class="line">        res = requests.get(query_url, verify=False).json()</span><br><span class="line">        pprint(res)</span><br><span class="line">        if res == -1:</span><br><span class="line">            return False</span><br><span class="line">        if not res[&#x27;data&#x27;][&#x27;flag&#x27;]:</span><br><span class="line">            return False</span><br><span class="line">        if self.train_code and self.ticket_type:</span><br><span class="line">            for each_train in res[&#x27;data&#x27;][&#x27;datas&#x27;]:</span><br><span class="line">                if each_train[&#x27;station_train_code&#x27;] == self.train_code:</span><br><span class="line">                    for each_ticket in self.ticket_type:</span><br><span class="line">                        print(each_ticket + &#x27;: &#x27; + each_train[self.ticket_hash[each_ticket]])</span><br><span class="line">        else:</span><br><span class="line">            for each_train in res[&#x27;data&#x27;][&#x27;datas&#x27;]:</span><br><span class="line">                print(each_train[&#x27;station_train_code&#x27;])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t = Train(&#x27;2016-08-20&#x27;, &#x27;武汉&#x27;, &#x27;上海南&#x27;, &#x27;K121&#x27;, [&#x27;硬卧&#x27;, &#x27;软卧&#x27;, &#x27;硬座&#x27;, &#x27;软座&#x27;, &#x27;无座&#x27;])</span><br><span class="line">t.query()</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><a target="_blank" rel="noopener" href="https://kyfw.12306.cn/otn/czxx/queryByTrainNo?train_no=39000D302808&amp;from_station_telecode=AOH&amp;to_station_telecode=ZEK&amp;depart_date=2016-08-20">https://kyfw.12306.cn/otn/czxx/queryByTrainNo?train_no=39000D302808&amp;from_station_telecode=AOH&amp;to_station_telecode=ZEK&amp;depart_date=2016-08-20</a></li>
+</ol>
+<p>查询 train_no 指定车次所有经过的站</p>
+<ol start="3">
+<li><a target="_blank" rel="noopener" href="https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no=39000D302808&amp;from_station_no=01&amp;to_station_no=12&amp;seat_types=OMO&amp;train_date=2016-08-19">https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?train_no=39000D302808&amp;from_station_no=01&amp;to_station_no=12&amp;seat_types=OMO&amp;train_date=2016-08-19</a></li>
+</ol>
+<p>查询 train_no 指定车次票价<br>其中, from_station_no, to_station_no 以及 seat_types 来自接口 1</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/12306%20API%20%E7%A0%94%E7%A9%B6/" data-id="ckzchehrl0001hcuw3g2m6i77" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/12306%20API%20%E7%A0%94%E7%A9%B6/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/12306%20API%20%E4%B9%8B%20PHP%20%E5%AE%9E%E8%B7%B5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          12306 API 之 PHP 实践
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Nginx%20%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nginx 配置笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+          <li>
+            <a href="/tencent-cdc-interview-0701/">这都没准备就敢面腾讯。。</a>
+          </li>
+        
+          <li>
+            <a href="/mutual-tls-authentication/">用`降维打击`安排安卓 app 的 TLS 双向认证</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/12306%20API%20%E7%A0%94%E7%A9%B6/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

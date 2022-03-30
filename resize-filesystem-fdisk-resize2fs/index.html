@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>磁盘扩容二三事 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引子一晃又是一年过去了, 不禁感慨病毒发生前的时代是什么样的? 已经渐渐模糊了.那么言归正传, 今天我们来聊一聊 Linux 下磁盘扩容的事情.我们的需求是一个固定大小(200MB)的 img 文件需要 dd 进 SD 卡做嵌入式设备的启动盘, 之前为了图方便直接把 img 文件扩容到足够大(2GB)来节省后面给 SD 卡做分区的操作, 后来发现这样偷懒有一个问题, 就是 dd 的时间太久了, 所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="磁盘扩容二三事">
+<meta property="og:url" content="https://hldh214.github.io/resize-filesystem-fdisk-resize2fs/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="引子一晃又是一年过去了, 不禁感慨病毒发生前的时代是什么样的? 已经渐渐模糊了.那么言归正传, 今天我们来聊一聊 Linux 下磁盘扩容的事情.我们的需求是一个固定大小(200MB)的 img 文件需要 dd 进 SD 卡做嵌入式设备的启动盘, 之前为了图方便直接把 img 文件扩容到足够大(2GB)来节省后面给 SD 卡做分区的操作, 后来发现这样偷懒有一个问题, 就是 dd 的时间太久了, 所">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-20T15:22:12.000Z">
+<meta property="article:modified_time" content="2022-03-30T06:32:23.463Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-resize-filesystem-fdisk-resize2fs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/resize-filesystem-fdisk-resize2fs/" class="article-date">
+  <time datetime="2021-11-20T15:22:12.000Z" itemprop="datePublished">2021-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      磁盘扩容二三事
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>一晃又是一年过去了, 不禁感慨病毒发生前的时代是什么样的? 已经渐渐模糊了.<br>那么言归正传, 今天我们来聊一聊 Linux 下磁盘扩容的事情.<br>我们的需求是一个固定大小(200MB)的 <code>img</code> 文件需要 <code>dd</code> 进 SD 卡做嵌入式设备的启动盘, 之前为了图方便直接把 <code>img</code> 文件扩容到足够大(2GB)来节省后面给 SD 卡做分区的操作, 后来发现这样偷懒有一个问题, 就是 <code>dd</code> 的时间太久了, 所以得把之前偷掉的懒补回来.<br>本来吧, 这事情放 Windows 不到半分钟就解决了, 离开了图形化界面问题一下子就多了起来, 故有此文以记录我的亲历.</p>
+<span id="more"></span>
+
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="一些基本命令"><a href="#一些基本命令" class="headerlink" title="一些基本命令"></a>一些基本命令</h2><p>开局直接一顿 Google 先恶补一下相关命令的基本使用方法: <code>fdisk, mount, umount, e2fsck, resize2fs, parted, ......</code><br>然后信心满满开始操刀, 这里为了方便就以本地虚拟化一块磁盘来代替 SD 卡.<br>我们的基本逻辑是直接 <code>dd</code> 未扩容的 <code>img</code> 文件进磁盘, 然后再给磁盘做扩容处理, 这样可以兼顾速度跟容量.</p>
+<h2 id="DD"><a href="#DD" class="headerlink" title="DD"></a>DD</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@vm ~]# dd if=sdcard.img of=/dev/sdb bs=256K status=progress</span><br><span class="line">232783872 bytes (233 MB, 222 MiB) copied, 1 s, 233 MB/s</span><br><span class="line">928+1 records in</span><br><span class="line">928+1 records out</span><br><span class="line">243270144 bytes (243 MB, 232 MiB) copied, 1.1339 s, 215 MB/s</span><br></pre></td></tr></table></figure>
+
+<p>SSD 速度还是很给力的, 秒完成, 那么我们看一下目前的分区情况.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">[root@vm ~]# fdisk -l</span><br><span class="line">Disk /dev/loop0: 61.83 MiB, 64835584 bytes, 126632 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/loop1: 73.18 MiB, 76734464 bytes, 149872 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/loop2: 32.31 MiB, 33878016 bytes, 66168 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/sdb: 2 GiB, 2147483648 bytes, 4194304 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0x00000000</span><br><span class="line"></span><br><span class="line">Device     Boot Start    End Sectors  Size Id Type</span><br><span class="line">/dev/sdb1  *        1  65536   65536   32M  c W95 FAT32 (LBA)</span><br><span class="line">/dev/sdb2       65537 475136  409600  200M 83 Linux</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/sda: 20 GiB, 21474836480 bytes, 41943040 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: gpt</span><br><span class="line">Disk identifier: 4F59C0B8-3AA0-4C5D-883E-9CC503529107</span><br><span class="line"></span><br><span class="line">Device       Start      End  Sectors Size Type</span><br><span class="line">/dev/sda1     2048     4095     2048   1M BIOS boot</span><br><span class="line">/dev/sda2     4096  2101247  2097152   1G Linux filesystem</span><br><span class="line">/dev/sda3  2101248 41940991 39839744  19G Linux filesystem</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 19 GiB, 20396900352 bytes, 39837696 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 <code>/dev/sdb</code> 这块磁盘的容量是 2G, 但是因为 <code>dd</code> 进去的 <code>img</code> 只有两百多兆, 导致剩余的容量成为了未分配空间.</p>
+<h2 id="重新分区"><a href="#重新分区" class="headerlink" title="重新分区"></a>重新分区</h2><h3 id="删除旧分区"><a href="#删除旧分区" class="headerlink" title="删除旧分区"></a>删除旧分区</h3><p>首先想到的是老牌的 <code>fdisk</code> 工具, 一顿操作.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">[root@vm ~]# fdisk /dev/sdb</span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.36.1).</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m for help): p</span><br><span class="line">Disk /dev/sdb: 2 GiB, 2147483648 bytes, 4194304 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0x00000000</span><br><span class="line"></span><br><span class="line">Device     Boot Start    End Sectors  Size Id Type</span><br><span class="line">/dev/sdb1  *        1  65536   65536   32M  c W95 FAT32 (LBA)</span><br><span class="line">/dev/sdb2       65537 475136  409600  200M 83 Linux</span><br><span class="line"></span><br><span class="line">Command (m for help): d</span><br><span class="line">Partition number (1,2, default 2): 2</span><br><span class="line"></span><br><span class="line">Partition 2 has been deleted.</span><br><span class="line"></span><br><span class="line">Command (m for help): p</span><br><span class="line">Disk /dev/sdb: 2 GiB, 2147483648 bytes, 4194304 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0x00000000</span><br><span class="line"></span><br><span class="line">Device     Boot Start   End Sectors Size Id Type</span><br><span class="line">/dev/sdb1  *        1 65536   65536  32M  c W95 FAT32 (LBA)</span><br><span class="line"></span><br><span class="line">Command (m for help): w</span><br><span class="line">The partition table has been altered.</span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line">Syncing disks.</span><br></pre></td></tr></table></figure>
+
+<p>没问题, 这个两百多兆的分区成功被我们删除了, 我们继续.</p>
+<h3 id="新建分区"><a href="#新建分区" class="headerlink" title="新建分区"></a>新建分区</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root@vm ~]# fdisk /dev/sdb</span><br><span class="line"></span><br><span class="line">Welcome to fdisk (util-linux 2.36.1).</span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m for help): n</span><br><span class="line">Partition type</span><br><span class="line">   p   primary (1 primary, 0 extended, 3 free)</span><br><span class="line">   e   extended (container for logical partitions)</span><br><span class="line">Select (default p):</span><br><span class="line"></span><br><span class="line">Using default response p.</span><br><span class="line">Partition number (2-4, default 2):</span><br><span class="line">First sector (65537-4194303, default 67584): 65537</span><br><span class="line">Last sector, +/-sectors or +/-size&#123;K,M,G,T,P&#125; (65537-4194303, default 4194303):</span><br><span class="line"></span><br><span class="line">Created a new partition 2 of type &#x27;Linux&#x27; and of size 2 GiB.</span><br><span class="line">Partition #2 contains a ext4 signature.</span><br><span class="line"></span><br><span class="line">Do you want to remove the signature? [Y]es/[N]o: y</span><br><span class="line"></span><br><span class="line">The signature will be removed by a write command.</span><br><span class="line"></span><br><span class="line">Command (m for help): p</span><br><span class="line">Disk /dev/sdb: 2 GiB, 2147483648 bytes, 4194304 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0x00000000</span><br><span class="line"></span><br><span class="line">Device     Boot Start     End Sectors Size Id Type</span><br><span class="line">/dev/sdb1  *        1   65536   65536  32M  c W95 FAT32 (LBA)</span><br><span class="line">/dev/sdb2       65537 4194303 4128767   2G 83 Linux</span><br><span class="line"></span><br><span class="line">Filesystem/RAID signature on partition 2 will be wiped.</span><br><span class="line"></span><br><span class="line">Command (m for help): w</span><br><span class="line">The partition table has been altered.</span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line">Syncing disks.</span><br></pre></td></tr></table></figure>
+
+<p>这里其实有一个坑, 就是 <code>fdisk</code> 在新建分区的时候, 默认的起始柱面有可能是不对的.<br>细心的同学应该也发现了, 我并没有采用给到的默认值 <code>67584</code>, 而是根据上面打印出来的分区表的起始柱面来填写的 <code>65537</code> 这个值, 这个地方我第一次尝试的时候就掉坑里了.</p>
+<h2 id="修复-filesystem"><a href="#修复-filesystem" class="headerlink" title="修复 filesystem"></a>修复 <code>filesystem</code></h2><p>目前为止我们只是搞定了分区表, 实际上 <code>filesystem</code> 还是原来的样子, 但其实我们离成功已经不远了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">[root@vm ~]# e2fsck -f /dev/sdb2</span><br><span class="line">e2fsck 1.46.3 (27-Jul-2021)</span><br><span class="line">ext2fs_open2: Bad magic number in super-block</span><br><span class="line">e2fsck: Superblock invalid, trying backup blocks...</span><br><span class="line">Pass 1: Checking inodes, blocks, and sizes</span><br><span class="line">Pass 2: Checking directory structure</span><br><span class="line">Pass 3: Checking directory connectivity</span><br><span class="line">Pass 3A: Optimizing directories</span><br><span class="line">Pass 4: Checking reference counts</span><br><span class="line">Pass 5: Checking group summary information</span><br><span class="line">Padding at end of inode bitmap is not set. Fix&lt;y&gt;? yes</span><br><span class="line"></span><br><span class="line">/dev/sdb2: ***** FILE SYSTEM WAS MODIFIED *****</span><br><span class="line">/dev/sdb2: 5811/51200 files (0.5% non-contiguous), 178100/204800 blocks</span><br><span class="line"></span><br><span class="line">[root@vm ~]# resize2fs /dev/sdb2</span><br><span class="line">resize2fs 1.46.3 (27-Jul-2021)</span><br><span class="line">Resizing the filesystem on /dev/sdb2 to 2064380 (1k) blocks.</span><br><span class="line">The filesystem on /dev/sdb2 is now 2064380 (1k) blocks long.</span><br><span class="line"></span><br><span class="line">[root@vm ~]# fdisk -l</span><br><span class="line">Disk /dev/loop0: 61.83 MiB, 64835584 bytes, 126632 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/loop1: 73.18 MiB, 76734464 bytes, 149872 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/loop2: 32.31 MiB, 33878016 bytes, 66168 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/sdb: 2 GiB, 2147483648 bytes, 4194304 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0x00000000</span><br><span class="line"></span><br><span class="line">Device     Boot Start     End Sectors Size Id Type</span><br><span class="line">/dev/sdb1  *        1   65536   65536  32M  c W95 FAT32 (LBA)</span><br><span class="line">/dev/sdb2       65537 4194303 4128767   2G 83 Linux</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/sda: 20 GiB, 21474836480 bytes, 41943040 sectors</span><br><span class="line">Disk model: VMware Virtual S</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: gpt</span><br><span class="line">Disk identifier: 4F59C0B8-3AA0-4C5D-883E-9CC503529107</span><br><span class="line"></span><br><span class="line">Device       Start      End  Sectors Size Type</span><br><span class="line">/dev/sda1     2048     4095     2048   1M BIOS boot</span><br><span class="line">/dev/sda2     4096  2101247  2097152   1G Linux filesystem</span><br><span class="line">/dev/sda3  2101248 41940991 39839744  19G Linux filesystem</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 19 GiB, 20396900352 bytes, 39837696 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br></pre></td></tr></table></figure>
+
+<p>Voila! 此时才算大功告成, 顺便说一下如果上面新建分区那一步如果起始柱面填错了的话, 这里就会报错 <code>Bad magic number in super-block</code>.</p>
+<h1 id="refs"><a href="#refs" class="headerlink" title="refs"></a>refs</h1><p><a target="_blank" rel="noopener" href="https://geekpeek.net/resize-filesystem-fdisk-resize2fs/">https://geekpeek.net/resize-filesystem-fdisk-resize2fs/</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tssc/p/9175106.html">https://www.cnblogs.com/tssc/p/9175106.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/resize-filesystem-fdisk-resize2fs/" data-id="cl1d724zq001qk4uw60kx0e85" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/resize-filesystem-fdisk-resize2fs/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ctw-interview-0205/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          對呀對呀！……回字有四樣寫法，你知道麼？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/infipower-interview-0219/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">你这个态度还找个锤子的工作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/resize-filesystem-fdisk-resize2fs/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

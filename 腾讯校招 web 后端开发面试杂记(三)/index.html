@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>腾讯校招 web 后端开发面试杂记(三) | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引子本文包括两部分: 笔试部分真题 和 hr 面杂记 笔试部分2018&#x2F;04&#x2F;05 小雨我参加了腾讯校招线上笔试, 本部分记录笔试中的三道编程题原题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="腾讯校招 web 后端开发面试杂记(三)">
+<meta property="og:url" content="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="引子本文包括两部分: 笔试部分真题 和 hr 面杂记 笔试部分2018&#x2F;04&#x2F;05 小雨我参加了腾讯校招线上笔试, 本部分记录笔试中的三道编程题原题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/waterloo_1.jpg">
+<meta property="og:image" content="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/waterloo_2.jpg">
+<meta property="article:published_time" content="2018-04-21T06:22:41.000Z">
+<meta property="article:modified_time" content="2022-03-30T06:32:23.560Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/waterloo_1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-腾讯校招 web 后端开发面试杂记(三)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/" class="article-date">
+  <time datetime="2018-04-21T06:22:41.000Z" itemprop="datePublished">2018-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      腾讯校招 web 后端开发面试杂记(三)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>本文包括两部分: 笔试部分真题 和 hr 面杂记</p>
+<h1 id="笔试部分"><a href="#笔试部分" class="headerlink" title="笔试部分"></a>笔试部分</h1><p>2018&#x2F;04&#x2F;05 小雨<br>我参加了腾讯校招线上笔试, 本部分记录笔试中的三道编程题原题</p>
+<span id="more"></span>
+
+<pre><code>编程题1|20分|翻转数列
+题目描述:
+小Q定义了一种数列成为翻转数列;
+给定整数n和m, 满足n能被2m整除
+对于一串连续递增整数数列1,2,3,4....每隔m个符号翻转一次
+最初符号为&#39;-&#39;
+例如n=8,m=2,数列就是:-1,-2,+3,+4,-5,-6,+7,+8;
+而n=4, m=1, 数列就是: -1,+2,-3,+4;
+小Q选拔咋不希望你能帮他算算前n项和为多少.
+输入描述:
+输入包括两个整数n和m(2&lt;=n&lt;=10的9次方, 1&lt;=m), 并且满足n能被2m整除.
+输出描述:
+输出一个整数, 表示前n项和
+示例:
+输入
+8 2
+输出
+8
+</code></pre>
+<hr>
+<pre><code>编程题2|20分|小Q的歌单
+题目描述:
+小Q有X首长度为A的不同的歌和B首长度为Y的不同的歌
+现在小Q想用这些歌组成一个总长度正好为K的歌单
+每首歌最多只能在歌单中出现一次
+在不考虑歌单内歌曲的先后顺序的情况下, 请问有多少种组成歌单的方法
+输入描述:
+每隔输入包含一个测试用例.
+每隔测试用例的第一行包含一个整数, 表示歌单的总长度k(1&lt;=K&lt;=1000).
+接下来的一行包含四个正整数, 分别表示歌的第一种长度A(A&lt;=10)和数量X(X&lt;=100)
+以及歌的第二种长度B(B&lt;=10)和数量Y(Y&lt;=100), 保证A不等于B.
+输出描述:
+输出一个整数, 表示组成歌单的方法取模, 因为答案可能会很大
+输出对1000000007取模的结果.
+示例:
+输入
+5
+2 3 3 3
+输出
+9
+</code></pre>
+<hr>
+<pre><code>编程题3|20分|安排机器
+小Q的公司最近接到m个任务, 第I个任务需要x的时间去完成, 难度等级为yi
+小Q拥有n台机器, 每台机器最长工作时间zi, 机器等级wi
+对于一个任务, 他只能交由一台机器来完成, 如果安排给他的机器的最长工作时间小于任务需要的时间
+则不能完成, 如果完成这个任务将获得200*xi+3*yi收益
+对于一台机器, 它一天只能完成一个任务, 如果它的机器等级小于安排给他的任务难度等级, 则不能完成
+小Q像在今天尽可能的去完成任务, 即完成的任务数量最大
+如果有多种安排方案, 小Q还想找到收益最大的那个方案, 小Q需要你来帮助他计算一下
+输入描述:
+输入包括N+M+1行
+输入的第一行为两个正整数n和m(1&lt;=n, m&lt;=100000), 表示机器的数量和任务的数量.
+接下来的n行, 每行两个整数xi和yi(0&lt;xi&lt;1000, 0&lt;=yi&lt;=100), 表示每台机器最大工作时间和机器等级.
+接下来的m行, 每行两个整数zi和wi(0&lt;zi&lt;1000, 0&lt;=wi&lt;=100),表示每个任务需要的完成时间和任务的难度等级.
+输出描述:
+输出两个整数, 分别表示最大能完成的任务数量和获取的收益.
+示例:
+输入
+1 2
+100 3
+100 2
+100 1
+输出
+1 20006
+</code></pre>
+<p>其中第一道题提交返回 TLE<br>其他两道题均返回结果不正确(可能是语法错误?)</p>
+<h1 id="hr-面杂记"><a href="#hr-面杂记" class="headerlink" title="hr 面杂记"></a>hr 面杂记</h1><p>2018&#x2F;04&#x2F;19 晴<br>我参加了腾讯校招面试 - hr 面试, 关于初试&#x2F;复试相关请看我以前的文章</p>
+<img src="/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/waterloo_1.jpg" class="" title="waterloo_1">
+<img src="/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/waterloo_2.jpg" class="" title="waterloo_2">
+
+<p>因为是人事面, 过程大概用时 15 分钟<br>事先在网上查的人事面攻略也几乎没用上, 基本上都是家常话题, 老实点就好了</p>
+<ul>
+<li>谈一谈你的学习生涯中对你影响最大的事情(这个话题聊得最久, 基本1&#x2F;2的时间都在聊这个)</li>
+<li>你最开始接触计算机&#x2F;程序是因为什么</li>
+<li>你家人支持你吗</li>
+<li>你有考虑考研吗</li>
+<li>常规的户口确认(哪里人, 独生or非独生, 父母亲职业, 情感状况(TuT), 有无亲戚在腾讯……)</li>
+<li>期望工作地点以及原因</li>
+<li>还有没有去其他公司求职</li>
+<li>有什么要问我的</li>
+</ul>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>其实我一开始的笔试做的挺烂的, 按照学院风的评判就是不及格, 很惊讶还是被传唤去了面试<br>一路打完三把面试, 听网友讲如果有幸入职, 复试你的面试官就是你的直属 leader<br>现在回想一下还是挺感触的, 那天下午我走进复试面试官房间, 直接注意到一些细节<br>床上的被子是乱的, 那天是下午 4 点面试, 应该是早上酒店阿姨帮忙整理后午休又弄乱了<br>衣服, 书包也是随意的放在旁边的床头柜上<br>再加上面试谈到了我在游戏方面的能力, 面试官饶有兴趣的跟我聊了很久<br>这些都让我觉得很年轻很有活力, 是一只活生生的猿 :P</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/" data-id="cl1d724zw002ek4uw62e4cz9m" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          微信小游戏-海盗来了打金初体验
+        
+      </div>
+    </a>
+  
+  
+    <a href="/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%BA%8C)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">腾讯校招 web 后端开发面试杂记(二)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/%E8%85%BE%E8%AE%AF%E6%A0%A1%E6%8B%9B%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0(%E4%B8%89)/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>PyQt5-Beginner-tutorial-part 2 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文链接 引言这篇文章是前作的续篇(part 2), 为了达到最好的教学效果, 请务必先阅读前作. 在这篇续作当中, 我们依旧是通过实例代码来学习PyQt5, 我会涉及到下一篇教程(part 3)的一些内容. 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQt5-Beginner-tutorial-part 2">
+<meta property="og:url" content="https://hldh214.github.io/PyQt5-Beginner-tutorial-part%202/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="原文链接 引言这篇文章是前作的续篇(part 2), 为了达到最好的教学效果, 请务必先阅读前作. 在这篇续作当中, 我们依旧是通过实例代码来学习PyQt5, 我会涉及到下一篇教程(part 3)的一些内容. 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-04-18T13:09:34.000Z">
+<meta property="article:modified_time" content="2022-03-30T06:32:23.430Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-PyQt5-Beginner-tutorial-part 2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/PyQt5-Beginner-tutorial-part%202/" class="article-date">
+  <time datetime="2016-04-18T13:09:34.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PyQt5-Beginner-tutorial-part 2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://www.thehackeruniversity.com/2014/01/26/pyqt5-beginner-tutorial-part-2/">原文链接</a></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>这篇文章是前作的续篇(part 2), 为了达到最好的教学效果, 请务必先阅读前作.</p>
+<p>在这篇续作当中, 我们依旧是通过实例代码来学习PyQt5, 我会涉及到下一篇教程(part 3)的一些内容.</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> (QGridLayout, QHBoxLayout, QLabel, QLineEdit,</span><br><span class="line">        QMessageBox, QPushButton, QTextEdit, QVBoxLayout, QWidget)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SortedDict</span>(<span class="title class_ inherited__">dict</span>):</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Iterator</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, sorted_dict</span>):</span><br><span class="line">            self._<span class="built_in">dict</span> = sorted_dict</span><br><span class="line">            self._keys = <span class="built_in">sorted</span>(self._<span class="built_in">dict</span>.keys())</span><br><span class="line">            self._nr_items = <span class="built_in">len</span>(self._keys)</span><br><span class="line">            self._idx = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">next</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="keyword">if</span> self._idx &gt;= self._nr_items:</span><br><span class="line">                <span class="keyword">raise</span> StopIteration</span><br><span class="line"></span><br><span class="line">            key = self._keys[self._idx]</span><br><span class="line">            value = self._<span class="built_in">dict</span>[key]</span><br><span class="line">            self._idx += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> key, value</span><br><span class="line"></span><br><span class="line">        __next__ = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__iter__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> SortedDict.Iterator(self)</span><br><span class="line"></span><br><span class="line">    iterkeys = __iter__</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AddressBook</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(AddressBook, self).__init__(parent)</span><br><span class="line"></span><br><span class="line">        self.contacts = SortedDict()</span><br><span class="line">        self.oldName = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        self.oldAddress = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        nameLabel = QLabel(<span class="string">&quot;Name:&quot;</span>)</span><br><span class="line">        self.nameLine = QLineEdit()</span><br><span class="line">        self.nameLine.setReadOnly(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        addressLabel = QLabel(<span class="string">&quot;Address:&quot;</span>)</span><br><span class="line">        self.addressText = QTextEdit()</span><br><span class="line">        self.addressText.setReadOnly(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        self.addButton = QPushButton(<span class="string">&quot;&amp;Add&quot;</span>)</span><br><span class="line">        self.addButton.show()</span><br><span class="line">        self.submitButton = QPushButton(<span class="string">&quot;&amp;Submit&quot;</span>)</span><br><span class="line">        self.submitButton.hide()</span><br><span class="line">        self.cancelButton = QPushButton(<span class="string">&quot;&amp;Cancel&quot;</span>)</span><br><span class="line">        self.cancelButton.hide()</span><br><span class="line">        self.nextButton = QPushButton(<span class="string">&quot;&amp;Next&quot;</span>)</span><br><span class="line">        self.nextButton.setEnabled(<span class="literal">False</span>)</span><br><span class="line">        self.previousButton = QPushButton(<span class="string">&quot;&amp;Previous&quot;</span>)</span><br><span class="line">        self.previousButton.setEnabled(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        self.addButton.clicked.connect(self.addContact)</span><br><span class="line">        self.submitButton.clicked.connect(self.submitContact)</span><br><span class="line">        self.cancelButton.clicked.connect(self.cancel)</span><br><span class="line">        self.nextButton.clicked.connect(self.<span class="built_in">next</span>)</span><br><span class="line">        self.previousButton.clicked.connect(self.previous)</span><br><span class="line"></span><br><span class="line">        buttonLayout1 = QVBoxLayout()</span><br><span class="line">        buttonLayout1.addWidget(self.addButton, Qt.AlignTop)</span><br><span class="line">        buttonLayout1.addWidget(self.submitButton)</span><br><span class="line">        buttonLayout1.addWidget(self.cancelButton)</span><br><span class="line">        buttonLayout1.addStretch()</span><br><span class="line"></span><br><span class="line">        buttonLayout2 = QHBoxLayout()</span><br><span class="line">        buttonLayout2.addWidget(self.previousButton)</span><br><span class="line">        buttonLayout2.addWidget(self.nextButton)</span><br><span class="line"></span><br><span class="line">        mainLayout = QGridLayout()</span><br><span class="line">        mainLayout.addWidget(nameLabel, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        mainLayout.addWidget(self.nameLine, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">        mainLayout.addWidget(addressLabel, <span class="number">1</span>, <span class="number">0</span>, Qt.AlignTop)</span><br><span class="line">        mainLayout.addWidget(self.addressText, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">        mainLayout.addLayout(buttonLayout1, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">        mainLayout.addLayout(buttonLayout2, <span class="number">3</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.setLayout(mainLayout)</span><br><span class="line">        self.setWindowTitle(<span class="string">&quot;Simple Address Book&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">addContact</span>(<span class="params">self</span>):</span><br><span class="line">        self.oldName = self.nameLine.text()</span><br><span class="line">        self.oldAddress = self.addressText.toPlainText()</span><br><span class="line"></span><br><span class="line">        self.nameLine.clear()</span><br><span class="line">        self.addressText.clear()</span><br><span class="line"></span><br><span class="line">        self.nameLine.setReadOnly(<span class="literal">False</span>)</span><br><span class="line">        self.nameLine.setFocus(Qt.OtherFocusReason)</span><br><span class="line">        self.addressText.setReadOnly(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">        self.addButton.setEnabled(<span class="literal">False</span>)</span><br><span class="line">        self.nextButton.setEnabled(<span class="literal">False</span>)</span><br><span class="line">        self.previousButton.setEnabled(<span class="literal">False</span>)</span><br><span class="line">        self.submitButton.show()</span><br><span class="line">        self.cancelButton.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">submitContact</span>(<span class="params">self</span>):</span><br><span class="line">        name = self.nameLine.text()</span><br><span class="line">        address = self.addressText.toPlainText()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">&quot;&quot;</span> <span class="keyword">or</span> address == <span class="string">&quot;&quot;</span>:</span><br><span class="line">            QMessageBox.information(self, <span class="string">&quot;Empty Field&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;Please enter a name and address.&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> name <span class="keyword">not</span> <span class="keyword">in</span> self.contacts:</span><br><span class="line">            self.contacts[name] = address</span><br><span class="line">            QMessageBox.information(self, <span class="string">&quot;Add Successful&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;\&quot;%s\&quot; has been added to your address book.&quot;</span> % name)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            QMessageBox.information(self, <span class="string">&quot;Add Unsuccessful&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;Sorry, \&quot;%s\&quot; is already in your address book.&quot;</span> % name)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.contacts:</span><br><span class="line">            self.nameLine.clear()</span><br><span class="line">            self.addressText.clear()</span><br><span class="line"></span><br><span class="line">        self.nameLine.setReadOnly(<span class="literal">True</span>)</span><br><span class="line">        self.addressText.setReadOnly(<span class="literal">True</span>)</span><br><span class="line">        self.addButton.setEnabled(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        number = <span class="built_in">len</span>(self.contacts)</span><br><span class="line">        self.nextButton.setEnabled(number &gt; <span class="number">1</span>)</span><br><span class="line">        self.previousButton.setEnabled(number &gt; <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.submitButton.hide()</span><br><span class="line">        self.cancelButton.hide()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">cancel</span>(<span class="params">self</span>):</span><br><span class="line">        self.nameLine.setText(self.oldName)</span><br><span class="line">        self.addressText.setText(self.oldAddress)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.contacts:</span><br><span class="line">            self.nameLine.clear()</span><br><span class="line">            self.addressText.clear()</span><br><span class="line"></span><br><span class="line">        self.nameLine.setReadOnly(<span class="literal">True</span>)</span><br><span class="line">        self.addressText.setReadOnly(<span class="literal">True</span>)</span><br><span class="line">        self.addButton.setEnabled(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        number = <span class="built_in">len</span>(self.contacts)</span><br><span class="line">        self.nextButton.setEnabled(number &gt; <span class="number">1</span>)</span><br><span class="line">        self.previousButton.setEnabled(number &gt; <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.submitButton.hide()</span><br><span class="line">        self.cancelButton.hide()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">next</span>(<span class="params">self</span>):</span><br><span class="line">        name = self.nameLine.text()</span><br><span class="line">        it = <span class="built_in">iter</span>(self.contacts)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                this_name, _ = it.<span class="built_in">next</span>()</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> this_name == name:</span><br><span class="line">                    next_name, next_address = it.<span class="built_in">next</span>()</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span> StopIteration:</span><br><span class="line">            next_name, next_address = <span class="built_in">iter</span>(self.contacts).<span class="built_in">next</span>()</span><br><span class="line"></span><br><span class="line">        self.nameLine.setText(next_name)</span><br><span class="line">        self.addressText.setText(next_address)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">previous</span>(<span class="params">self</span>):</span><br><span class="line">        name = self.nameLine.text()</span><br><span class="line"></span><br><span class="line">        prev_name = prev_address = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">for</span> this_name, this_address <span class="keyword">in</span> self.contacts:</span><br><span class="line">            <span class="keyword">if</span> this_name == name:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">            prev_name = this_name</span><br><span class="line">            prev_address = this_address</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.nameLine.clear()</span><br><span class="line">            self.addressText.clear()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> prev_name <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">for</span> prev_name, prev_address <span class="keyword">in</span> self.contacts:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        self.nameLine.setText(prev_name)</span><br><span class="line">        self.addressText.setText(prev_address)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">    <span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QApplication</span><br><span class="line"></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">    addressBook = AddressBook()</span><br><span class="line">    addressBook.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><p>我将会从第33行 <code>Addressbook</code> 这个类开始讲解, 因为大部分代码我在前作有讲解过, 我只会讲解前作没有涉及到的地方.</p>
+<p>38-39行: 预先声明两个变量 <code>oldName</code> 和 <code>oldAddress</code> 以便后续代码调用.<br>42-43行: 我们声明一个文本编辑控件, 并且设置其只读属性为真, 当我们点击这个文本框的时候, 是无论如何都无法输入任何内容的.<br>49-58行: 我们为窗体添加一些按钮控件, 在第50行, show()方法会使 <code>addButton</code> 可见. 另外, <code>submitButton</code> 和 <code>cancelButton</code> 将会被我们隐式的创建. <code>nextButton</code> 和 <code>previousButton</code> 将会在窗体中显示出来, 但是他俩是灰色不可用的状态, 用户不能点击.<br>60-64行: 我们为控件添加点击触发的事件.<br>对于学习过前作的你来说, 看懂剩下的类简直是易如反掌了.<br>当我们第一次运行这个程序, 只有 <code>Add</code> 按钮是可以点击的, 这个按钮触发事件的代码在第87行.<br>88-89行: 还记得我们在38-39行定义的俩变量吗? 现在把 <code>nameLine</code> 和 <code>addressText</code> 的值赋给他俩.<br>91-96行: 我们把 <code>nameLine</code> 和 <code>addressText</code> 的文本框内容清空, 并且使用<code>setReadOnly(false)</code> 来让这俩变成可输入的状态, 最后把输入光标聚焦到<code>nameLine</code> 这里.<br>98-102行: 我们把<code> Add</code> , <code>Previous</code> 和 <code>Next</code> 这三个按钮禁用掉, 然后吧 <code>Submit</code> 和 <code>Cancel</code> 按钮设置为可见状态. 其中 <code>cancel</code> 按钮的出发事件代码从第137行开始.<br>138-139行: 还记得88-89行的那俩变量吗? 现在把 <code>nameLine</code> 和 <code>addressText</code> 的值赋回去.<br>141-143行: 但如果这些变量并没有存放任何数据, 我们便相应的设置文本框为空.<br>149-151行: <code>self.contacts</code> 是一个包含了我们的 address book 输入值的字典, 我们获取这个字典的大小并且赋给一个叫做 <code>number</code> 的变量, 如果输入的变量大于2个的话, 我们就把 <code>nextButton</code> 和 <code>previousButton</code> 设置为可用. 其中, <code>Submit</code> 按钮的触发事件代码在第104行开始.<br>105-106行: 把 <code>name</code> 和 <code>address</code> 这俩变量的值赋给文本框.<br>108-110行: 只要这些变量其中有为空值的, 我们就会报错.<br>113-120行: 这个字典的一个属性必须是唯一的键值对, 如果这个键值对不在我们的字典里面, 我们将会加到字典里并且显示一个 “success” 对话框. 同样的, 如果这个键值对存在于这个字典了, 我们就会显示错误. 其中, 字典的触发事件代码从第5行开始, 这个类会生成一个有序字典, 在代码的第36行被调用了.<br>7-11行: 初始化一些私有变量, <code>_idx</code> 是字典的索引, <code>_nr_items</code> 存放着字典的大小.<br>16-24行: 把列表进行排序, 当 <code>_idx</code> 比 <code>_nr_items</code> 大的时候, 将会触发一个exception, 而正常情况我们会步进字典, 这个方法返回以index为索引, 自增长为1的键值对.<br>如果你想了解更多关于Python字典的内容, <a target="_blank" rel="noopener" href="http://www.tutorialspoint.com/python/python_dictionary.htm">see this page</a><br> 157-158行: 这个方法会在我们点击 <code>next</code> 按钮的时候触发, 输入框的值会赋给 <code>name</code> 变量, <code>iter()</code> 方法会给字典存在的变量赋值, 返回不在字典的键.<br> 160-168行: 我们同样准备了 try-catch 代码, 在第162行的try语句里, 我们给键值对赋值.<br> 170-171行: 我们把 <code>next_name</code> , <code>next_address</code> 的值赋给 <code>nameLine</code> 和 <code>addressText</code>. 其中 <code>previous</code> 按钮的触发事件代码从第173行开始.<br> 第176行: 初始化 <code>prev_name</code> , <code>prev_address</code> 这两个变量, 并赋值为None.<br>177-182行: 我们迭代字典来储存 <code>this_name</code> , <code>this_address</code> 这两个变量的值, 如果 <code>this_name</code> 等于 <code>nameLine</code> 里面的值, 我们就退出迭代, 反之则把 <code>prev_name</code> , <code>prev_address</code> 赋给我们得到的变量.</p>
+<p>189-190行: <code>pass</code> 这条语句本身毫无意义, 只是确保语法正确, 所以当 <code>prev_name</code> 为空时, 我们默认设置其值为空字符串.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>希望你能喜欢这篇文章 :-)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/PyQt5-Beginner-tutorial-part%202/" data-id="cl1d724zc000qk4uwcjx285q5" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/PyQt5-Beginner-tutorial-part%202/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/PyQt5-Beginner-tutorial-part%203/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PyQt5-Beginner-tutorial-part 3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/%E9%80%92%E5%BD%92%E5%88%9B%E5%BB%BA%E7%BA%A7%E8%81%94%E7%9B%AE%E5%BD%95%E4%B9%8BPython_VS_PHP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">递归创建级联目录之Python_VS_PHP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/PyQt5-Beginner-tutorial-part%202/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

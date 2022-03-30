@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>migrate-to-hexo | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引子各种原因, 历经千辛万苦, 本博客从 CSDN 迁移到了 GitHub pages在 node 和 hexo 的加持下获得重生 (以前的博文时间暂时对不上就是了:P) 19&#x2F;02&#x2F;06: 对上了本文记录了迁移过程遇到的一些问题和解决方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="migrate-to-hexo">
+<meta property="og:url" content="https://hldh214.github.io/migrate-to-hexo/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="引子各种原因, 历经千辛万苦, 本博客从 CSDN 迁移到了 GitHub pages在 node 和 hexo 的加持下获得重生 (以前的博文时间暂时对不上就是了:P) 19&#x2F;02&#x2F;06: 对上了本文记录了迁移过程遇到的一些问题和解决方案">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-21T09:35:39.000Z">
+<meta property="article:modified_time" content="2022-03-30T06:32:23.455Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-migrate-to-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/migrate-to-hexo/" class="article-date">
+  <time datetime="2018-11-21T09:35:39.000Z" itemprop="datePublished">2018-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      migrate-to-hexo
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>各种原因, 历经千辛万苦, 本博客从 CSDN 迁移到了 GitHub pages<br>在 node 和 hexo 的加持下获得重生 <del>(以前的博文时间暂时对不上就是了:P)</del> 19&#x2F;02&#x2F;06: 对上了<br>本文记录了迁移过程遇到的一些问题和解决方案</p>
+<span id="more"></span>
+
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><p>首先去各种搜索前辈们的搭建教学, 一顿操作后顺利输出 hello world<br>然后想着怎么去迁移 CSDN 的博客<br>在网上也找了很多方案, 基本上都是从前端采集 + 解析 这种方案<br>其实 CSDN 后台是有提供直接导出 md 格式的功能的, 只是要一篇一篇文章的点<br>好在我的文章并不多, 十分的惊险<br>一顿操作导出了所有 57 篇博文, 接下来就只剩下插入 hexo 的 metadata 了<br>首先想到 Python, 毕竟脚本小子, 被 Python 宠坏了, 不废话直接上代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sorted_ls</span>(<span class="params">path</span>):</span><br><span class="line">    mtime = <span class="keyword">lambda</span> f: os.stat(os.path.join(path, f)).st_mtime</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">sorted</span>(os.listdir(path), key=mtime))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ls = sorted_ls(<span class="string">&#x27;./blogs&#x27;</span>)</span><br><span class="line">os.chdir(<span class="string">&#x27;./blogs&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> index, each <span class="keyword">in</span> <span class="built_in">enumerate</span>(ls):</span><br><span class="line">    tmp = []</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(each, <span class="string">&#x27;r+&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">            tmp.append(line)</span><br><span class="line">        tmp.insert(<span class="number">0</span>, <span class="string">&#x27;---\ntitle: &#123;0&#125;\ndate: 2018-11-21 15:&#123;1&#125;:00\n---\n&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">            each.split(<span class="string">&#x27;.md&#x27;</span>)[<span class="number">0</span>],</span><br><span class="line">            <span class="number">59</span> - index</span><br><span class="line">        ))</span><br><span class="line">        fp.seek(<span class="number">0</span>)</span><br><span class="line">        fp.truncate()</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> tmp:</span><br><span class="line">            fp.write(line)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>其中 <code>sorted_ls</code> 函数用于把所有博文按照创建时间排序以便生成顺序的 metadata<br>然后上传 hexo 预览, 发现文件头部有一些奇怪的东西 <code>\xEF\xBB\xBF</code><br>又是一顿搜索发现是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Byte_order_mark">Byte_order_mark</a> 这玩意<br>是 Windows 的锅, 解决方案也给出了, ref: <a target="_blank" rel="noopener" href="https://my.oschina.net/u/264186/blog/602088">https://my.oschina.net/u/264186/blog/602088</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">filelist=$(<span class="built_in">ls</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;all file&quot;</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$filelist</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$file</span></span><br><span class="line">    <span class="comment">#if [ -d $file ]</span></span><br><span class="line">    <span class="comment">#then</span></span><br><span class="line">        <span class="comment">#tar -cf $file.tar $file</span></span><br><span class="line">    grep -I -r -l $<span class="string">&#x27;\xEF\xBB\xBF&#x27;</span>  <span class="variable">$file</span> | xargs sed  -i  <span class="string">&#x27;s/\xEF\xBB\xBF//&#x27;</span></span><br><span class="line">                <span class="comment">#echo $file</span></span><br><span class="line">    <span class="comment">#fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>其实 shell 这块我可以说是一窍不通, 也就只能随便搞搞, 能用就行的那种<br>运行之后发现博文的文件名带有空格, 会出现解析错误导致取不到正确的文件名<br>再次一顿操作, 直播学 shell, xargs 后再次搞起</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">filelist=$(<span class="built_in">ls</span>)</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    grep -I -r -l $<span class="string">&#x27;\xEF\xBB\xBF&#x27;</span> <span class="string">&quot;<span class="variable">$&#123;file&#125;</span>&quot;</span> | xargs -d <span class="string">&#x27;\n&#x27;</span> sed -i <span class="string">&#x27;s/\xEF\xBB\xBF//&#x27;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>其实就是注意了一下引号和 <code>xargs</code> 的 <code>-d</code> 参数即可<br>最后就是激动人心的 <code>deploy</code> 了, 完事</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>下班</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/migrate-to-hexo/" data-id="cl1d724zo001ik4uwbxqk8uzp" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/migrate-to-hexo/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/laravel-timestamp-fields-on-migration/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          探秘 laravel migration 之 timestamp 奇怪的默认值
+        
+      </div>
+    </a>
+  
+  
+    <a href="/JustTrustMe-SSL-Pinning/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用 JustTrustMe 干翻 SSL Pinning_ 爬尤美 app 付费视频(app.youmei.com)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/migrate-to-hexo/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

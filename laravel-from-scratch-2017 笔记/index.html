@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>laravel-from-scratch-2017 笔记 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ref: https:&#x2F;&#x2F;laracasts.com&#x2F;series&#x2F;laravel-from-scratch-2017&#x2F; ModelScope functionref: http:&#x2F;&#x2F;laravelacademy.org&#x2F;post&#x2F;6979.html#toc_18在 Model 中定义 scope 开头的 public function相当于创建一个作用于当前 Model 对象的(这和普通写法有什">
+<meta property="og:type" content="article">
+<meta property="og:title" content="laravel-from-scratch-2017 笔记">
+<meta property="og:url" content="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="ref: https:&#x2F;&#x2F;laracasts.com&#x2F;series&#x2F;laravel-from-scratch-2017&#x2F; ModelScope functionref: http:&#x2F;&#x2F;laravelacademy.org&#x2F;post&#x2F;6979.html#toc_18在 Model 中定义 scope 开头的 public function相当于创建一个作用于当前 Model 对象的(这和普通写法有什">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-12T08:45:09.000Z">
+<meta property="article:modified_time" content="2022-03-30T06:32:23.454Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-laravel-from-scratch-2017 笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2017-08-12T08:45:09.000Z" itemprop="datePublished">2017-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      laravel-from-scratch-2017 笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ref: <a target="_blank" rel="noopener" href="https://laracasts.com/series/laravel-from-scratch-2017/">https://laracasts.com/series/laravel-from-scratch-2017/</a></p>
+<h1 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h1><h2 id="Scope-function"><a href="#Scope-function" class="headerlink" title="Scope function"></a>Scope function</h2><p>ref: <a target="_blank" rel="noopener" href="http://laravelacademy.org/post/6979.html#toc_18">http://laravelacademy.org/post/6979.html#toc_18</a><br>在 Model 中定义 <code>scope</code> 开头的 <code>public function</code><br>相当于创建一个作用于当前 Model 对象的(<a target="_blank" rel="noopener" href="https://stackoverflow.com/q/15070809/6266737">这和普通写法有什么区别?</a>)新的链式调用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 只包含活跃用户的查询作用域</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> \Illuminate\Database\Eloquent\Builder</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">scopePopular</span>(<span class="params"><span class="variable">$query</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;votes&#x27;</span>, <span class="string">&#x27;&gt;&#x27;</span>, <span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 只包含激活用户的查询作用域</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> \Illuminate\Database\Eloquent\Builder</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">scopeActive</span>(<span class="params"><span class="variable">$query</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;active&#x27;</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用时不需要加上 <code>scope</code> 前缀<br><code>$users = \App\User::popular()-&gt;active()-&gt;orderBy(&#39;created_at&#39;)-&gt;get();</code></p>
+<p>如果是普通写法会产生这样的问题</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">custom_wh</span>(<span class="params"><span class="variable">$data</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">static</span>::<span class="title function_ invoke__">where_in</span>(<span class="string">&#x27;categories_id&#x27;</span>, <span class="variable">$data</span>, <span class="string">&#x27;AND&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// this works fine</span></span><br><span class="line"><span class="variable">$posts</span> = <span class="title class_">Post</span>::<span class="title function_ invoke__">custom_wh</span>(<span class="keyword">array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))-&gt;<span class="title function_ invoke__">get</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// but this says custom_wh is not defined in the query class</span></span><br><span class="line"><span class="variable">$posts</span> = <span class="title class_">Post</span>::<span class="title function_ invoke__">where_in</span>(<span class="string">&#x27;tags&#x27;</span>, <span class="keyword">array</span>(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>), <span class="string">&#x27;AND&#x27;</span>)-&gt;<span class="title function_ invoke__">custom_wh</span>(<span class="keyword">array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))-&gt;<span class="title function_ invoke__">get</span>();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Querying-Relationship-Existence"><a href="#Querying-Relationship-Existence" class="headerlink" title="Querying Relationship Existence"></a>Querying Relationship Existence</h2><p>ref: <a target="_blank" rel="noopener" href="http://laravelacademy.org/post/6996.html#toc_11">http://laravelacademy.org/post/6996.html#toc_11</a><br>查询存在的关联关系, 例如<br>博客有许多 tags, 我们不希望显示没有 post 的 tag</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Retrieve all tags that have at least one post...</span></span><br><span class="line"><span class="variable">$posts</span> = \App\<span class="title class_">Tag</span>::<span class="title function_ invoke__">has</span>(<span class="string">&#x27;posts&#x27;</span>)-&gt;<span class="title function_ invoke__">get</span>();</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><h2 id="View-composer"><a href="#View-composer" class="headerlink" title="View composer"></a>View composer</h2><p>ref: <a target="_blank" rel="noopener" href="http://laravelacademy.org/post/6758.html#toc_2">http://laravelacademy.org/post/6758.html#toc_2</a><br>网站的公共部分需要 assign 变量的时候, 比如 blog 的 sidebar 需要博客归档<br>可以使用 view composer 来避免在不同方法中重复 assign 变量<br>在 AppServiceProvider 中的 <code>boot</code> 方法中</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">view</span>()-&gt;<span class="title function_ invoke__">composer</span>(<span class="string">&#x27;view.name&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"><span class="variable">$view</span></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// just like data assign in controller</span></span><br><span class="line">        <span class="variable">$view</span>-&gt;<span class="title function_ invoke__">with</span>([<span class="string">&#x27;var name here&#x27;</span> =&gt; <span class="variable">$var</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h1><h2 id="RESTful-Controller"><a href="#RESTful-Controller" class="headerlink" title="RESTful Controller"></a>RESTful Controller</h2><p>ref: <a target="_blank" rel="noopener" href="http://laravelacademy.org/post/6745.html#toc_6">http://laravelacademy.org/post/6745.html#toc_6</a><br><code>php artisan make:controller TasksController -r</code><br><code>Route::resource(&#39;tasks&#39;, &#39;TasksController&#39;);</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET    /tasks =&gt; TasksController@index  <span class="comment">// 列出所有 task</span></span><br><span class="line">GET    /tasks/create =&gt; TasksController@create  <span class="comment">// 显示创建 task 的表单页</span></span><br><span class="line">POST   /tasks =&gt; TasksController@store  <span class="comment">// 创建 task</span></span><br><span class="line">GET    /tasks/&#123;id&#125; =&gt; TasksController@show/&#123;id&#125;  <span class="comment">// 列出指定 task</span></span><br><span class="line">GET    /tasks/&#123;id&#125;/edit =&gt; TasksController@edit/&#123;id&#125;  <span class="comment">// 显示编辑指定 task 的表单页</span></span><br><span class="line">PATCH  /tasks/&#123;id&#125; =&gt; TasksController@update/&#123;id&#125;  <span class="comment">// 编辑指定 task</span></span><br><span class="line">DELETE /tasks/&#123;id&#125; =&gt; TasksController@destroy/&#123;id&#125;  <span class="comment">// 删除指定 task</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/" data-id="cl1d724zn001hk4uw788vbuk2" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/FFmpeg%20%E4%B9%B1%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          FFmpeg 乱记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Selenium%20+%20Headless%20Chrome%20with%20Python3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Selenium + Headless Chrome with Python3</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/laravel-from-scratch-2017%20%E7%AC%94%E8%AE%B0/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

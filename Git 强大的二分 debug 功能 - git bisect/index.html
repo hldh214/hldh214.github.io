@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>Git 强大的二分 debug 功能 - git bisect | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ref : http:&#x2F;&#x2F;www.qlcoder.com&#x2F;task&#x2F;76a4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 强大的二分 debug 功能 - git bisect">
+<meta property="og:url" content="https://hldh214.github.io/Git%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E5%88%86%20debug%20%E5%8A%9F%E8%83%BD%20-%20git%20bisect/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="ref : http:&#x2F;&#x2F;www.qlcoder.com&#x2F;task&#x2F;76a4">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-11-20T02:31:52.000Z">
+<meta property="article:modified_time" content="2022-03-30T06:32:23.425Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Git 强大的二分 debug 功能 - git bisect" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Git%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E5%88%86%20debug%20%E5%8A%9F%E8%83%BD%20-%20git%20bisect/" class="article-date">
+  <time datetime="2016-11-20T02:31:52.000Z" itemprop="datePublished">2016-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git 强大的二分 debug 功能 - git bisect
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ref : <a target="_blank" rel="noopener" href="http://www.qlcoder.com/task/76a4">http://www.qlcoder.com/task/76a4</a></p>
+<span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp (master)</span><br><span class="line">$ git bisect start</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp (master|BISECTING)</span><br><span class="line">$ git bisect bad</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp (master|BISECTING)</span><br><span class="line">$ git bisect good 88dccd</span><br><span class="line">Bisecting: 4999 revisions left to <span class="built_in">test</span> after this (roughly 12 steps)</span><br><span class="line">[fe60a0750aa9eee702e486fd7a0d3601c894f255] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((fe60a07...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.033s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((fe60a07...)|BISECTING)</span><br><span class="line">$ git bisect good</span><br><span class="line">Bisecting: 2499 revisions left to <span class="built_in">test</span> after this (roughly 11 steps)</span><br><span class="line">[6669dbbf6b0c14d90d9f736082b10db6a68c3d1a] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((6669dbb...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">F</span><br><span class="line">======================================================================</span><br><span class="line">FAIL: <span class="built_in">test</span> (__main__.mytest)</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;unit.py&quot;</span>, line 9, <span class="keyword">in</span> <span class="built_in">test</span></span><br><span class="line">    self.assertEqual(source.f_51106f2(1,2,3,4,5,6,7,8,9,10),8,<span class="string">&#x27;fail&#x27;</span>)</span><br><span class="line">AssertionError: 7 != 8 : fail</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.034s</span><br><span class="line"></span><br><span class="line">FAILED (failures=1)</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((6669dbb...)|BISECTING)</span><br><span class="line">$ git bisect bad</span><br><span class="line">Bisecting: 1249 revisions left to <span class="built_in">test</span> after this (roughly 10 steps)</span><br><span class="line">[3bc8fc0589d140b21e96139ff751aba05000fd4d] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((3bc8fc0...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.008s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((3bc8fc0...)|BISECTING)</span><br><span class="line">$ git bisect good</span><br><span class="line">Bisecting: 624 revisions left to <span class="built_in">test</span> after this (roughly 9 steps)</span><br><span class="line">[512ef6cb4a8583752bf9077ab0ff8501f6dc43f0] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((512ef6c...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">F</span><br><span class="line">======================================================================</span><br><span class="line">FAIL: <span class="built_in">test</span> (__main__.mytest)</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;unit.py&quot;</span>, line 9, <span class="keyword">in</span> <span class="built_in">test</span></span><br><span class="line">    self.assertEqual(source.f_48fa148(1,2,3,4,5,6,7,8,9,10),6,<span class="string">&#x27;fail&#x27;</span>)</span><br><span class="line">AssertionError: 5 != 6 : fail</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.008s</span><br><span class="line"></span><br><span class="line">FAILED (failures=1)</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((512ef6c...)|BISECTING)</span><br><span class="line">$ git bisect bad</span><br><span class="line">Bisecting: 312 revisions left to <span class="built_in">test</span> after this (roughly 8 steps)</span><br><span class="line">[2bf1a99f136e12fb91290c2cc3942a09f34c0549] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((2bf1a99...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">F</span><br><span class="line">======================================================================</span><br><span class="line">FAIL: <span class="built_in">test</span> (__main__.mytest)</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;unit.py&quot;</span>, line 9, <span class="keyword">in</span> <span class="built_in">test</span></span><br><span class="line">    self.assertEqual(source.f_2f64d32(1,2),4,<span class="string">&#x27;fail&#x27;</span>)</span><br><span class="line">AssertionError: 3 != 4 : fail</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.001s</span><br><span class="line"></span><br><span class="line">FAILED (failures=1)</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((2bf1a99...)|BISECTING)</span><br><span class="line">$ git bisect bad</span><br><span class="line">Bisecting: 155 revisions left to <span class="built_in">test</span> after this (roughly 7 steps)</span><br><span class="line">[688a5d8dddf77e63ee2a712da6cc7c69ef5bc5f1] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((688a5d8...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.005s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((688a5d8...)|BISECTING)</span><br><span class="line">$ git bisect good</span><br><span class="line">Bisecting: 77 revisions left to <span class="built_in">test</span> after this (roughly 6 steps)</span><br><span class="line">[60d633cb6a38961efa13d45d50308aa9707cd8df] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((60d633c...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.000s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((60d633c...)|BISECTING)</span><br><span class="line">$ git bisect good</span><br><span class="line">Bisecting: 38 revisions left to <span class="built_in">test</span> after this (roughly 5 steps)</span><br><span class="line">[ffeb2daf978ee5a0b7fef8df74acab15ee414152] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((ffeb2da...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.015s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((ffeb2da...)|BISECTING)</span><br><span class="line">$ git bisect good</span><br><span class="line">Bisecting: 19 revisions left to <span class="built_in">test</span> after this (roughly 4 steps)</span><br><span class="line">[6af5fb9f8f253a325f4c0bc52f7e6d43c92e34ce] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((6af5fb9...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.004s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((6af5fb9...)|BISECTING)</span><br><span class="line">$ git bisect good</span><br><span class="line">Bisecting: 9 revisions left to <span class="built_in">test</span> after this (roughly 3 steps)</span><br><span class="line">[0bfd35fa952c21734dee652e4e6ed59c398f7823] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((0bfd35f...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">F</span><br><span class="line">======================================================================</span><br><span class="line">FAIL: <span class="built_in">test</span> (__main__.mytest)</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;unit.py&quot;</span>, line 9, <span class="keyword">in</span> <span class="built_in">test</span></span><br><span class="line">    self.assertEqual(source.f_3107b9d(1),6,<span class="string">&#x27;fail&#x27;</span>)</span><br><span class="line">AssertionError: 5 != 6 : fail</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.016s</span><br><span class="line"></span><br><span class="line">FAILED (failures=1)</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((0bfd35f...)|BISECTING)</span><br><span class="line">$ git bisect bad</span><br><span class="line">Bisecting: 4 revisions left to <span class="built_in">test</span> after this (roughly 2 steps)</span><br><span class="line">[3faa7a1e591c3d103459a521735e95f8459768fe] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((3faa7a1...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">.</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.013s</span><br><span class="line"></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((3faa7a1...)|BISECTING)</span><br><span class="line">$ git bisect good</span><br><span class="line">Bisecting: 2 revisions left to <span class="built_in">test</span> after this (roughly 1 step)</span><br><span class="line">[8984e491dc6fb5b59a9910fb624e5edbfcaf66d9] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((8984e49...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">F</span><br><span class="line">======================================================================</span><br><span class="line">FAIL: <span class="built_in">test</span> (__main__.mytest)</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;unit.py&quot;</span>, line 9, <span class="keyword">in</span> <span class="built_in">test</span></span><br><span class="line">    self.assertEqual(source.f_9dcb7(1,2),5,<span class="string">&#x27;fail&#x27;</span>)</span><br><span class="line">AssertionError: 4 != 5 : fail</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.020s</span><br><span class="line"></span><br><span class="line">FAILED (failures=1)</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((8984e49...)|BISECTING)</span><br><span class="line">$ git bisect bad</span><br><span class="line">Bisecting: 0 revisions left to <span class="built_in">test</span> after this (roughly 0 steps)</span><br><span class="line">[ceae71a5ae10d3c23c8c6b522d77e57436572521] add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((ceae71a...)|BISECTING)</span><br><span class="line">$ python unit.py</span><br><span class="line">F</span><br><span class="line">======================================================================</span><br><span class="line">FAIL: <span class="built_in">test</span> (__main__.mytest)</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;unit.py&quot;</span>, line 9, <span class="keyword">in</span> <span class="built_in">test</span></span><br><span class="line">    self.assertEqual(source.f_2204f42(1,2,3,4),1,<span class="string">&#x27;fail&#x27;</span>)</span><br><span class="line">AssertionError: 0 != 1 : fail</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran 1 <span class="built_in">test</span> <span class="keyword">in</span> 0.008s</span><br><span class="line"></span><br><span class="line">FAILED (failures=1)</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((ceae71a...)|BISECTING)</span><br><span class="line">$ git bisect bad</span><br><span class="line">ceae71a5ae10d3c23c8c6b522d77e57436572521 is the first bad commit</span><br><span class="line">commit ceae71a5ae10d3c23c8c6b522d77e57436572521</span><br><span class="line">Author: JianJinYi &lt;JianJinYi@qlcoder.com&gt;</span><br><span class="line">Date:   Thu May 19 23:27:17 2016 +0800</span><br><span class="line"></span><br><span class="line">    add <span class="keyword">function</span></span><br><span class="line"></span><br><span class="line">:100644 100644 09b2cfed1cc15cb8ed82f42d6e5b229cfcee9fdc b98cfbf94195e411fad52e6fcebe17889d787656 M      source.py</span><br><span class="line">:100644 100644 29605e0f326cf1f9896c8712404e9055fefe9524 a4123398ca1a55abb251c154c1f8b50a48d2ba23 M      unit.py</span><br><span class="line"></span><br><span class="line">Jim@hldh214 MINGW64 /c/tmp ((ceae71a...)|BISECTING)</span><br><span class="line">$</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>git bisect 使用二分查找算法</p>
+<p>可以快速找到很久之前的 commit 里面的 bug</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Git%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E5%88%86%20debug%20%E5%8A%9F%E8%83%BD%20-%20git%20bisect/" data-id="cl1d724z40008k4uwdpmoh7jx" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Git%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E5%88%86%20debug%20%E5%8A%9F%E8%83%BD%20-%20git%20bisect/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Nginx%20%E4%B8%AD%20502%20%E5%92%8C%20504%20%E9%94%99%E8%AF%AF%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Nginx 中 502 和 504 错误详解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Python%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python 强大的模式匹配</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/Git%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E4%BA%8C%E5%88%86%20debug%20%E5%8A%9F%E8%83%BD%20-%20git%20bisect/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>PyQt5-Beginner-tutorial-part 3 | hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文链接 引言这篇文章是前作的续篇(part 3), 为了达到最好的教学效果, 请务必先阅读前作.在这篇续作当中, 我们将要开发一个简易文本阅读器, 简单起见, 这个阅读器只能阅读文本文档的内容, 但是, 只需要经过一些简单的修改就能成为一个全能的编辑器啦. 代码12345678910111213141516171819202122232425262728293031323334353637383">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQt5-Beginner-tutorial-part 3">
+<meta property="og:url" content="https://hldh214.github.io/PyQt5-Beginner-tutorial-part%203/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="原文链接 引言这篇文章是前作的续篇(part 3), 为了达到最好的教学效果, 请务必先阅读前作.在这篇续作当中, 我们将要开发一个简易文本阅读器, 简单起见, 这个阅读器只能阅读文本文档的内容, 但是, 只需要经过一些简单的修改就能成为一个全能的编辑器啦. 代码12345678910111213141516171819202122232425262728293031323334353637383">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-04-19T13:13:43.000Z">
+<meta property="article:modified_time" content="2022-03-30T06:32:23.431Z">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-PyQt5-Beginner-tutorial-part 3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/PyQt5-Beginner-tutorial-part%203/" class="article-date">
+  <time datetime="2016-04-19T13:13:43.000Z" itemprop="datePublished">2016-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PyQt5-Beginner-tutorial-part 3
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://www.thehackeruniversity.com/2014/02/20/pyqt5-beginner-tutorial-part-3/">原文链接</a></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>这篇文章是前作的续篇(part 3), 为了达到最好的教学效果, 请务必先阅读前作.<br>在这篇续作当中, 我们将要开发一个简易文本阅读器, 简单起见, 这个阅读器只能阅读文本文档的内容, 但是, 只需要经过一些简单的修改就能成为一个全能的编辑器啦.</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys </span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Notepad</span>(<span class="title class_ inherited__">QMainWindow</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(Notepad, self).__init__()</span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):        </span><br><span class="line">        openAction = QAction(<span class="string">&#x27;Open&#x27;</span>, self)</span><br><span class="line">        openAction.setShortcut(<span class="string">&#x27;Ctrl+O&#x27;</span>)</span><br><span class="line">        openAction.setStatusTip(<span class="string">&#x27;Open a file&#x27;</span>)</span><br><span class="line">        openAction.triggered.connect(self.openFile)</span><br><span class="line"></span><br><span class="line">        closeAction = QAction(<span class="string">&#x27;Close&#x27;</span>, self)</span><br><span class="line">        closeAction.setShortcut(<span class="string">&#x27;Ctrl+Q&#x27;</span>)</span><br><span class="line">        closeAction.setStatusTip(<span class="string">&#x27;Close Notepad&#x27;</span>)</span><br><span class="line">        closeAction.triggered.connect(self.close)</span><br><span class="line"></span><br><span class="line">        menubar = self.menuBar()</span><br><span class="line">        fileMenu = menubar.addMenu(<span class="string">&#x27;&amp;File&#x27;</span>)</span><br><span class="line">        fileMenu.addAction(openAction)        </span><br><span class="line">        fileMenu.addAction(closeAction)</span><br><span class="line"></span><br><span class="line">        self.textEdit = QTextEdit(self)</span><br><span class="line">        self.textEdit.setFocus()</span><br><span class="line">        self.textEdit.setReadOnly(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        self.resize(<span class="number">700</span>, <span class="number">800</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Notepad&#x27;</span>)</span><br><span class="line">        self.setCentralWidget(self.textEdit)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">openFile</span>(<span class="params">self</span>):</span><br><span class="line">        filename, _ = QFileDialog.getOpenFileName(self, <span class="string">&#x27;Open File&#x27;</span>, os.getenv(<span class="string">&#x27;HOME&#x27;</span>))</span><br><span class="line"></span><br><span class="line">        fh = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> QFile.exists(filename):</span><br><span class="line">            fh = QFile(filename)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> fh.<span class="built_in">open</span>(QFile.ReadOnly):</span><br><span class="line">            QtGui.qApp.quit()</span><br><span class="line"></span><br><span class="line">        data = fh.readAll()</span><br><span class="line">        codec = QTextCodec.codecForUtfText(data)</span><br><span class="line">        unistr = codec.toUnicode(data)</span><br><span class="line"></span><br><span class="line">        tmp = (<span class="string">&#x27;Notepad: %s&#x27;</span> % filename)</span><br><span class="line">        self.setWindowTitle(tmp)</span><br><span class="line"></span><br><span class="line">        self.textEdit.setText(unistr)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    notepad = Notepad()</span><br><span class="line">    sys.exit(app.exec_())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><p>其实你应该能看懂绝大部分的代码, 我们定义的类继承与 <code>QMainWindow</code> 这个基类, 这样可以让我们把菜单栏放置到窗体的顶部.<br>12-15行: 使用信号和槽来让对象互相之间进行通讯, 这是Qt众多核心特征之一, 当一个事件发生的时候, 将会发出一个信号, 而槽则是Python里面的可调用的对象, 如果一个信号和一个槽相连接的话, 这个槽所指的对象将会在收到信号的时候被调用, 反之亦然.<br>当按下 Open 的时候, 相当于给 <code>openFile</code> 这个对象发出了调用信号, 同样的, 通过键盘快捷键来完成这一事件同样在代码中定义了.<br>22-25行: 定义了一个菜单组件, 并且给这个菜单组件添加了两个动作, 这样一来, 用户将会看到一个 File 菜单, 快捷键是 Alt+F, 当其被点击的时候, 将会出现含有两个选项的菜单.<br>第37行: 弹出一个浏览文件的对话框, 其中第二个参数是浏览文件对话框的标题内容, 第三个参数则是默认打开的目录, 这个目录默认是这个代码所在目录.<br>41-42行: 检测这个文件是否存在, 如果存在则把其赋值给fh这个变量.<br>44-45行: 尝试打开这个文件, 如果打开失败则退出程序.<br>47-49行: 把这个文件对象里面的内容全部读取出来, 然后尝试设置文件编码, 我们最先尝试Unicode编码, 如果失败了则使用Latin-1编码.<br>51-52行: 把窗体的标题改为文件路径, 并在前面加上 ‘Notepad’ .</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我在底部留了一个状态栏的坑, 欢迎大家前来填坑~<br>希望你能喜欢这篇文章 :-)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/PyQt5-Beginner-tutorial-part%203/" data-id="cl1d724zc000rk4uweqxcadef" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/PyQt5-Beginner-tutorial-part%203/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1(cos)%E4%B9%8BPHP%E5%AE%9E%E8%B7%B5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          腾讯云对象存储服务(cos)之PHP实践
+        
+      </div>
+    </a>
+  
+  
+    <a href="/PyQt5-Beginner-tutorial-part%202/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PyQt5-Beginner-tutorial-part 2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  var disqus_url = 'https://hldh214.github.io/PyQt5-Beginner-tutorial-part%203/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#4D0000">
+  
+
+  
+  <title>hldh214&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Student">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hldh214&#39;s blog">
+<meta property="og:url" content="https://hldh214.github.io/page/2/index.html">
+<meta property="og:site_name" content="hldh214&#39;s blog">
+<meta property="og:description" content="Student">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Jim">
+<meta property="article:tag" content="Internet">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="hldh214&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.proxy.ustclug.org/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">hldh214&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hldh214.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Head-First-Linuxbrew" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Head-First-Linuxbrew/" class="article-date">
+  <time datetime="2019-01-20T05:15:24.000Z" itemprop="datePublished">2019-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Head-First-Linuxbrew/">Linuxbrew 初体验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><img src="https://brew.sh/assets/img/linuxbrew.png" class="" title="linuxbrew">
+
+<p>用腻了传统包管理(apt, yum, …), 受够了他们的远古版本, 各种参差不齐的第三方源, 逼死强迫症的卸载残留……<br>在<a target="_blank" rel="noopener" href="https://fyibmsd.github.io/">基友</a>的推荐下尝试了 linuxbrew, 本文记录了 linuxbrew 从入门到<del>放弃</del></p>
+        
+          <p class="article-more-link">
+            <a href="/Head-First-Linuxbrew/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Head-First-Linuxbrew/" data-id="cl1d724z7000ck4uw96dj6h4f" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Head-First-Linuxbrew/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-laravel-timestamp-fields-on-migration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/laravel-timestamp-fields-on-migration/" class="article-date">
+  <time datetime="2018-12-11T05:13:19.000Z" itemprop="datePublished">2018-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/laravel-timestamp-fields-on-migration/">探秘 laravel migration 之 timestamp 奇怪的默认值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>大家都知道 laravel 框架有一个 migration 功能, 也就是数据库迁移<br>允许开发者使用 php 语言描述 DDL, 框架自动帮你处理了各种 SQL 规范之间的兼容问题<br>使用 <code>php artisan migrate</code> 即可一键迁移你定义好的所有表结构<br>配合另一神器 <code>seed</code> 可以实现超快速环境搭建 + 测试数据导入<br>今天我要讲一讲 migration 功能中的 <code>timestamp</code> 字段的一个小细节<br>注意这里指的是支持自定义字段名的 <code>timestamp</code> 方法, 而不是自动生成的 <code>timestamps</code> 方法, 请读者留意</p>
+        
+          <p class="article-more-link">
+            <a href="/laravel-timestamp-fields-on-migration/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/laravel-timestamp-fields-on-migration/" data-id="cl1d724zn001ek4uw150d6pwj" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/laravel-timestamp-fields-on-migration/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-migrate-to-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/migrate-to-hexo/" class="article-date">
+  <time datetime="2018-11-21T09:35:39.000Z" itemprop="datePublished">2018-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/migrate-to-hexo/">migrate-to-hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>各种原因, 历经千辛万苦, 本博客从 CSDN 迁移到了 GitHub pages<br>在 node 和 hexo 的加持下获得重生 <del>(以前的博文时间暂时对不上就是了:P)</del> 19&#x2F;02&#x2F;06: 对上了<br>本文记录了迁移过程遇到的一些问题和解决方案</p>
+        
+          <p class="article-more-link">
+            <a href="/migrate-to-hexo/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/migrate-to-hexo/" data-id="cl1d724zo001ik4uwbxqk8uzp" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/migrate-to-hexo/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JustTrustMe-SSL-Pinning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/JustTrustMe-SSL-Pinning/" class="article-date">
+  <time datetime="2018-11-20T14:54:44.000Z" itemprop="datePublished">2018-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/JustTrustMe-SSL-Pinning/">用 JustTrustMe 干翻 SSL Pinning_ 爬尤美 app 付费视频(app.youmei.com)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>基友推荐一款在线看片 app, 寻思给爬一下视频链接爽一哈, 本文记录了采集全过程</p>
+        
+          <p class="article-more-link">
+            <a href="/JustTrustMe-SSL-Pinning/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/JustTrustMe-SSL-Pinning/" data-id="cl1d724z9000hk4uw9zt5gegy" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/JustTrustMe-SSL-Pinning/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-头条研发秋招补招-后端开发工程师视频面试杂记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E5%A4%B4%E6%9D%A1%E7%A0%94%E5%8F%91%E7%A7%8B%E6%8B%9B%E8%A1%A5%E6%8B%9B-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%A7%86%E9%A2%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" class="article-date">
+  <time datetime="2018-11-05T09:07:00.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E5%A4%B4%E6%9D%A1%E7%A0%94%E5%8F%91%E7%A7%8B%E6%8B%9B%E8%A1%A5%E6%8B%9B-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%A7%86%E9%A2%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">头条研发秋招补招-后端开发工程师视频面试杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>秋意浓</p>
+<h1 id="面试-60min"><a href="#面试-60min" class="headerlink" title="面试 (~60min)"></a>面试 (~60min)</h1><p>一开始就被俩算法题骑脸, 大概占了整个面试一半的时间</p>
+        
+          <p class="article-more-link">
+            <a href="/%E5%A4%B4%E6%9D%A1%E7%A0%94%E5%8F%91%E7%A7%8B%E6%8B%9B%E8%A1%A5%E6%8B%9B-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%A7%86%E9%A2%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/%E5%A4%B4%E6%9D%A1%E7%A0%94%E5%8F%91%E7%A7%8B%E6%8B%9B%E8%A1%A5%E6%8B%9B-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%A7%86%E9%A2%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" data-id="cl1d724zt0023k4uw3k5wgzxu" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/%E5%A4%B4%E6%9D%A1%E7%A0%94%E5%8F%91%E7%A7%8B%E6%8B%9B%E8%A1%A5%E6%8B%9B-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%A7%86%E9%A2%91%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-华阅文化深圳-PHP研发工程师面试杂记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E5%8D%8E%E9%98%85%E6%96%87%E5%8C%96%E6%B7%B1%E5%9C%B3-PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" class="article-date">
+  <time datetime="2018-11-01T07:22:37.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E5%8D%8E%E9%98%85%E6%96%87%E5%8C%96%E6%B7%B1%E5%9C%B3-PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">华阅文化深圳-PHP研发工程师面试杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>2018&#x2F;11&#x2F;01 晴转多云<br>我参加了华阅文化深圳面试, 期望方向是PHP研发工程师<br>面试地点在广东省深圳市科兴科学园 C3-502</p>
+        
+          <p class="article-more-link">
+            <a href="/%E5%8D%8E%E9%98%85%E6%96%87%E5%8C%96%E6%B7%B1%E5%9C%B3-PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/%E5%8D%8E%E9%98%85%E6%96%87%E5%8C%96%E6%B7%B1%E5%9C%B3-PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" data-id="cl1d724zs001zk4uw9rox0rbj" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/%E5%8D%8E%E9%98%85%E6%96%87%E5%8C%96%E6%B7%B1%E5%9C%B3-PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-百度秋招深圳-C++_PHP研发工程师面试杂记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E7%99%BE%E5%BA%A6%E7%A7%8B%E6%8B%9B%E6%B7%B1%E5%9C%B3-C++_PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" class="article-date">
+  <time datetime="2018-09-20T01:44:35.000Z" itemprop="datePublished">2018-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E7%99%BE%E5%BA%A6%E7%A7%8B%E6%8B%9B%E6%B7%B1%E5%9C%B3-C++_PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">百度秋招深圳-C++_PHP研发工程师面试杂记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>2018&#x2F;09&#x2F;19 晴<br>我参加了百度秋招面试, 期望方向是 PHP 研发<br>面试地点在广东省深圳市百度国际大厦, 粗略估计了一下我那一场的面试大概有 15~20 来人参加<br><a target="_blank" rel="noopener" href="https://youtu.be/nXT_wz5Gcq4">https://youtu.be/nXT_wz5Gcq4</a></p>
+        
+          <p class="article-more-link">
+            <a href="/%E7%99%BE%E5%BA%A6%E7%A7%8B%E6%8B%9B%E6%B7%B1%E5%9C%B3-C++_PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/%E7%99%BE%E5%BA%A6%E7%A7%8B%E6%8B%9B%E6%B7%B1%E5%9C%B3-C++_PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" data-id="cl1d724zv002bk4uw4g865to6" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/%E7%99%BE%E5%BA%A6%E7%A7%8B%E6%8B%9B%E6%B7%B1%E5%9C%B3-C++_PHP%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php web 后端开发面试总结 - 1808" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/" class="article-date">
+  <time datetime="2018-08-29T12:52:11.000Z" itemprop="datePublished">2018-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/">php web 后端开发面试总结 - 1808</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>本文总结了这周面试的两家公司所谓心得体会</p>
+        
+          <p class="article-more-link">
+            <a href="/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/" data-id="cl1d724zp001kk4uw1buhehsg" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/php%20web%20%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93%20-%201808/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu 16.04 从 nginx 迁移到 openresty 遇到的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Ubuntu%2016.04%20%E4%BB%8E%20nginx%20%E8%BF%81%E7%A7%BB%E5%88%B0%20openresty%20%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="article-date">
+  <time datetime="2018-06-07T04:41:28.000Z" itemprop="datePublished">2018-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Ubuntu%2016.04%20%E4%BB%8E%20nginx%20%E8%BF%81%E7%A7%BB%E5%88%B0%20openresty%20%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">Ubuntu 16.04 从 nginx 迁移到 openresty 遇到的坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>最近项目用到 echo 模块, 不想每次都手动编译 nginx 插件, 寻思着换 openresty 一劳永逸, 便有此文</p>
+        
+          <p class="article-more-link">
+            <a href="/Ubuntu%2016.04%20%E4%BB%8E%20nginx%20%E8%BF%81%E7%A7%BB%E5%88%B0%20openresty%20%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Ubuntu%2016.04%20%E4%BB%8E%20nginx%20%E8%BF%81%E7%A7%BB%E5%88%B0%20openresty%20%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" data-id="cl1d724zi0011k4uwhcgeaex6" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Ubuntu%2016.04%20%E4%BB%8E%20nginx%20%E8%BF%81%E7%A7%BB%E5%88%B0%20openresty%20%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-微信小游戏-海盗来了打金初体验" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/" class="article-date">
+  <time datetime="2018-04-29T14:48:52.000Z" itemprop="datePublished">2018-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/">微信小游戏-海盗来了打金初体验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假期在家空余时间, 发现微信小游戏突然火了, 群友推荐一款名为: 海盗来了 的小游戏<br>稍微体验了一把感觉很不错, 真正实现了微信对小程序的期望 —- 取代原生 app<br>得益于日益强大的 js 引擎, 在手机端也能做出很华丽的效果, 而且性能也不算很差<br>回到正题: 此款游戏有所谓金币的概念, 而获取金币的一个方式是不断的点击转动转盘<br>寻思如何让脚本来代替我们来干苦力, 便有此文</p>
+        
+          <p class="article-more-link">
+            <a href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/" data-id="cl1d724zv0028k4uwgzlm6695" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F-%E6%B5%B7%E7%9B%97%E6%9D%A5%E4%BA%86%E6%89%93%E9%87%91%E5%88%9D%E4%BD%93%E9%AA%8C/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
+          </li>
+        
+          <li>
+            <a href="/ctw-interview-0205/">對呀對呀！……回字有四樣寫法，你知道麼？</a>
+          </li>
+        
+          <li>
+            <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
+          </li>
+        
+          <li>
+            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
+          </li>
+        
+          <li>
+            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+    <h3 class="widget-title">friends</h3>
+    <div class="widget">
+        <ul class="entry">
+            <li><a href="https://humsan.github.io" target="_blank" title="BigDickGirl">BlaWhickte(BigDickGirl)</a></li>
+            <li><a href="https://fyibmsd.github.io" target="_blank" title="汀雨">汀雨(谷歌扛把子)</a></li>
+            <li><a href="https://phpinfo.me" target="_blank" title="李春燕">李春燕(会口算MD5的黑客)</a></li>
+            <li><a href="https://iminto.github.io" target="_blank" title="白菜爷爷">白菜爷爷(PHP滞销书作者)</a></li>
+            <li><a href="https://www.webapp123.com" target="_blank" title="天南总">天南总(CTO)</a></li>
+        </ul>
+    </div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Jim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hldh214s-blog';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.proxy.ustclug.org/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

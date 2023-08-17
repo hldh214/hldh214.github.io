@@ -1,7 +1,9 @@
 ---
 title: 你管这叫全屋智能???
 date: 2022-07-01 15:48:38
-tags: Android
+tags:
+  - Android
+  - HomeAutomation
 ---
 
 # 引子

@@ -30,7 +30,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container">
@@ -67,6 +67,90 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Python3简单验证码识别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Python3%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" class="article-date">
+  <time datetime="2016-05-10T09:19:49.000Z" itemprop="datePublished">2016-05-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python3%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/">Python3简单验证码识别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这次的需求是自动登录某机构网站, 其验证码很具特色, 很适合做验证码识别入门demo, 先贴主要代码, 其中图片对比使用了编辑距离算法, 脚本使用了pillow库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">splitter = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\d&#123;30&#125;&#x27;</span>)  <span class="comment"># 分割二值化后的图片</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># distance(&#x27;11110000&#x27;, &#x27;00000000&#x27;)</span></span><br><span class="line"><span class="comment"># 比较两个字符串有多少位不同, 返回不同的位数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">distance</span>(<span class="params">string1, string2</span>):</span><br><span class="line">    d_str1 = <span class="built_in">len</span>(string1)</span><br><span class="line">    d_str2 = <span class="built_in">len</span>(string2)</span><br><span class="line">    d_arr = [[<span class="number">0</span>] * d_str2 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(d_str1)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(d_str1):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(d_str2):</span><br><span class="line">            <span class="keyword">if</span> string1[i] == string2[j]:</span><br><span class="line">                <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                    d_arr[i][j] = <span class="number">0</span></span><br><span class="line">                <span class="keyword">elif</span> i != <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                    d_arr[i][j] = d_arr[i - <span class="number">1</span>][j]</span><br><span class="line">                <span class="keyword">elif</span> i == <span class="number">0</span> <span class="keyword">and</span> j != <span class="number">0</span>:</span><br><span class="line">                    d_arr[i][j] = d_arr[i][j - <span class="number">1</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    d_arr[i][j] = d_arr[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                    d_arr[i][j] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> i != <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                    d_arr[i][j] = d_arr[i - <span class="number">1</span>][j] + <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> i == <span class="number">0</span> <span class="keyword">and</span> j != <span class="number">0</span>:</span><br><span class="line">                    d_arr[i][j] = d_arr[i][j - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    d_arr[i][j] = <span class="built_in">min</span>(d_arr[i][j - <span class="number">1</span>], d_arr[i - <span class="number">1</span>][j], d_arr[i - <span class="number">1</span>][j - <span class="number">1</span>]) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    current = <span class="built_in">max</span>(d_arr[d_str1 - <span class="number">1</span>][d_str2 - <span class="number">1</span>], <span class="built_in">abs</span>(d_str2 - d_str1))</span><br><span class="line">    <span class="comment"># print(&quot;Levenshtein Distance is&quot;,current)</span></span><br><span class="line">    <span class="comment"># print(current)</span></span><br><span class="line">    <span class="keyword">return</span> current</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 去除字符串里面连续的1</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">no_one</span>(<span class="params">string</span>):</span><br><span class="line">    n_arr = splitter.findall(string)</span><br><span class="line">    n_arr = <span class="built_in">filter</span>(<span class="keyword">lambda</span> each_str: each_str != <span class="string">&#x27;111111111111111111111111111111&#x27;</span>, n_arr)</span><br><span class="line">    n_result = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> n_each <span class="keyword">in</span> n_arr:</span><br><span class="line">        n_result += <span class="built_in">str</span>(n_each)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> n_result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">opener = requests.session()</span><br><span class="line">res = opener.get(<span class="string">&#x27;http://60.211.254.236:8402/Ajax/ValidCodeImg.ashx&#x27;</span>).content</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;verify.gif&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> v:</span><br><span class="line">    v.write(res)</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;verify.gif&#x27;</span>)</span><br><span class="line">img = img.convert(<span class="string">&#x27;L&#x27;</span>)</span><br><span class="line"></span><br><span class="line">size = img.size</span><br><span class="line"><span class="comment"># img = img.point(table, &#x27;1&#x27;)</span></span><br><span class="line">img_arr = img.load()</span><br><span class="line"></span><br><span class="line"><span class="comment"># for x in range(size[0]):</span></span><br><span class="line"><span class="comment">#     for y in range(size[1]):</span></span><br><span class="line"><span class="comment">#         if img_arr[x, y] &gt; 210:</span></span><br><span class="line"><span class="comment">#             img_arr[x, y] = 1</span></span><br><span class="line"><span class="comment">#         else:</span></span><br><span class="line"><span class="comment">#             img_arr[x, y] = 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># img.save(&#x27;after.gif&#x27;)</span></span><br><span class="line">inc = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">str1 = <span class="string">&#x27;&#x27;</span></span><br><span class="line">str2 = <span class="string">&#x27;&#x27;</span></span><br><span class="line">str3 = <span class="string">&#x27;&#x27;</span></span><br><span class="line">cur_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(size[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(size[<span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">if</span> img_arr[x, y] &gt; <span class="number">210</span>:</span><br><span class="line">            cur_str += <span class="string">&#x27;1&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur_str += <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        <span class="comment"># print(img_arr[i, j], end=&#x27;&#x27;)</span></span><br><span class="line">        <span class="comment"># cur_str += str(img_arr[x, y])</span></span><br><span class="line"></span><br><span class="line">    inc += <span class="number">1</span></span><br><span class="line">    <span class="comment"># if inc % 18 == 0:</span></span><br><span class="line">    <span class="comment">#     print(&#x27;\n----&#x27;)</span></span><br><span class="line">    <span class="comment"># else:</span></span><br><span class="line">    <span class="comment">#     print(&#x27;&#x27;)</span></span><br><span class="line">    <span class="keyword">if</span> inc == <span class="number">18</span>:</span><br><span class="line">        str1 = cur_str</span><br><span class="line">        cur_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">elif</span> inc == <span class="number">36</span>:</span><br><span class="line">        str2 = cur_str</span><br><span class="line">        cur_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">elif</span> inc == <span class="number">54</span>:</span><br><span class="line">        str3 = cur_str</span><br><span class="line">        cur_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">str1 = str1[:-<span class="number">60</span>]</span><br><span class="line">str2 = str2[:-<span class="number">60</span>]</span><br><span class="line">str3 = str3[:-<span class="number">60</span>]</span><br><span class="line">str1 = no_one(str1)</span><br><span class="line">str2 = no_one(str2)</span><br><span class="line">str3 = no_one(str3)</span><br><span class="line">str1 = str1.strip(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">str2 = str2.strip(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">str3 = str3.strip(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"><span class="comment"># print(str1)</span></span><br><span class="line"><span class="comment"># print(str3)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./dict/plus&#x27;</span>) <span class="keyword">as</span> plus:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./dict/minus&#x27;</span>) <span class="keyword">as</span> minus:</span><br><span class="line">        p = plus.read()</span><br><span class="line">        m = minus.read()</span><br><span class="line">        is_add = <span class="number">1</span> <span class="keyword">if</span> distance(p, str2) &lt; distance(m, str2) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">arr1 = []</span><br><span class="line">arr3 = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> each <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;./dict/&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(each)) <span class="keyword">as</span> f:</span><br><span class="line">        ff = f.read()</span><br><span class="line">        arr1.append([each, distance(ff, str1)])</span><br><span class="line">        arr3.append([each, distance(ff, str3)])</span><br><span class="line"></span><br><span class="line">arr1 = <span class="built_in">sorted</span>(arr1, key=<span class="keyword">lambda</span> item: item[<span class="number">1</span>])</span><br><span class="line">arr3 = <span class="built_in">sorted</span>(arr3, key=<span class="keyword">lambda</span> item: item[<span class="number">1</span>])</span><br><span class="line">result = arr1[<span class="number">0</span>][<span class="number">0</span>] + arr3[<span class="number">0</span>][<span class="number">0</span>] <span class="keyword">if</span> is_add <span class="keyword">else</span> arr1[<span class="number">0</span>][<span class="number">0</span>] - arr3[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line"><span class="comment"># login_url = &#x27;http://60.211.254.236:8402/Ajax/Login.ashx?Method=G3_Login&#x27;</span></span><br><span class="line"><span class="comment"># login_data = &#123;</span></span><br><span class="line"><span class="comment">#     &#x27;loginname&#x27;: usn,</span></span><br><span class="line"><span class="comment">#     &#x27;password&#x27;: pwd,</span></span><br><span class="line"><span class="comment">#     &#x27;validcode&#x27;: result,</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br><span class="line"><span class="comment"># opener.get(login_url, login_data)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>字库已经部署到GitHub上, <a target="_blank" rel="noopener" href="https://github.com/hldh214/validCode/">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Python3%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" data-id="cl1daq5lf000y7wuwedgwb38l" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Python3%E7%AE%80%E5%8D%95%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-WebHook之PHP实践@coding.net" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/WebHook%E4%B9%8BPHP%E5%AE%9E%E8%B7%B5@coding.net/" class="article-date">
+  <time datetime="2016-05-09T03:51:50.000Z" itemprop="datePublished">2016-05-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/WebHook%E4%B9%8BPHP%E5%AE%9E%E8%B7%B5@coding.net/">WebHook之PHP实践@coding.net</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每次写完代码, 打开FileZilla, 把写好的文件上传到vps上, 久而久之觉得腻烦, 寻思有没有更geek的方法, 便有此文.<br>WebHook是跟随着Git而兴起的技术, 当你push到服务器的时候, 服务器会发送一个特殊的请求到你指定的url上, 而我们可以使用脚本语言来获取这个请求并且在vps端执行git pull来达到自动部署的目的, 老规矩先贴代码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Simple Git WebHook SDK</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@coding</span>.net</span></span><br><span class="line"><span class="comment"> * 2016/05/09</span></span><br><span class="line"><span class="comment"> * Author: hldh214 &lt;hldh214<span class="doctag">@gmail</span>.com&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置项 start</span></span><br><span class="line"><span class="variable">$git_dir</span> = <span class="string">&#x27;/var/www/.git&#x27;</span>;</span><br><span class="line"><span class="variable">$work_tree</span> = <span class="string">&#x27;/var/www&#x27;</span>;</span><br><span class="line"><span class="comment">// 配置项 end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取原始请求</span></span><br><span class="line"><span class="variable">$hook_log</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&#x27;php://input&#x27;</span>);</span><br><span class="line"><span class="comment">// 使用MySQL记录log</span></span><br><span class="line"><span class="variable">$fh</span> = <span class="title function_ invoke__">mysqli_connect</span>(<span class="string">&#x27;localhost&#x27;</span>, <span class="string">&#x27;root&#x27;</span>, <span class="string">&#x27;root&#x27;</span>, <span class="string">&#x27;git&#x27;</span>);</span><br><span class="line"><span class="comment">// 判断是否为WebHook请求</span></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="variable">$hook_log</span>)) &#123;</span><br><span class="line">    <span class="comment">// 是WebHook请求, 并decode数据</span></span><br><span class="line">    <span class="variable">$json</span> = <span class="title function_ invoke__">json_decode</span>(<span class="variable">$hook_log</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">array_key_exists</span>(<span class="string">&#x27;ref&#x27;</span>, <span class="variable">$json</span>)) &#123;</span><br><span class="line">        <span class="comment">// 检测到ref键, 执行pull</span></span><br><span class="line">        <span class="variable">$cmd</span> = <span class="string">&quot;/usr/bin/sudo git --git-dir=<span class="subst">$git_dir</span> --work-tree=<span class="subst">$work_tree</span> pull  2&gt;&amp;1&quot;</span>;</span><br><span class="line">        <span class="variable">$sh_log</span> = <span class="title function_ invoke__">shell_exec</span>(<span class="variable">$cmd</span>);</span><br><span class="line">        <span class="variable">$sql</span> = <span class="string">&quot;INSERT INTO `webhook_log` (`hook_log`, `sh_log`, `date`) VALUES (&#x27;&quot;</span> . <span class="variable">$hook_log</span> . <span class="string">&quot;&#x27;, &#x27;&quot;</span> . <span class="variable">$sh_log</span> . <span class="string">&quot;&#x27;, CURRENT_DATE());&quot;</span>;</span><br><span class="line">        <span class="comment">// 记录执行log</span></span><br><span class="line">        <span class="variable">$result</span> = <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$fh</span>, <span class="variable">$sql</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 未检测到ref键, 为测试请求</span></span><br><span class="line">        <span class="variable">$sh_log</span> = <span class="string">&#x27;testing&#x27;</span>;</span><br><span class="line">        <span class="variable">$sql</span> = <span class="string">&quot;INSERT INTO `webhook_log` (`hook_log`, `sh_log`, `date`) VALUES (&#x27;&quot;</span> . <span class="variable">$hook_log</span> . <span class="string">&quot;&#x27;, &#x27;&quot;</span> . <span class="variable">$sh_log</span> . <span class="string">&quot;&#x27;, CURRENT_DATE());&quot;</span>;</span><br><span class="line">        <span class="variable">$result</span> = <span class="title function_ invoke__">mysqli_query</span>(<span class="variable">$fh</span>, <span class="variable">$sql</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 正常访问</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;&lt;h1&gt;normal view~&lt;/h1&gt;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把这段代码用FileZilla上传到vps上(最后一次使用FileZilla了&lt;3), 把指向这个php文件的url填写到WebHook页面的deploy_url里面, 并且点击测试, 之后回到vps上查看MySQL是否已经有log, 再在开发机试试commit&amp;push, 你会发现, 代码已经悄然部署到vps上了.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/WebHook%E4%B9%8BPHP%E5%AE%9E%E8%B7%B5@coding.net/" data-id="cl1daq5lj00177wuwb68o2cqn" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/WebHook%E4%B9%8BPHP%E5%AE%9E%E8%B7%B5@coding.net/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-腾讯云对象存储服务(cos)之PHP实践" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -558,109 +642,11 @@ if __name__ == &#39;__main__&#39;:
 
 
   
-    <article id="post-URI和URL的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/URI%E5%92%8CURL%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time datetime="2015-12-07T02:52:56.000Z" itemprop="datePublished">2015-12-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/URI%E5%92%8CURL%E7%9A%84%E5%8C%BA%E5%88%AB/">URI和URL的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>转自cnblogs:<a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaojing/archive/2012/02/04/2413626.html">URI和URL的区别</a></p>
-</blockquote>
-<p>这两天在写代码的时候，由于涉及到资源的位置，因此，需要在Java Bean中定义一些字段，用来表示资源的位置，比如：imgUrl，logoUri等等。但是，每次定义的时候，心里都很纠结，是该用imgUrl还是imgUri呢？</p>
-<p>同样的，另外一个问题：String HttpServletRequest.getRequestURI()；和StringBuffer HttpServletRequest.getRequestURL();返回的内容有何不同？为什么会如此？</p>
-<p>带着这些问题到网上去搜了下，没发现让自己看了明白的解释，于是，想到了Java类库里有两个对应的类java.net.URI和java.net.URL，终于，在这两个类里的javadoc里找到了答案。</p>
-<h2 id="URIs-URLs-and-URNs"><a href="#URIs-URLs-and-URNs" class="headerlink" title="URIs, URLs, and URNs"></a>URIs, URLs, and URNs</h2><p>首先，URI，是uniform resource identifier，统一资源标识符，用来唯一的标识一个资源。而URL是uniform resource locator，统一资源定位器，它是一种具体的URI，即URL可以用来标识一个资源，而且还指明了如何locate这个资源。而URN，uniform resource name，统一资源命名，是通过名字来标识资源，比如mailto:<a href="mailto:&#x6a;&#x61;&#118;&#97;&#x2d;&#110;&#101;&#116;&#x40;&#106;&#97;&#118;&#97;&#46;&#115;&#x75;&#x6e;&#46;&#99;&#x6f;&#109;">&#x6a;&#x61;&#118;&#97;&#x2d;&#110;&#101;&#116;&#x40;&#106;&#97;&#118;&#97;&#46;&#115;&#x75;&#x6e;&#46;&#99;&#x6f;&#109;</a>。也就是说，URI是以一种抽象的，高层次概念定义统一资源标识，而URL和URN则是具体的资源标识的方式。URL和URN都是一种URI。</p>
-<p>在Java的URI中，一个URI实例可以代表绝对的，也可以是相对的，只要它符合URI的语法规则。而URL类则不仅符合语义，还包含了定位该资源的信息，因此它不能是相对的，schema必须被指定。</p>
-<p>ok，现在回答文章开头提出的问题，到底是imgUrl好呢，还是imgUri好？显然，如果说imgUri是肯定没问题的，因为即使它实际上是url，那它也是uri的一种。那么用imgUrl有没有问题呢？此时则要看它的可能取值，如果是绝对路径，能够定位的，那么用imgUrl是没问题的，而如果是相对路径，那还是不要用ImgUrl的好。总之，用imgUri是肯定没问题的，而用imgUrl则要视实际情况而定。</p>
-<p>第二个，从HttpServletRequest的javadoc中可以看出，getRequestURI返回一个String，“the part of this request’s URL from the protocol name up to the query string in the first line of the HTTP request”，比如“POST &#x2F;some&#x2F;path.html?a&#x3D;b HTTP&#x2F;1.1”，则返回的值为”&#x2F;some&#x2F;path.html”。现在可以明白为什么是getRequestURI而不是getRequestURL了，因为此处返回的是相对的路径。而getRequestURL返回一个StringBuffer，“The returned URL contains a protocol, server name, port number, and server path, but it does not include query string parameters.”，完整的请求资源路径，不包括querystring。</p>
-<p>总结一下：URL是一种具体的URI，它不仅唯一标识资源，而且还提供了定位该资源的信息。URI是一种语义上的抽象概念，可以是绝对的，也可以是相对的，而URL则必须提供足够的信息来定位，所以，是绝对的，而通常说的relative URL，则是针对另一个absolute URL，本质上还是绝对的。</p>
-<p>注：这里的绝对(absolute)是指包含scheme，而相对(relative)则不包含scheme。</p>
-<p>URI抽象结构     <strong>[scheme:]scheme-specific-part[#fragment]</strong></p>
-<p>[scheme:][&#x2F;&#x2F;authority][path][?query][#fragment]</p>
-<p>authority为[user-info@]host[:port]</p>
-<p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/1.5.0/docs/api/java/net/URI.html">http://docs.oracle.com/javase/1.5.0/docs/api/java/net/URI.html</a></p>
-<p><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier">http://en.wikipedia.org/wiki/Uniform_Resource_Identifier</a></p>
-<p><a target="_blank" rel="noopener" href="http://docs.oracle.com/javaee/5/api/javax/servlet/http/HttpServletRequest.html">http://docs.oracle.com/javaee/5/api/javax/servlet/http/HttpServletRequest.html</a></p>
-<p>ps:</p>
-<p>java.net.URL类不提供对标准RFC2396规定的特殊字符的转义，因此需要调用者自己对URL各组成部分进行encode。而java.net.URI则会提供转义功能。因此The recommended way  to manage the encoding and decoding of URLs is to use  java.net.URI. 可以使用URI.toURL()和URL.toURI()方法来对两个类型的对象互相转换。对于HTML FORM的url encode&#x2F;decode可以使用java.net.URLEncoder和java.net.URLDecoder来完成，但是对URL对象不适用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/URI%E5%92%8CURL%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="cl1daq5lg00107wuw2p0q6pc5" class="article-share-link">Share</a>
-      
-        <a href="https://hldh214.github.io/URI%E5%92%8CURL%E7%9A%84%E5%8C%BA%E5%88%AB/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-My First Blog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/My%20First%20Blog/" class="article-date">
-  <time datetime="2015-12-07T02:17:40.000Z" itemprop="datePublished">2015-12-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/My%20First%20Blog/">My First Blog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Haha~&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/My%20First%20Blog/" data-id="cl1daq5l7000j7wuw5ludhh7d" class="article-share-link">Share</a>
-      
-        <a href="https://hldh214.github.io/My%20First%20Blog/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -674,7 +660,7 @@ if __name__ == &#39;__main__&#39;:
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HomeAutomation/" rel="tag">HomeAutomation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
     </div>
   </div>
 
@@ -684,7 +670,7 @@ if __name__ == &#39;__main__&#39;:
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HomeAutomation/" style="font-size: 13.33px;">HomeAutomation</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
     </div>
   </div>
 
@@ -693,7 +679,7 @@ if __name__ == &#39;__main__&#39;:
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -706,6 +692,14 @@ if __name__ == &#39;__main__&#39;:
       <ul>
         
           <li>
+            <a href="/Valetudo-Dreame-L10Pro/">别让扫地机器人成为云端奴隶，Valetudo 助你夺回控制权</a>
+          </li>
+        
+          <li>
+            <a href="/smart-home-automation-by-termux/">你管这叫全屋智能???</a>
+          </li>
+        
+          <li>
             <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
           </li>
         
@@ -715,14 +709,6 @@ if __name__ == &#39;__main__&#39;:
         
           <li>
             <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
-          </li>
-        
-          <li>
-            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
-          </li>
-        
-          <li>
-            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
           </li>
         
       </ul>
@@ -750,7 +736,7 @@ if __name__ == &#39;__main__&#39;:
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2022 Jim<br>
+      &copy; 2023 Jim<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

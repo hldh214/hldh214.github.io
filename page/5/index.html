@@ -30,7 +30,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.2.0"></head>
 
 <body>
   <div id="container">
@@ -67,6 +67,95 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Python 强大的模式匹配" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Python%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" class="article-date">
+  <time datetime="2016-11-09T08:11:40.000Z" itemprop="datePublished">2016-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">Python 强大的模式匹配</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一些很 sb 的正则需求, 对子模式要求苛刻<br>不同情况的子模式顺序不同<br>这就要用到命名的子模式了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">regex = re.match(<span class="string">r&#x27;(?P&lt;first&gt;\d+)qwe(?P&lt;last&gt;\d+)&#x27;</span>, <span class="string">&#x27;123qwe321&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(regex.group(<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(regex.group(<span class="string">&#x27;first&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(regex.group(<span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(regex.group(<span class="string">&#x27;last&#x27;</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C:\Python34\python.exe E:/python/tmp.py</span><br><span class="line">123</span><br><span class="line">123</span><br><span class="line">321</span><br><span class="line">321</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/Python%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" data-id="cl1daq5ld000u7wuw3sdx5p2x" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/Python%20%E5%BC%BA%E5%A4%A7%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PHPUnit 学习乱记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/PHPUnit%20%E5%AD%A6%E4%B9%A0%E4%B9%B1%E8%AE%B0/" class="article-date">
+  <time datetime="2016-08-28T13:00:12.000Z" itemprop="datePublished">2016-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/PHPUnit%20%E5%AD%A6%E4%B9%A0%E4%B9%B1%E8%AE%B0/">PHPUnit 学习乱记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>本篇记录 PHPUnit 学习点滴</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>wget https://phar.phpunit.de/phpunit.phar
+</code></pre>
+<p>直接下载 phar 包就能直接用了</p>
+        
+          <p class="article-more-link">
+            <a href="/PHPUnit%20%E5%AD%A6%E4%B9%A0%E4%B9%B1%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hldh214.github.io/PHPUnit%20%E5%AD%A6%E4%B9%A0%E4%B9%B1%E8%AE%B0/" data-id="cl1daq5l9000m7wuwa2qphaoe" class="article-share-link">Share</a>
+      
+        <a href="https://hldh214.github.io/PHPUnit%20%E5%AD%A6%E4%B9%A0%E4%B9%B1%E8%AE%B0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Golang 实践之 Discuz 论坛模拟签到" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -457,173 +546,11 @@
 
 
   
-    <article id="post-CentOS6编译安装Apache2.4 &amp; PHP5.6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/" class="article-date">
-  <time datetime="2016-06-22T01:53:05.000Z" itemprop="datePublished">2016-06-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/">CentOS6编译安装Apache2.4 &amp; PHP5.6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>作为一个Web开发者, 编译php是看家本领, 而目前互联网上的各种资料皆无法一次搞定编译安装, 故有此文.<br>本文安装环境是CentOS6.5 64位版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># cat /proc/version</span><br><span class="line">Linux version 2.6.32-431.el6.x86_64 (mockbuild@c6b8.bsys.dev.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Fri Nov 22 03:15:09 UTC 2013</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>确保已经安装编译器! (吐槽一下yum安装的gcc还是4.4的版本, Ubuntu都已经是4.8了)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc</span><br><span class="line">yum install make</span><br><span class="line">yum install gcc-c++</span><br></pre></td></tr></table></figure>
-
-<p>懒人专用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel curl curl-devel libpng-devel libmcrypt-devel</span><br><span class="line"></span><br><span class="line">wget &quot;http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20.tar.gz&quot; &quot;http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20-deps.tar.gz&quot; &quot;ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz&quot; &quot;http://cn2.php.net/distributions/php-5.6.22.tar.gz&quot;</span><br><span class="line"></span><br><span class="line">for tar in *.tar.gz; do tar -zxvf $tar; done</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="编译安装Apache"><a href="#编译安装Apache" class="headerlink" title="编译安装Apache"></a>编译安装Apache</h1><p>寻思躲懒, 使用yum方式安装Apache, 结果在编译php的时候无法生成libphp5.so文件, 无奈只得老老实实编译.<br>首先下载源码<br><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20.tar.gz">http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20.tar.gz</a><br><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20-deps.tar.gz">http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20-deps.tar.gz</a><br><a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz">ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz</a><br>解压之后开始编译(httpd-2.4.20.tar.gz 和 httpd-2.4.20-deps.tar.gz 放到同一个文件夹下)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// pcre</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/pcre</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">// apache</span><br><span class="line"></span><br><span class="line">./configure --with-pcre=/usr/local/pcre --enable-so</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
-<p>若没有报错, 则表示编译安装成功, 值得注意的是, 此时的默认wwwroot还是编译路径下的htcdocs目录, 需要手动修改到常用的&#x2F;var&#x2F;www&#x2F;html</p>
-<pre><code>DocumentRoot &quot;/var/www/html&quot;
-</code></pre>
-<p>此时在&#x2F;var&#x2F;www&#x2F;html目录下新建index.html并写入内容, 在浏览器访问服务器ip能显示写入内容的情况下, 可以判定Apache编译安装成功.</p>
-<h1 id="编译安装PHP"><a href="#编译安装PHP" class="headerlink" title="编译安装PHP"></a>编译安装PHP</h1><p>重头戏来了, 目前网络上绝大多数关于编译PHP的资料, 都或多或少的有坑, 不能一次成功, 在这篇文章中, 我总结了所有遇到的错误和解决方法, 直接贴上原始命令. 当然首先是下载PHP的源码了, 这里就不再赘述.<br><a target="_blank" rel="noopener" href="http://cn2.php.net/distributions/php-5.6.22.tar.gz">http://cn2.php.net/distributions/php-5.6.22.tar.gz</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-config-file-path=/usr/local/php/etc --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-gettext --enable-mbstring --enable-exif --with-iconv --with-mcrypt --with-mhash --with-openssl --enable-bcmath --enable-soap --with-libxml-dir --enable-pcntl --enable-shmop --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-sockets --with-curl --with-gd --with-zlib --enable-zip --with-bz2  --without-sqlite3 --without-pdo-sqlite --with-pear --enable-opcache</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">1.</span><br><span class="line">Q: </span><br><span class="line">configure: error: xml2-config not found. Please check your libxml2 installation.</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">yum install libxml2</span><br><span class="line">yum install libxml2-devel</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line">Q:</span><br><span class="line">configure: error: Cannot find OpenSSL&#x27;s libraries</span><br><span class="line">configure: error: Cannot find OpenSSL&#x27;s &lt;evp.h&gt;</span><br><span class="line">A:</span><br><span class="line">yum install openssl</span><br><span class="line">yum install openssl-devel</span><br><span class="line">如果继续报错(一般原版centOS不会有这个问题):</span><br><span class="line">find / -name libssl.so</span><br><span class="line">/usr/lib/x86_64-linux-gnu/libssl.so</span><br><span class="line">初步判断它可能只会在 /usr/lib/ 下寻找 libssl.so 文件, 于是:</span><br><span class="line">ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span><br><span class="line">重新编译安装即通过.</span><br><span class="line"></span><br><span class="line">3.</span><br><span class="line">Q:</span><br><span class="line">configure: error: Please reinstall the BZip2 distribution</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">yum install bzip2</span><br><span class="line">yum install bzip2-devel</span><br><span class="line"></span><br><span class="line">4.</span><br><span class="line">Q:</span><br><span class="line">configure: error: Please reinstall the libcurl distribution -</span><br><span class="line">    easy.h should be in &lt;curl-dir&gt;/include/curl/</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">yum install curl</span><br><span class="line">yum install curl-devel</span><br><span class="line"></span><br><span class="line">5.</span><br><span class="line">Q:</span><br><span class="line">configure: error: png.h not found.</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">yum install libpng-devel</span><br><span class="line"></span><br><span class="line">6.</span><br><span class="line">Q:</span><br><span class="line">configure: error: mcrypt.h not found. Please reinstall libmcrypt.</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">yum install libmcrypt-devel</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>暂时只遇到这么多问题, 后续有问题会继续补充.</p>
-<h1 id="Apache与PHP的整合"><a href="#Apache与PHP的整合" class="headerlink" title="Apache与PHP的整合"></a>Apache与PHP的整合</h1><p>其实做到这里已经差不多完成了, 只需要把二者进行整合, 直接在httpd.conf中添加:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch \.php$&gt;</span><br><span class="line">    SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
-
-<p>另外需要检测index.php则需要找到这一行并且在后面追加:</p>
-<pre><code>DirectoryIndex index.html index.php
-</code></pre>
-<p>接着重启Apache, 完成.</p>
-<h1 id="MySQL相关"><a href="#MySQL相关" class="headerlink" title="MySQL相关"></a>MySQL相关</h1><p>使用apt-get install mysql-server 之后, 发觉mysql_connect()这类函数会报错, 提示</p>
-<pre><code>mysql_connect(): [2002] No such file or directory
-</code></pre>
-<p>这是表示没有找到mysql.sock文件, 只需去mysql的my.cnf中找一下真实路径, 然后做一下软连接即可, 也可能是mysqld.sock.</p>
-<pre><code>ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
-</code></pre>
-<p>另外这里注意一下centOS6的一个坑<br>yum安装的mysql是5.1版本的, 所以只能使用phpMyAdmin4.0系列版本才行:<br><a target="_blank" rel="noopener" href="https://files.phpmyadmin.net/phpMyAdmin/4.0.10.15/phpMyAdmin-4.0.10.15-all-languages.tar.gz">https://files.phpmyadmin.net/phpMyAdmin/4.0.10.15/phpMyAdmin-4.0.10.15-all-languages.tar.gz</a><br>这个是4.6版本, 仅支持5.5以及以上的mysql:<br><a target="_blank" rel="noopener" href="https://files.phpmyadmin.net/phpMyAdmin/4.6.2/phpMyAdmin-4.6.2-all-languages.tar.gz">https://files.phpmyadmin.net/phpMyAdmin/4.6.2/phpMyAdmin-4.6.2-all-languages.tar.gz</a></p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>CentOS有一个小坑在防火墙这块, 导致网页无法访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">关闭命令: service iptables stop </span><br><span class="line">永久关闭防火墙: chkconfig iptables off</span><br></pre></td></tr></table></figure>
-
-<p>整个编译过程加上资料查阅差不多花费了近2小时, 主要是一些Linux的基本命令不熟悉, 大部分时间消耗在查询基本命令的文档上面了, 以后要多注意这方面~</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="http://www.2cto.com/os/201404/294000.html">http://www.2cto.com/os/201404/294000.html</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/tianguokaka/article/details/19086789">http://blog.csdn.net/tianguokaka/article/details/19086789</a><br><a target="_blank" rel="noopener" href="http://my.oschina.net/megan/blog/325040">http://my.oschina.net/megan/blog/325040</a><br><a target="_blank" rel="noopener" href="http://blog.knowsky.com/192286.htm">http://blog.knowsky.com/192286.htm</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/" data-id="cl1daq5kz00037wuw9gtjavg9" class="article-share-link">Share</a>
-      
-        <a href="https://hldh214.github.io/CentOS6%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache2.4%20&%20PHP5.6/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ubuntu14.04 &amp; CentOS6.5 编译安装Apache &amp; PHP5.6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/" class="article-date">
-  <time datetime="2016-06-20T12:08:19.000Z" itemprop="datePublished">2016-06-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/">Ubuntu14.04 &amp; CentOS6.5 编译安装Apache &amp; PHP5.6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>作为一个Web开发者, 编译php是看家本领, 而目前互联网上的各种资料皆无法一次搞定编译安装, 故有此文.<br>本文安装环境是Ubuntu14.04 64位版本 &amp; CentOS6.5 64位版本</p>
-<p>确保已经安装编译器!</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gcc</span><br><span class="line">apt-get install make</span><br><span class="line">apt-get install build-essential</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc</span><br><span class="line">yum install make</span><br><span class="line">yum install gcc-c++</span><br></pre></td></tr></table></figure>
-
-<p>懒人专用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install gcc make build-essential libxml2 libxml2-dev openssl bzip2 libbz2-dev curl libpng12-dev libmcrypt-dev -y</span><br><span class="line">apt-get install libcurl4-gnutls-dev -y</span><br><span class="line">apt-get install libcurl4-openssl-dev -y</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel curl curl-devel libpng-devel libmcrypt-devel</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget &quot;http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20.tar.gz&quot; &quot;http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20-deps.tar.gz&quot; &quot;ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz&quot; &quot;http://cn2.php.net/distributions/php-5.6.23.tar.gz&quot;</span><br><span class="line"></span><br><span class="line">for tar in *.tar.gz; do tar -zxvf $tar; done</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="编译安装Apache"><a href="#编译安装Apache" class="headerlink" title="编译安装Apache"></a>编译安装Apache</h1><p>首先下载源码 </p>
-<p><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20.tar.gz">http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20.tar.gz</a><br><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20-deps.tar.gz">http://mirrors.aliyun.com/apache/httpd/httpd-2.4.20-deps.tar.gz</a><br><a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz">ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz</a></p>
-<p>解压之后开始编译</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># pcre</span><br><span class="line">./configure --prefix=/usr/local/pcre</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"># httpd</span><br><span class="line">./configure --enable-so --with-pcre=/usr/local/pcre</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
-<p>若没有报错, 则表示编译安装成功, 值得注意的是, 此时的默认wwwroot还是编译路径下的htcdocs目录, 需要手动修改到常用的&#x2F;var&#x2F;www&#x2F;html</p>
-<pre><code>DocumentRoot &quot;/var/www/html&quot;
-</code></pre>
-<p>此时在&#x2F;var&#x2F;www&#x2F;html目录下新建index.html并写入内容, 在浏览器访问服务器ip能显示写入内容的情况下, 可以判定Apache编译安装成功.</p>
-<h1 id="编译安装PHP"><a href="#编译安装PHP" class="headerlink" title="编译安装PHP"></a>编译安装PHP</h1><p>重头戏来了, 目前网络上绝大多数关于编译PHP的资料, 都或多或少的有坑, 不能一次成功, 在这篇文章中, 我总结了所有遇到的错误和解决方法, 直接贴上原始命令. 当然首先是下载PHP的源码了, 这里就不再赘述.<br><a target="_blank" rel="noopener" href="http://cn2.php.net/distributions/php-5.6.23.tar.gz">http://cn2.php.net/distributions/php-5.6.23.tar.gz</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-config-file-path=/usr/local/php/etc --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-gettext --enable-mbstring --enable-exif --with-iconv --with-mcrypt --with-mhash --with-openssl --enable-bcmath --enable-soap --with-libxml-dir --enable-pcntl --enable-shmop --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-sockets --with-curl --with-gd --with-zlib --enable-zip --with-bz2  --without-sqlite3 --without-pdo-sqlite --with-pear --enable-opcache</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">1.</span><br><span class="line">Q: </span><br><span class="line">configure: error: xml2-config not found. Please check your libxml2 installation.</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">apt-get install libxml2</span><br><span class="line">apt-get install libxml2-dev</span><br><span class="line"></span><br><span class="line">yum install libxml2</span><br><span class="line">yum install libxml2-devel</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line">Q:</span><br><span class="line">configure: error: Cannot find OpenSSL&#x27;s libraries</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">apt-get install openssl</span><br><span class="line">如果继续报错:</span><br><span class="line">find / -name libssl.so</span><br><span class="line">/usr/lib/x86_64-linux-gnu/libssl.so</span><br><span class="line">初步判断它可能只会在 /usr/lib/ 下寻找 libssl.so 文件, 于是:</span><br><span class="line">ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib</span><br><span class="line">重新编译安装即通过.</span><br><span class="line"></span><br><span class="line">yum install openssl</span><br><span class="line">yum install openssl-devel</span><br><span class="line"></span><br><span class="line">3.</span><br><span class="line">Q:</span><br><span class="line">configure: error: Please reinstall the BZip2 distribution</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">apt-get install bzip2</span><br><span class="line">apt-get install libbz2-dev</span><br><span class="line"></span><br><span class="line">yum install bzip2</span><br><span class="line">yum install bzip2-devel</span><br><span class="line"></span><br><span class="line">4.</span><br><span class="line">Q:</span><br><span class="line">configure: error: Please reinstall the libcurl distribution -</span><br><span class="line">    easy.h should be in &lt;curl-dir&gt;/include/curl/</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">apt-get install curl</span><br><span class="line">apt-get install libcurl4-gnutls-dev</span><br><span class="line"></span><br><span class="line">yum install curl</span><br><span class="line">yum install curl-devel</span><br><span class="line"></span><br><span class="line">5.</span><br><span class="line">Q:</span><br><span class="line">configure: error: png.h not found.</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">apt-get install libpng12-dev</span><br><span class="line"></span><br><span class="line">yum install libpng-devel</span><br><span class="line"></span><br><span class="line">6.</span><br><span class="line">Q:</span><br><span class="line">configure: error: mcrypt.h not found. Please reinstall libmcrypt.</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">apt-get install libmcrypt-dev</span><br><span class="line"></span><br><span class="line">yum install libmcrypt-devel</span><br><span class="line"></span><br><span class="line">7.</span><br><span class="line">Q:</span><br><span class="line">configure: error: Cannot find OpenSSL&#x27;s &lt;evp.h&gt;</span><br><span class="line"></span><br><span class="line">A:</span><br><span class="line">apt-get install libcurl3-openssl-dev</span><br></pre></td></tr></table></figure>
-
-<p>暂时只遇到这么多问题, 后续有问题会继续补充.</p>
-<h1 id="Apache与PHP的整合"><a href="#Apache与PHP的整合" class="headerlink" title="Apache与PHP的整合"></a>Apache与PHP的整合</h1><p>其实做到这里已经差不多完成了, 只需要把二者进行整合, 直接在httpd.conf中添加:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch \.php$&gt;</span><br><span class="line">    SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
-
-<p>另外需要检测index.php则需要找到这一行并且在后面追加:</p>
-<pre><code>DirectoryIndex index.html index.php
-</code></pre>
-<p>接着重启Apache, 完成.</p>
-<h1 id="MySQL相关"><a href="#MySQL相关" class="headerlink" title="MySQL相关"></a>MySQL相关</h1><p>使用apt-get install mysql-server 之后, 发觉mysql_connect()这类函数会报错, 提示</p>
-<pre><code>mysql_connect(): [2002] No such file or directory
-</code></pre>
-<p>这是表示没有找到mysql.sock文件, 只需去mysql的my.cnf中找一下真实路径, 然后做一下软连接即可, 也可能是mysqld.sock.</p>
-<pre><code>ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
-</code></pre>
-<p>另外这里注意一下centOS6的一个坑<br>yum安装的mysql是5.1版本的, 所以只能使用phpMyAdmin4.0系列版本才行:<br><a target="_blank" rel="noopener" href="https://files.phpmyadmin.net/phpMyAdmin/4.0.10.15/phpMyAdmin-4.0.10.15-all-languages.tar.gz">https://files.phpmyadmin.net/phpMyAdmin/4.0.10.15/phpMyAdmin-4.0.10.15-all-languages.tar.gz</a><br>这个是4.6版本, 仅支持5.5以及以上的mysql:<br><a target="_blank" rel="noopener" href="https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-all-languages.tar.gz">https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-all-languages.tar.gz</a></p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>CentOS有一个小坑在防火墙这块, 导致网页无法访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">关闭命令: service iptables stop </span><br><span class="line">永久关闭防火墙: chkconfig iptables off</span><br></pre></td></tr></table></figure>
-
-<p>整个编译过程加上资料查阅差不多花费了近2小时, 主要是一些Linux的基本命令不熟悉, 大部分时间消耗在查询基本命令的文档上面了, 以后要多注意这方面~</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="http://www.2cto.com/os/201404/294000.html">http://www.2cto.com/os/201404/294000.html</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/tianguokaka/article/details/19086789">http://blog.csdn.net/tianguokaka/article/details/19086789</a><br><a target="_blank" rel="noopener" href="http://my.oschina.net/megan/blog/325040">http://my.oschina.net/megan/blog/325040</a><br><a target="_blank" rel="noopener" href="http://blog.knowsky.com/192286.htm">http://blog.knowsky.com/192286.htm</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/" data-id="cl1daq5lh00137wuwewxh8dys" class="article-share-link">Share</a>
-      
-        <a href="https://hldh214.github.io/Ubuntu14.04%20&%20CentOS6.5%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Apache%20&%20PHP5.6/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -637,7 +564,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crawler/" rel="tag">Crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HomeAutomation/" rel="tag">HomeAutomation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interview/" rel="tag">Interview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Steam/" rel="tag">Steam</a></li></ul>
     </div>
   </div>
 
@@ -647,7 +574,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
+      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/Crawler/" style="font-size: 10px;">Crawler</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HomeAutomation/" style="font-size: 13.33px;">HomeAutomation</a> <a href="/tags/Interview/" style="font-size: 20px;">Interview</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/Steam/" style="font-size: 10px;">Steam</a>
     </div>
   </div>
 
@@ -656,7 +583,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li></ul>
     </div>
   </div>
 
@@ -669,6 +596,14 @@
       <ul>
         
           <li>
+            <a href="/Valetudo-Dreame-L10Pro/">别让扫地机器人成为云端奴隶，Valetudo 助你夺回控制权</a>
+          </li>
+        
+          <li>
+            <a href="/smart-home-automation-by-termux/">你管这叫全屋智能???</a>
+          </li>
+        
+          <li>
             <a href="/buildroot-2022/">Buildroot 2018.02 升级 2022.02 小记</a>
           </li>
         
@@ -678,14 +613,6 @@
         
           <li>
             <a href="/resize-filesystem-fdisk-resize2fs/">磁盘扩容二三事</a>
-          </li>
-        
-          <li>
-            <a href="/infipower-interview-0219/">你这个态度还找个锤子的工作</a>
-          </li>
-        
-          <li>
-            <a href="/futu-interview-0127/">汀桑和憨豆的视频聊天</a>
           </li>
         
       </ul>
@@ -713,7 +640,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2022 Jim<br>
+      &copy; 2023 Jim<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
